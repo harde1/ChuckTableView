@@ -54,7 +54,7 @@ sd = [[SmartTableView alloc]
 
 #导入数据model,一个model对应一个cell
 
-1、不指定cell类型，就默认采用UITableViewCell
+1、cell类型，除非专门指定XibAutpHeightCell,不指定就默认采用UITableViewCell
 
 -  [tableView addModel:@"我是XibAutpHeightCell，在s0,r0"];
 
