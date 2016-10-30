@@ -124,21 +124,11 @@
 			isa = PBXGroup;
 			children = (
 				F4D439FF1DC60F11007099B4 /* lib */,
-				F48085A51DC2F55700D22552 /* AppDelegate.h */,
-				F48085A61DC2F55800D22552 /* AppDelegate.m */,
 				F48085A81DC2F55800D22552 /* ViewController.h */,
 				F48085A91DC2F55800D22552 /* ViewController.m */,
 				F47BEB3F1DC5F9FA00E6F225 /* SimpleController.h */,
 				F47BEB401DC5F9FA00E6F225 /* SimpleController.m */,
-				F48085DD1DC300E700D22552 /* ChuckCell.h */,
-				F48085DE1DC300E700D22552 /* ChuckCell.m */,
-				F4B9DD771DC4CB120064A605 /* XibAutpHeightCell.h */,
-				F4B9DD781DC4CB120064A605 /* XibAutpHeightCell.m */,
-				F4B9DD791DC4CB120064A605 /* XibAutpHeightCell.xib */,
-				F48085AB1DC2F55800D22552 /* Main.storyboard */,
-				F48085AE1DC2F55800D22552 /* Assets.xcassets */,
-				F48085B01DC2F55800D22552 /* LaunchScreen.storyboard */,
-				F48085B31DC2F55800D22552 /* Info.plist */,
+				F4D43A0B1DC60F33007099B4 /* cell */,
 				F48085A21DC2F55700D22552 /* Supporting Files */,
 			);
 			path = ChuckTableView;
@@ -147,6 +137,12 @@
 		F48085A21DC2F55700D22552 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F48085AB1DC2F55800D22552 /* Main.storyboard */,
+				F48085AE1DC2F55800D22552 /* Assets.xcassets */,
+				F48085B01DC2F55800D22552 /* LaunchScreen.storyboard */,
+				F48085B31DC2F55800D22552 /* Info.plist */,
+				F48085A51DC2F55700D22552 /* AppDelegate.h */,
+				F48085A61DC2F55800D22552 /* AppDelegate.m */,
 				F48085A31DC2F55700D22552 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -183,6 +179,18 @@
 				F4D43A071DC60F11007099B4 /* UITableViewCell+Chuck.m */,
 			);
 			path = lib;
+			sourceTree = "<group>";
+		};
+		F4D43A0B1DC60F33007099B4 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				F48085DD1DC300E700D22552 /* ChuckCell.h */,
+				F48085DE1DC300E700D22552 /* ChuckCell.m */,
+				F4B9DD771DC4CB120064A605 /* XibAutpHeightCell.h */,
+				F4B9DD781DC4CB120064A605 /* XibAutpHeightCell.m */,
+				F4B9DD791DC4CB120064A605 /* XibAutpHeightCell.xib */,
+			);
+			name = cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
