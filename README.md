@@ -25,38 +25,26 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 ```
 
 SmartTableView* sd = nil;
-
 sd = [[SmartTableView alloc]
-
     initWithFrame:self.view.bounds
-
             style:0
-
     defaultHeight:60
-
       vcDelegate:self
-
   configureBlock:^(UITableViewCell* cell, id model, NSIndexPath *indexPath) {
-
     //默认cell配置
-
     if (![cell isMemberOfClass:[UITableViewCell class]]) {
-
     return;
-
     }
-
     cell.detailTextLabel.text = model;
-
     cell.textLabel.text = model;
-
     } cellDidselectConfig:^(id cell, id model, NSIndexPath *indexPath) {
-
     //默认点击cell配置
-
     NSLog(@"点击到了：%@",model);
-
 }];
+
+[sd addModel:@"消息中心"];
+[sd addModel:@"会员中心"];
+[sd addModels:@[@"定时关闭",@"关于我们",@"退出登录"]];
 
 ```
 
@@ -95,35 +83,24 @@ d、编辑事件，与tableView等同名事件操作一致
 - -(void)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate commitEditingWithModel:(id)model style:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath;
 
 #自定义的上拉加载更多
-
-- -(UIView *)tableView:(SmartTableView *)tableView viewForFooterRefresh:(UITableViewCell *)cell{
-
+```
+-(UIView *)tableView:(SmartTableView *)tableView viewForFooterRefresh:(UITableViewCell *)cell{
     UIView * v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-
     UILabel *lb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-
     lb.text = @"下载中";
-
     lb.textAlignment = NSTextAlignmentCenter;
-
     [v addSubview:lb];
-
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-
     //设置显示位置
     indicator.center = CGPointMake(v.center.x-50, v.center.y);
-
     [indicator startAnimating];
-
     indicator.color = [UIColor redColor];
-
     //将这个控件加到父容器中。
-
     [v addSubview:indicator];
     return v;
-
 }
 
+```
 #常用APi
 //获取元素
 

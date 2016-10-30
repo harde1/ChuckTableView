@@ -37,7 +37,9 @@
     
     [self.view addSubview:sd];
     
-    [sd addModels:@[@"消息中心",@"会员中心",@"定时关闭",@"关于我们"]];
+    [sd addModel:@"消息中心"];
+    [sd addModel:@"会员中心"];
+    [sd addModels:@[@"定时关闭",@"关于我们",@"退出登录"]];
 }
 
 @end
