@@ -22,6 +22,40 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 
   初始化后，就配置了基础的默认cell高度，cell的UI与model的默认配置和点击配置
 
+SmartTableView* sd = nil;
+
+sd = [[SmartTableView alloc]
+
+    initWithFrame:self.view.bounds
+
+            style:0
+
+    defaultHeight:60
+
+      vcDelegate:self
+
+  configureBlock:^(UITableViewCell* cell, id model, NSIndexPath *indexPath) {
+
+    //默认cell配置
+
+    if (![cell isMemberOfClass:[UITableViewCell class]]) {
+
+    return;
+
+    }
+
+    cell.detailTextLabel.text = model;
+
+    cell.textLabel.text = model;
+
+    } cellDidselectConfig:^(id cell, id model, NSIndexPath *indexPath) {
+
+    //默认点击cell配置
+
+    NSLog(@"点击到了：%@",model);
+
+}];
+
 #导入数据model,一个model对应一个cell
 
  1、不指定cell类型，就默认采用UITableViewCell

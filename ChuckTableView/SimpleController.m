@@ -16,22 +16,25 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-  SmartTableView*  sd = [[SmartTableView alloc]initWithFrame:self.view.bounds
-                                         style:0
-                                 defaultHeight:60
-                                    vcDelegate:self
-                                configureBlock:^(UITableViewCell* cell, id model, NSIndexPath *indexPath) {
-                                    //默认cell配置
-                                    if (![cell isMemberOfClass:[UITableViewCell class]]) {
-                                        return;
-                                    }
-                                    cell.detailTextLabel.text = model;
-                                    cell.textLabel.text = model;
-
-                                } cellDidselectConfig:^(id cell, id model, NSIndexPath *indexPath) {
-                                    //默认点击cell配置
-                                    NSLog(@"点击到了：%@",model);
-                                }];
+    SmartTableView* sd = nil;
+    sd = [[SmartTableView alloc]
+          initWithFrame:self.view.bounds
+          style:0
+          defaultHeight:60
+          vcDelegate:self
+          configureBlock:^(UITableViewCell* cell, id model, NSIndexPath *indexPath) {
+              //默认cell配置
+              if (![cell isMemberOfClass:[UITableViewCell class]]) {
+                  return;
+              }
+              cell.detailTextLabel.text = model;
+              cell.textLabel.text = model;
+              
+          } cellDidselectConfig:^(id cell, id model, NSIndexPath *indexPath) {
+              //默认点击cell配置
+              NSLog(@"点击到了：%@",model);
+          }];
+    
     [self.view addSubview:sd];
     
     [sd addModels:@[@"消息中心",@"会员中心",@"定时关闭",@"关于我们"]];
