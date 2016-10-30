@@ -1,12 +1,16 @@
 # ChuckTableView
 
-高度封装tableView，简化操作
+高度封装tableView，简化操作，目的是为了cell可以自由同时存在于不同的UIViewController之中，cell自给自足，cell环境封闭起来
 
   1、容易操作的cell增删改查
 
   2、滚到最后
 
   3、可以自定义的上拉加载更多
+
+  4、编辑模式随意添加，随意插入各种cell
+
+  5、cell与tableView解耦，与UIViewController解耦
 
 
 # 例子
@@ -50,17 +54,19 @@ sd = [[SmartTableView alloc]
 
 #导入数据model,一个model对应一个cell
 
- 1、不指定cell类型，就默认采用UITableViewCell
+1、不指定cell类型，就默认采用UITableViewCell
 
 -  [tableView addModel:@"我是XibAutpHeightCell，在s0,r0"];
 
 -  [tableView addModel:@"我是XibAutpHeightCell，在s0,r0" cellClass:XibAutpHeightCell.class];
 
- 2、随意指定插入的section,不用担心数组越界的问题
+
+2、随意指定插入的section,不用担心数组越界的问题
 
 -  [tableView addModels:@[@"我在预设置里面,s2,r0",@"因为我是UItableViewCell,s2,r1"] section:2];
 
- 3、编辑模式
+
+3、编辑模式
 
 -  [tableView addModels:@[@"我是删除模式,s0,r2",@"我是删除模式,s0,r3"] cellClass:XibAutpHeightCell.class editStyle:UITableViewCellEditingStyleDelete];
 
