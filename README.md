@@ -59,21 +59,31 @@ d、编辑事件，与tableView等同名事件操作一致
 #自定义的上拉加载更多
 
 - -(UIView *)tableView:(SmartTableView *)tableView viewForFooterRefresh:(UITableViewCell *)cell{
+
     UIView * v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+
     UILabel *lb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+
     lb.text = @"下载中";
+
     lb.textAlignment = NSTextAlignmentCenter;
+
     [v addSubview:lb];
+
     UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+
     //设置显示位置
     indicator.center = CGPointMake(v.center.x-50, v.center.y);
+
     [indicator startAnimating];
 
     indicator.color = [UIColor redColor];
 
     //将这个控件加到父容器中。
+
     [v addSubview:indicator];
     return v;
+
 }
 
 #常用APi
