@@ -46,7 +46,7 @@ a、cellForRow事件，与tableView等同名事件操作一致
 
 b、heightForRow事件，与tableView等同名事件操作一致，不设置在有约束情况下，自动计算高度，没有约束情况下，采用默认高度
 
-- (CGFloat)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate heightForRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath;
+- -(CGFloat)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate heightForRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath;
 
 c、didSelectRowWithModel事件，与tableView等同名事件操作一致
 
@@ -55,5 +55,46 @@ c、didSelectRowWithModel事件，与tableView等同名事件操作一致
 d、编辑事件，与tableView等同名事件操作一致
 
 - -(void)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate commitEditingWithModel:(id)model style:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath;
+
+#自定义的上拉加载更多
+
+- -(UIView *)tableView:(SmartTableView *)tableView viewForFooterRefresh:(UITableViewCell *)cell{
+    UIView * v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    UILabel *lb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+    lb.text = @"下载中";
+    lb.textAlignment = NSTextAlignmentCenter;
+    [v addSubview:lb];
+    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    //设置显示位置
+    indicator.center = CGPointMake(v.center.x-50, v.center.y);
+    [indicator startAnimating];
+
+    indicator.color = [UIColor redColor];
+
+    //将这个控件加到父容器中。
+    [v addSubview:indicator];
+    return v;
+}
+
+#常用APi
+//获取元素
+
+- -(id)modelsAtIndexPath:(NSIndexPath *)indexPath;
+
+//获取到smartModel
+
+- -(SmartModel *)smartModelAtIndexPath:(NSIndexPath *)indexPath;
+
+//清空所有数据
+
+- -(void)clearTableViewCell;
+
+//滚动到最后,动画时间
+
+- -(void)scrollToBottomAnimationTime:(CGFloat)time;
+
+//隐藏上拉加载更多
+
+- -(void)dismissFooterRefresh;
 
 
