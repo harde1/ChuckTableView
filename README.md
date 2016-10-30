@@ -40,19 +40,20 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 
 #事件逻辑，在cell的m文件中导入#import "UITableViewCell+Smart.h"
 
-cellForRow事件，与tableView等同名事件操作一致
+a、cellForRow事件，与tableView等同名事件操作一致
 
 - (void)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate cellForRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath;
 
-heightForRow事件，与tableView等同名事件操作一致，不设置在有约束情况下，自动计算高度，没有约束情况下，采用默认高度
+b、heightForRow事件，与tableView等同名事件操作一致，不设置在有约束情况下，自动计算高度，没有约束情况下，采用默认高度
 
 - (CGFloat)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate heightForRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath;
 
-didSelectRowWithModel事件，与tableView等同名事件操作一致
+c、didSelectRowWithModel事件，与tableView等同名事件操作一致
 
 -(void)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate didSelectRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath;
 
-编辑事件，与tableView等同名事件操作一致
+d、编辑事件，与tableView等同名事件操作一致
+
 - (void)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate commitEditingWithModel:(id)model style:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath;
 
 
