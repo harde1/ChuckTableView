@@ -19,9 +19,9 @@
 		F48085DF1DC300E700D22552 /* ChuckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085DE1DC300E700D22552 /* ChuckCell.m */; };
 		F4B9DD7A1DC4CB120064A605 /* XibAutpHeightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B9DD781DC4CB120064A605 /* XibAutpHeightCell.m */; };
 		F4B9DD7B1DC4CB120064A605 /* XibAutpHeightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B9DD791DC4CB120064A605 /* XibAutpHeightCell.xib */; };
-		F4D43A081DC60F11007099B4 /* ChuckModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D43A031DC60F11007099B4 /* ChuckModel.m */; };
-		F4D43A091DC60F11007099B4 /* ChuckTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D43A051DC60F11007099B4 /* ChuckTableView.m */; };
-		F4D43A0A1DC60F11007099B4 /* UITableViewCell+Chuck.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D43A071DC60F11007099B4 /* UITableViewCell+Chuck.m */; };
+		F4D43A151DC60F8B007099B4 /* ChuckModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D43A101DC60F8B007099B4 /* ChuckModel.m */; };
+		F4D43A161DC60F8B007099B4 /* ChuckTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D43A121DC60F8B007099B4 /* ChuckTableView.m */; };
+		F4D43A171DC60F8B007099B4 /* UITableViewCell+Chuck.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D43A141DC60F8B007099B4 /* UITableViewCell+Chuck.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,14 +65,14 @@
 		F4B9DD771DC4CB120064A605 /* XibAutpHeightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibAutpHeightCell.h; sourceTree = "<group>"; };
 		F4B9DD781DC4CB120064A605 /* XibAutpHeightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibAutpHeightCell.m; sourceTree = "<group>"; };
 		F4B9DD791DC4CB120064A605 /* XibAutpHeightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibAutpHeightCell.xib; sourceTree = "<group>"; };
-		F4D43A001DC60F11007099B4 /* ChuckCellConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckCellConfigure.h; sourceTree = "<group>"; };
-		F4D43A011DC60F11007099B4 /* ChuckDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckDelegate.h; sourceTree = "<group>"; };
-		F4D43A021DC60F11007099B4 /* ChuckModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckModel.h; sourceTree = "<group>"; };
-		F4D43A031DC60F11007099B4 /* ChuckModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckModel.m; sourceTree = "<group>"; };
-		F4D43A041DC60F11007099B4 /* ChuckTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckTableView.h; sourceTree = "<group>"; };
-		F4D43A051DC60F11007099B4 /* ChuckTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckTableView.m; sourceTree = "<group>"; };
-		F4D43A061DC60F11007099B4 /* UITableViewCell+Chuck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Chuck.h"; sourceTree = "<group>"; };
-		F4D43A071DC60F11007099B4 /* UITableViewCell+Chuck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Chuck.m"; sourceTree = "<group>"; };
+		F4D43A0D1DC60F8B007099B4 /* ChuckCellConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckCellConfigure.h; sourceTree = "<group>"; };
+		F4D43A0E1DC60F8B007099B4 /* ChuckDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckDelegate.h; sourceTree = "<group>"; };
+		F4D43A0F1DC60F8B007099B4 /* ChuckModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckModel.h; sourceTree = "<group>"; };
+		F4D43A101DC60F8B007099B4 /* ChuckModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckModel.m; sourceTree = "<group>"; };
+		F4D43A111DC60F8B007099B4 /* ChuckTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckTableView.h; sourceTree = "<group>"; };
+		F4D43A121DC60F8B007099B4 /* ChuckTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckTableView.m; sourceTree = "<group>"; };
+		F4D43A131DC60F8B007099B4 /* UITableViewCell+Chuck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Chuck.h"; sourceTree = "<group>"; };
+		F4D43A141DC60F8B007099B4 /* UITableViewCell+Chuck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Chuck.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,7 +123,7 @@
 		F48085A11DC2F55700D22552 /* ChuckTableView */ = {
 			isa = PBXGroup;
 			children = (
-				F4D439FF1DC60F11007099B4 /* lib */,
+				F4D43A0C1DC60F8B007099B4 /* ChuckTableView */,
 				F48085A81DC2F55800D22552 /* ViewController.h */,
 				F48085A91DC2F55800D22552 /* ViewController.m */,
 				F47BEB3F1DC5F9FA00E6F225 /* SimpleController.h */,
@@ -166,21 +166,6 @@
 			path = ChuckTableViewUITests;
 			sourceTree = "<group>";
 		};
-		F4D439FF1DC60F11007099B4 /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				F4D43A001DC60F11007099B4 /* ChuckCellConfigure.h */,
-				F4D43A011DC60F11007099B4 /* ChuckDelegate.h */,
-				F4D43A021DC60F11007099B4 /* ChuckModel.h */,
-				F4D43A031DC60F11007099B4 /* ChuckModel.m */,
-				F4D43A041DC60F11007099B4 /* ChuckTableView.h */,
-				F4D43A051DC60F11007099B4 /* ChuckTableView.m */,
-				F4D43A061DC60F11007099B4 /* UITableViewCell+Chuck.h */,
-				F4D43A071DC60F11007099B4 /* UITableViewCell+Chuck.m */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
 		F4D43A0B1DC60F33007099B4 /* cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +176,21 @@
 				F4B9DD791DC4CB120064A605 /* XibAutpHeightCell.xib */,
 			);
 			name = cell;
+			sourceTree = "<group>";
+		};
+		F4D43A0C1DC60F8B007099B4 /* ChuckTableView */ = {
+			isa = PBXGroup;
+			children = (
+				F4D43A0D1DC60F8B007099B4 /* ChuckCellConfigure.h */,
+				F4D43A0E1DC60F8B007099B4 /* ChuckDelegate.h */,
+				F4D43A0F1DC60F8B007099B4 /* ChuckModel.h */,
+				F4D43A101DC60F8B007099B4 /* ChuckModel.m */,
+				F4D43A111DC60F8B007099B4 /* ChuckTableView.h */,
+				F4D43A121DC60F8B007099B4 /* ChuckTableView.m */,
+				F4D43A131DC60F8B007099B4 /* UITableViewCell+Chuck.h */,
+				F4D43A141DC60F8B007099B4 /* UITableViewCell+Chuck.m */,
+			);
+			path = ChuckTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -331,10 +331,10 @@
 				F48085DF1DC300E700D22552 /* ChuckCell.m in Sources */,
 				F48085A71DC2F55800D22552 /* AppDelegate.m in Sources */,
 				F4B9DD7A1DC4CB120064A605 /* XibAutpHeightCell.m in Sources */,
-				F4D43A091DC60F11007099B4 /* ChuckTableView.m in Sources */,
+				F4D43A161DC60F8B007099B4 /* ChuckTableView.m in Sources */,
 				F48085A41DC2F55700D22552 /* main.m in Sources */,
-				F4D43A081DC60F11007099B4 /* ChuckModel.m in Sources */,
-				F4D43A0A1DC60F11007099B4 /* UITableViewCell+Chuck.m in Sources */,
+				F4D43A151DC60F8B007099B4 /* ChuckModel.m in Sources */,
+				F4D43A171DC60F8B007099B4 /* UITableViewCell+Chuck.m in Sources */,
 				F47BEB411DC5F9FA00E6F225 /* SimpleController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
