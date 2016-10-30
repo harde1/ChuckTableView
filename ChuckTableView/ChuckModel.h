@@ -1,5 +1,5 @@
 //
-//  SmartModel.h
+//  ChuckModel.h
 //  ChuckTableView
 //
 //  Created by cong on 2016/10/28.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SmartModel : NSObject
+@interface ChuckModel : NSObject
 @property(nonatomic,strong)id model;
 @property(nonatomic,copy)NSString *identifier;
 @property(nonatomic,strong)NSIndexPath *indexPath;

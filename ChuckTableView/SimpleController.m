@@ -7,7 +7,7 @@
 //
 
 #import "SimpleController.h"
-#import "SmartTableView.h"
+#import "ChuckTableView.h"
 @interface SimpleController ()
 
 @end
@@ -16,8 +16,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    SmartTableView* sd = nil;
-    sd = [[SmartTableView alloc]
+    ChuckTableView* sd = nil;
+    sd = [[ChuckTableView alloc]
           initWithFrame:self.view.bounds
           style:0
           defaultHeight:60

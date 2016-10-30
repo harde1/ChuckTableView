@@ -1,19 +1,19 @@
 //
-//  SmartDataSource.m
+//  ChuckDataSource.m
 //  ChuckTableView
 //
 //  Created by cong on 2016/10/28.
 //  Copyright © 2016年 liangdianxiong. All rights reserved.
 //
 
-#import "SmartTableView.h"
+#import "ChuckTableView.h"
 #import <objc/message.h>
 
-#import "UITableViewCell+Smart.h"
-@interface SmartTableView ()
+#import "UITableViewCell+Chuck.h"
+@interface ChuckTableView ()
 
 @end
-@implementation SmartTableView
+@implementation ChuckTableView
 -(NSMutableArray *)modelSource{
     if (!_modelSource) {
         _modelSource = [NSMutableArray array];
@@ -48,18 +48,18 @@
     }
     return nil;
 }
--(void)upSertModel:(SmartModel *)smartModel indexPath:(NSIndexPath *)indexPath{
+-(void)upSertModel:(ChuckModel *)chuckModel indexPath:(NSIndexPath *)indexPath{
     if (![indexPath isKindOfClass:[NSIndexPath class]]) return;
     [self ifBeyondSection:indexPath.section];
     if (indexPath.row>=[self.modelSource[indexPath.section] count]) {
-        //填充足够的空SmartModel,
+        //填充足够的空ChuckModel,
         for (NSInteger i=[self.modelSource[indexPath.section] count]; i<indexPath.row; i++) {
-            [self.modelSource[indexPath.section] addObject:[[SmartModel alloc]initEmptyIndexPath:smartModel.indexPath]];
+            [self.modelSource[indexPath.section] addObject:[[ChuckModel alloc]initEmptyIndexPath:chuckModel.indexPath]];
         }
-        [self.modelSource[indexPath.section] addObject:smartModel];
+        [self.modelSource[indexPath.section] addObject:chuckModel];
         return;
     }
-    self.modelSource[indexPath.section][indexPath.row] = smartModel;
+    self.modelSource[indexPath.section][indexPath.row] = chuckModel;
 }
 
 -(NSMutableArray *)tableViewConfig{
@@ -203,8 +203,8 @@
     if(!model||![cellClass isSubclassOfClass:[UITableViewCell class]]) return;
     
     //保存model
-    SmartModel * smartModel = [self configModel:model cellClass:cellClass allowEdit:edit editStyle:editStyle indexPath:indexPath];
-    [self upSertModel:smartModel indexPath:indexPath];
+    ChuckModel * chuckModel = [self configModel:model cellClass:cellClass allowEdit:edit editStyle:editStyle indexPath:indexPath];
+    [self upSertModel:chuckModel indexPath:indexPath];
     
     //注册cell
     if (![self.tableViewConfig containsObject:NSStringFromClass(cellClass)]) {
@@ -214,8 +214,8 @@
     
 }
 //model
-- (SmartModel*)configModel:(id)model cellClass:(Class)cellClass allowEdit:(BOOL)edit editStyle:(UITableViewCellEditingStyle)editStyle indexPath:(NSIndexPath *)indexPath{
-    return [[SmartModel alloc]initWithModel:model cellClass:cellClass allowEdit:edit editStyle:editStyle indexPath:indexPath];
+- (ChuckModel*)configModel:(id)model cellClass:(Class)cellClass allowEdit:(BOOL)edit editStyle:(UITableViewCellEditingStyle)editStyle indexPath:(NSIndexPath *)indexPath{
+    return [[ChuckModel alloc]initWithModel:model cellClass:cellClass allowEdit:edit editStyle:editStyle indexPath:indexPath];
 }
 
 //注册cell
@@ -236,7 +236,7 @@
     return self.modelSource.count;
 }
 
-- (SmartModel *)getModelAtIndexPath:(NSIndexPath *)indexPath{
+- (ChuckModel *)getModelAtIndexPath:(NSIndexPath *)indexPath{
     return self.modelSource[indexPath.section][indexPath.row];
 }
 
@@ -252,9 +252,9 @@
     
     [self ifBeyondSection:indexPath.section];
     if (indexPath.row>=[self.modelSource[indexPath.section] count]) {
-        //填充足够的空SmartModel,
+        //填充足够的空ChuckModel,
         for (NSInteger i=[self.modelSource[indexPath.section] count]; i<indexPath.row+1; i++) {
-            [self.modelSource[indexPath.section] addObject:[[SmartModel alloc]initEmptyIndexPath:indexPath]];
+            [self.modelSource[indexPath.section] addObject:[[ChuckModel alloc]initEmptyIndexPath:indexPath]];
         }
     }
     [self.modelSource[indexPath.section] removeObjectAtIndex:indexPath.row];
@@ -273,8 +273,8 @@
     //修改它之后的所有cell的row+1
     for (NSInteger i=indexPath.row+1; i<[self.modelSource[indexPath.section] count]; i++) {
         NSIndexPath * ni = [NSIndexPath indexPathForRow:i inSection:indexPath.section];
-        SmartModel * smartModel = [self smartModelAtIndexPath:ni];
-        smartModel.indexPath = ni;
+        ChuckModel * chuckModel = [self chuckModelAtIndexPath:ni];
+        chuckModel.indexPath = ni;
     }
 }
 
@@ -290,16 +290,16 @@
     
     if(!model||![cellClass isSubclassOfClass:[UITableViewCell class]]) return;
     
-    SmartModel * smartModel = [self configModel:model cellClass:cellClass allowEdit:edit editStyle:editStyle indexPath:indexPath];
+    ChuckModel * chuckModel = [self configModel:model cellClass:cellClass allowEdit:edit editStyle:editStyle indexPath:indexPath];
     [self ifBeyondSection:indexPath.section];
     if (indexPath.row>=[self.modelSource[indexPath.section] count]) {
-        //填充足够的空SmartModel,
+        //填充足够的空ChuckModel,
         for (NSInteger i=[self.modelSource[indexPath.section] count]; i<indexPath.row; i++) {
-            [self.modelSource[indexPath.section] addObject:[[SmartModel alloc]initEmptyIndexPath:smartModel.indexPath]];
+            [self.modelSource[indexPath.section] addObject:[[ChuckModel alloc]initEmptyIndexPath:chuckModel.indexPath]];
         }
-        //[self.modelSource[indexPath.section] addObject:smartModel];
+        //[self.modelSource[indexPath.section] addObject:chuckModel];
     }
-    [self.modelSource[indexPath.section] insertObject:smartModel atIndex:indexPath.row];
+    [self.modelSource[indexPath.section] insertObject:chuckModel atIndex:indexPath.row];
     if ([self.modelSource[indexPath.section] count]!=1) {
         [self beginUpdates];
         [self insertRowsAtIndexPaths:@[indexPath] withRowAnimation:animation];
@@ -320,11 +320,11 @@
 }
 
 #pragma mark UITableViewDelegate
--(UITableViewCell *)tableView:(UITableView *)tableView cellforSmartModel:(SmartModel *)smartModel forIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:smartModel.identifier
+-(UITableViewCell *)tableView:(UITableView *)tableView cellforChuckModel:(ChuckModel *)chuckModel forIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:chuckModel.identifier
                                                             forIndexPath:indexPath];
     if (!cell) {
-        cell = [[NSClassFromString(smartModel.identifier) alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:smartModel.identifier];
+        cell = [[NSClassFromString(chuckModel.identifier) alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:chuckModel.identifier];
     }
     return cell;
 }
@@ -369,13 +369,13 @@
     
     
     //normal cell
-    SmartModel *smartModel = [self getModelAtIndexPath:indexPath];
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:smartModel.identifier];
+    ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:chuckModel.identifier];
     if (!cell) {
-        cell = [[NSClassFromString(smartModel.identifier) alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:smartModel.identifier];
+        cell = [[NSClassFromString(chuckModel.identifier) alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:chuckModel.identifier];
     }
     
-    id model = smartModel.model;
+    id model = chuckModel.model;
     
     if(self.cellConfigureBefore) {
         self.cellConfigureBefore(cell, model,indexPath);
@@ -391,9 +391,9 @@
         return refresh.frame.size.height;
     }
     UITableViewCell * cell =  [self tableView:tableView cellForIndexPath:indexPath];
-    SmartModel *smartModel = [self getModelAtIndexPath:indexPath];
+    ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
     if ([cell respondsToSelector:@selector(tableView:vcDelegate:heightForRowWithModel:atIndexPath:)]) {
-        return  [cell tableView:self vcDelegate:self.vcDelegate heightForRowWithModel:smartModel.model atIndexPath:indexPath];
+        return  [cell tableView:self vcDelegate:self.vcDelegate heightForRowWithModel:chuckModel.model atIndexPath:indexPath];
     }
     
     if (![cell isMemberOfClass:[UITableViewCell class]]) {
@@ -426,13 +426,13 @@
 //互动
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell * cell =  [self tableView:tableView cellForIndexPath:indexPath];
-    SmartModel *smartModel = [self getModelAtIndexPath:indexPath];
+    ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
     
     if(self.cellDidselectConfigBefore) {
-        self.cellDidselectConfigBefore(cell, smartModel.model,indexPath);
+        self.cellDidselectConfigBefore(cell, chuckModel.model,indexPath);
     }
     if ([cell respondsToSelector:@selector(tableView:vcDelegate:didSelectRowWithModel:atIndexPath:)]) {
-        [cell tableView:self vcDelegate:self.vcDelegate didSelectRowWithModel:smartModel.model atIndexPath:indexPath];
+        [cell tableView:self vcDelegate:self.vcDelegate didSelectRowWithModel:chuckModel.model atIndexPath:indexPath];
     }
 }
 
@@ -453,9 +453,9 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
-    SmartModel *smartModel = [self getModelAtIndexPath:indexPath];
+    ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
     if ([cell respondsToSelector:@selector(tableView:vcDelegate:commitEditingWithModel:style:forRowAtIndexPath:)]) {
-        [cell tableView:self vcDelegate:self.vcDelegate commitEditingWithModel:smartModel.model style:smartModel.editStyle forRowAtIndexPath:indexPath];
+        [cell tableView:self vcDelegate:self.vcDelegate commitEditingWithModel:chuckModel.model style:chuckModel.editStyle forRowAtIndexPath:indexPath];
     }
     
 }
@@ -469,7 +469,7 @@
 - (id)modelsAtIndexPath:(NSIndexPath *)indexPath {
     return [self getModelAtIndexPath:indexPath].model;
 }
-- (SmartModel *)smartModelAtIndexPath:(NSIndexPath *)indexPath {
+- (ChuckModel *)chuckModelAtIndexPath:(NSIndexPath *)indexPath {
     return [self getModelAtIndexPath:indexPath];
 }
 -(void)scrollToBottomAnimationTime:(CGFloat)time{

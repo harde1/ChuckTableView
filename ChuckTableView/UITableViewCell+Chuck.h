@@ -1,5 +1,5 @@
 //
-//  UITableViewCell+Smart.h
+//  UITableViewCell+Chuck.h
 //  ChuckTableView
 //
 //  Created by cong on 2016/10/28.
@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SmartCellConfigure.h"
-@interface UITableViewCell (Smart)<SmartCellConfigure>
+#import "ChuckCellConfigure.h"
+@interface UITableViewCell (Chuck)<ChuckCellConfigure>
 
 @end

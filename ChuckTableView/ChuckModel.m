@@ -1,14 +1,14 @@
 //
-//  SmartModel.m
+//  ChuckModel.m
 //  ChuckTableView
 //
 //  Created by cong on 2016/10/28.
 //  Copyright © 2016年 liangdianxiong. All rights reserved.
 //
 
-#import "SmartModel.h"
+#import "ChuckModel.h"
 
-@implementation SmartModel
+@implementation ChuckModel
 - (id)initWithModel:(id)model cellClass:(Class)cellClass allowEdit:(BOOL)edit editStyle:(UITableViewCellEditingStyle)editStyle indexPath:(NSIndexPath *)indexPath{
     if (self = [super init]) {
         self.model = model;

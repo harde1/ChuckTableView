@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F42D4E051DC32DC700D232FF /* SmartModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F42D4E041DC32DC700D232FF /* SmartModel.m */; };
+		F42D4E051DC32DC700D232FF /* ChuckModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F42D4E041DC32DC700D232FF /* ChuckModel.m */; };
 		F47BEB411DC5F9FA00E6F225 /* SimpleController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47BEB401DC5F9FA00E6F225 /* SimpleController.m */; };
 		F48085A41DC2F55700D22552 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085A31DC2F55700D22552 /* main.m */; };
 		F48085A71DC2F55800D22552 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085A61DC2F55800D22552 /* AppDelegate.m */; };
@@ -17,9 +17,9 @@
 		F48085B21DC2F55800D22552 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F48085B01DC2F55800D22552 /* LaunchScreen.storyboard */; };
 		F48085BD1DC2F55800D22552 /* ChuckTableViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085BC1DC2F55800D22552 /* ChuckTableViewTests.m */; };
 		F48085C81DC2F55800D22552 /* ChuckTableViewUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085C71DC2F55800D22552 /* ChuckTableViewUITests.m */; };
-		F48085D71DC2F6BA00D22552 /* SmartTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085D61DC2F6BA00D22552 /* SmartTableView.m */; };
-		F48085DF1DC300E700D22552 /* SmartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085DE1DC300E700D22552 /* SmartCell.m */; };
-		F48085E21DC3040A00D22552 /* UITableViewCell+Smart.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085E11DC3040A00D22552 /* UITableViewCell+Smart.m */; };
+		F48085D71DC2F6BA00D22552 /* ChuckTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085D61DC2F6BA00D22552 /* ChuckTableView.m */; };
+		F48085DF1DC300E700D22552 /* ChuckCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085DE1DC300E700D22552 /* ChuckCell.m */; };
+		F48085E21DC3040A00D22552 /* UITableViewCell+Chuck.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085E11DC3040A00D22552 /* UITableViewCell+Chuck.m */; };
 		F4B9DD7A1DC4CB120064A605 /* XibAutpHeightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4B9DD781DC4CB120064A605 /* XibAutpHeightCell.m */; };
 		F4B9DD7B1DC4CB120064A605 /* XibAutpHeightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4B9DD791DC4CB120064A605 /* XibAutpHeightCell.xib */; };
 /* End PBXBuildFile section */
@@ -42,8 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		F42D4E031DC32DC700D232FF /* SmartModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartModel.h; sourceTree = "<group>"; };
-		F42D4E041DC32DC700D232FF /* SmartModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartModel.m; sourceTree = "<group>"; };
+		F42D4E031DC32DC700D232FF /* ChuckModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckModel.h; sourceTree = "<group>"; };
+		F42D4E041DC32DC700D232FF /* ChuckModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckModel.m; sourceTree = "<group>"; };
 		F47BEB3F1DC5F9FA00E6F225 /* SimpleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleController.h; sourceTree = "<group>"; };
 		F47BEB401DC5F9FA00E6F225 /* SimpleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleController.m; sourceTree = "<group>"; };
 		F480859F1DC2F55700D22552 /* ChuckTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,14 +62,14 @@
 		F48085C31DC2F55800D22552 /* ChuckTableViewUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChuckTableViewUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F48085C71DC2F55800D22552 /* ChuckTableViewUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChuckTableViewUITests.m; sourceTree = "<group>"; };
 		F48085C91DC2F55800D22552 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F48085D51DC2F6BA00D22552 /* SmartTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartTableView.h; sourceTree = "<group>"; };
-		F48085D61DC2F6BA00D22552 /* SmartTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartTableView.m; sourceTree = "<group>"; };
-		F48085D81DC2F77800D22552 /* SmartCellConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartCellConfigure.h; sourceTree = "<group>"; };
-		F48085D91DC2F7ED00D22552 /* SmartDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartDelegate.h; sourceTree = "<group>"; };
-		F48085DD1DC300E700D22552 /* SmartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SmartCell.h; sourceTree = "<group>"; };
-		F48085DE1DC300E700D22552 /* SmartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SmartCell.m; sourceTree = "<group>"; };
-		F48085E01DC3040A00D22552 /* UITableViewCell+Smart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Smart.h"; sourceTree = "<group>"; };
-		F48085E11DC3040A00D22552 /* UITableViewCell+Smart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Smart.m"; sourceTree = "<group>"; };
+		F48085D51DC2F6BA00D22552 /* ChuckTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckTableView.h; sourceTree = "<group>"; };
+		F48085D61DC2F6BA00D22552 /* ChuckTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckTableView.m; sourceTree = "<group>"; };
+		F48085D81DC2F77800D22552 /* ChuckCellConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckCellConfigure.h; sourceTree = "<group>"; };
+		F48085D91DC2F7ED00D22552 /* ChuckDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckDelegate.h; sourceTree = "<group>"; };
+		F48085DD1DC300E700D22552 /* ChuckCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckCell.h; sourceTree = "<group>"; };
+		F48085DE1DC300E700D22552 /* ChuckCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckCell.m; sourceTree = "<group>"; };
+		F48085E01DC3040A00D22552 /* UITableViewCell+Chuck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Chuck.h"; sourceTree = "<group>"; };
+		F48085E11DC3040A00D22552 /* UITableViewCell+Chuck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Chuck.m"; sourceTree = "<group>"; };
 		F4B9DD771DC4CB120064A605 /* XibAutpHeightCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XibAutpHeightCell.h; sourceTree = "<group>"; };
 		F4B9DD781DC4CB120064A605 /* XibAutpHeightCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XibAutpHeightCell.m; sourceTree = "<group>"; };
 		F4B9DD791DC4CB120064A605 /* XibAutpHeightCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = XibAutpHeightCell.xib; sourceTree = "<group>"; };
@@ -103,14 +103,14 @@
 		F42D4E061DC3585B00D232FF /* lib */ = {
 			isa = PBXGroup;
 			children = (
-				F48085D91DC2F7ED00D22552 /* SmartDelegate.h */,
-				F48085D81DC2F77800D22552 /* SmartCellConfigure.h */,
-				F48085E01DC3040A00D22552 /* UITableViewCell+Smart.h */,
-				F48085E11DC3040A00D22552 /* UITableViewCell+Smart.m */,
-				F42D4E031DC32DC700D232FF /* SmartModel.h */,
-				F42D4E041DC32DC700D232FF /* SmartModel.m */,
-				F48085D51DC2F6BA00D22552 /* SmartTableView.h */,
-				F48085D61DC2F6BA00D22552 /* SmartTableView.m */,
+				F48085D91DC2F7ED00D22552 /* ChuckDelegate.h */,
+				F48085D81DC2F77800D22552 /* ChuckCellConfigure.h */,
+				F48085E01DC3040A00D22552 /* UITableViewCell+Chuck.h */,
+				F48085E11DC3040A00D22552 /* UITableViewCell+Chuck.m */,
+				F42D4E031DC32DC700D232FF /* ChuckModel.h */,
+				F42D4E041DC32DC700D232FF /* ChuckModel.m */,
+				F48085D51DC2F6BA00D22552 /* ChuckTableView.h */,
+				F48085D61DC2F6BA00D22552 /* ChuckTableView.m */,
 			);
 			name = lib;
 			sourceTree = "<group>";
@@ -144,8 +144,8 @@
 				F48085A91DC2F55800D22552 /* ViewController.m */,
 				F47BEB3F1DC5F9FA00E6F225 /* SimpleController.h */,
 				F47BEB401DC5F9FA00E6F225 /* SimpleController.m */,
-				F48085DD1DC300E700D22552 /* SmartCell.h */,
-				F48085DE1DC300E700D22552 /* SmartCell.m */,
+				F48085DD1DC300E700D22552 /* ChuckCell.h */,
+				F48085DE1DC300E700D22552 /* ChuckCell.m */,
 				F4B9DD771DC4CB120064A605 /* XibAutpHeightCell.h */,
 				F4B9DD781DC4CB120064A605 /* XibAutpHeightCell.m */,
 				F4B9DD791DC4CB120064A605 /* XibAutpHeightCell.xib */,
@@ -320,13 +320,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F48085AA1DC2F55800D22552 /* ViewController.m in Sources */,
-				F48085DF1DC300E700D22552 /* SmartCell.m in Sources */,
+				F48085DF1DC300E700D22552 /* ChuckCell.m in Sources */,
 				F48085A71DC2F55800D22552 /* AppDelegate.m in Sources */,
-				F42D4E051DC32DC700D232FF /* SmartModel.m in Sources */,
+				F42D4E051DC32DC700D232FF /* ChuckModel.m in Sources */,
 				F4B9DD7A1DC4CB120064A605 /* XibAutpHeightCell.m in Sources */,
-				F48085D71DC2F6BA00D22552 /* SmartTableView.m in Sources */,
+				F48085D71DC2F6BA00D22552 /* ChuckTableView.m in Sources */,
 				F48085A41DC2F55700D22552 /* main.m in Sources */,
-				F48085E21DC3040A00D22552 /* UITableViewCell+Smart.m in Sources */,
+				F48085E21DC3040A00D22552 /* UITableViewCell+Chuck.m in Sources */,
 				F47BEB411DC5F9FA00E6F225 /* SimpleController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

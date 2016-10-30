@@ -1,5 +1,5 @@
 //
-//  SmartDataSource.h
+//  ChuckDataSource.h
 //  ChuckTableView
 //
 //  Created by cong on 2016/10/28.
@@ -8,21 +8,21 @@
 
 #import <UIKit/UIKit.h>
 //  实现的方法
-#import "SmartDelegate.h"
+#import "ChuckDelegate.h"
 #import <objc/objc.h>
-#import "SmartModel.h"
+#import "ChuckModel.h"
 typedef void (^CellConfigureBefore)(id cell, id model, NSIndexPath * indexPath);
 typedef void (^CellDidselectConfigureBefore)(id cell, id model, NSIndexPath * indexPath);
 IB_DESIGNABLE
-@interface SmartTableView : UITableView<UITableViewDataSource,UITableViewDelegate>
+@interface ChuckTableView : UITableView<UITableViewDataSource,UITableViewDelegate>
 //存放注册的cell类型，字符串格式
 @property(nonatomic,strong) NSMutableArray *tableViewConfig;
-//存放model,smartModel，smartModel.model就是传进来的model
+//存放model,chuckModel，chuckModel.model就是传进来的model
 @property(nonatomic,strong) NSMutableArray *modelSource;
 //不给高度时候的默认cell高度
 @property (nonatomic, assign) CGFloat defaultHeight;
 //header是什么用的
-@property (nonatomic, weak) id<SmartDelegate> vcDelegate;
+@property (nonatomic, weak) id<ChuckDelegate> vcDelegate;
 //上拉加载更多是否在显示
 @property (nonatomic, assign) BOOL showFootRefresh;
 
@@ -44,7 +44,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 #pragma mark 常用APi
 //获取元素
 - (id)modelsAtIndexPath:(NSIndexPath *)indexPath;
-- (SmartModel *)smartModelAtIndexPath:(NSIndexPath *)indexPath;
+- (ChuckModel *)chuckModelAtIndexPath:(NSIndexPath *)indexPath;
 //清空所有数据
 -(void)clearTableViewCell;
 //滚动到最后,动画时间
