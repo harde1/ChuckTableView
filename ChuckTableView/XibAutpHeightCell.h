@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UITableViewCell+Smart.h"
 @interface XibAutpHeightCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *lbText;
 
 @end

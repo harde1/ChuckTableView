@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "UITableViewCell+Smart.h"
 @interface SmartCell : UITableViewCell
 
 @end

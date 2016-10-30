@@ -18,7 +18,17 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
-}
 
+}
+-(void)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate cellForRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath{
+    SmartModel * smartModel = [tableView smartModelAtIndexPath:indexPath];
+    self.lbText.text = [NSString stringWithFormat:@"s:%ld,r:%ld,%@",smartModel.indexPath.section,smartModel.indexPath.row,model];;
+
+}
+-(void)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate commitEditingWithModel:(id)model style:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    NSLog(@"---编辑模式---");
+    [tableView removeIndexPath:indexPath animation:UITableViewRowAnimationLeft];
+    
+}
 @end

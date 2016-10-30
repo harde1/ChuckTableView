@@ -10,15 +10,24 @@
 
 @implementation SmartCell
 
-- (void)awakeFromNib {
-    [super awakeFromNib];
-    // Initialization code
+-(void)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate cellForRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath{
+    SmartModel * smartModel = [tableView smartModelAtIndexPath:indexPath];
+    self.detailTextLabel.text =  [NSString stringWithFormat:@"s:%ld,r:%ld,%@",smartModel.indexPath.section,smartModel.indexPath.row,model];
+    self.textLabel.text =  [NSString stringWithFormat:@"s:%ld,r:%ld,%@",smartModel.indexPath.section,smartModel.indexPath.row,model];
+    self.backgroundColor = [UIColor yellowColor];
+}
+-(CGFloat)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate heightForRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath{
+    return 60;
+}
+-(void)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate didSelectRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath{
+    NSLog(@"点击到：%@",model);
+
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+-(void)tableView:(SmartTableView *)tableView vcDelegate:(id)vcDelegate commitEditingWithModel:(id)model style:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
 
-    // Configure the view for the selected state
+    NSLog(@"---编辑模式---");
+    [tableView removeIndexPath:indexPath animation:UITableViewRowAnimationLeft];
+    
 }
-
 @end
