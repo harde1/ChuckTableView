@@ -425,6 +425,9 @@
 #pragma mark UITableViewDelegate
 //互动
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self ifExistFooterRefresh:indexPath]) {
+        return;
+    }
     UITableViewCell * cell =  [self tableView:tableView cellForIndexPath:indexPath];
     ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
     
