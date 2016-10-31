@@ -25,6 +25,19 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
+
+  高度封装tableView，简化操作，目的是为了cell可以自由同时存在于不同的UIViewController之中，cell自给自足，cell环境封闭起来
+
+1、容易操作的cell增删改查
+
+2、滚到最后
+
+3、可以自定义的上拉加载更多
+
+4、编辑模式随意添加，随意插入各种cell
+
+5、cell与tableView解耦，与UIViewController解耦
+
                    DESC
 
   s.homepage     = "https://github.com/harde1/ChuckTableView"
