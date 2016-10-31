@@ -23,7 +23,7 @@
 }
 
 -(NSString *)description{
-    return [NSString stringWithFormat:@"[\nidentifier:%@\nmodel:%@\nedit:%@\neditStyle:%ld\nsection:%ld\nrow:%ld\n]",self.identifier,self.model,self.edit?@"YES":@"NO",self.editStyle,(long)self.indexPath.section,(long)self.indexPath.row];
+    return [NSString stringWithFormat:@"[\nidentifier:%@\nmodel:%@\nedit:%@\neditStyle:%@\nsection:%@\nrow:%@\n]",self.identifier,self.model,self.edit?@"YES":@"NO",@(self.editStyle),@(self.indexPath.section),@(self.indexPath.row)];
 }
 
 - (id)initEmptyIndexPath:(NSIndexPath *)indexPath{
