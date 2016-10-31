@@ -33,8 +33,6 @@
         self.edit = NO;
         self.editStyle = UITableViewCellEditingStyleNone;
         self.indexPath = indexPath;
-        
-        
     }
     return self;
 }
