@@ -16,8 +16,6 @@
         self.edit = edit;
         self.editStyle = editStyle;
         self.indexPath = indexPath;
-        
-        
     }
     return self;
 }
