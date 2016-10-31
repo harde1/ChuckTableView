@@ -2,48 +2,51 @@
 
 高度封装tableView，简化操作，目的是为了cell可以自由同时存在于不同的UIViewController之中，cell自给自足，cell环境封闭起来
 
-  1、容易操作的cell增删改查
+1、容易操作的cell增删改查
 
-  2、滚到最后
+2、滚到最后
 
-  3、可以自定义的上拉加载更多
+3、可以自定义的上拉加载更多
 
-  4、编辑模式随意添加，随意插入各种cell
+4、编辑模式随意添加，随意插入各种cell
 
-  5、cell与tableView解耦，与UIViewController解耦
+5、cell与tableView解耦，与UIViewController解耦
 
+#Pod
+
+pod 'ChuckTableView', '~> 0.0.1'
 
 # 例子
 
 #初始化
 
 - -(id)initWithFrame:(CGRect)frame
-              style:(UITableViewStyle)style
-      defaultHeight:(CGFloat)height
-         vcDelegate:(id)delegate
-     configureBlock:(CellConfigureBefore)before
+style:(UITableViewStyle)style
+defaultHeight:(CGFloat)height
+vcDelegate:(id)delegate
+configureBlock:(CellConfigureBefore)before
 cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 
-  初始化后，就配置了基础的默认cell高度，cell的UI与model的默认配置和点击配置
+初始化后，就配置了基础的默认cell高度，cell的UI与model的默认配置和点击配置
 
 ```
 
 SmartTableView* sd = nil;
 sd = [[SmartTableView alloc]
-    initWithFrame:self.view.bounds
-            style:0
-    defaultHeight:60
-      vcDelegate:self
-  configureBlock:^(UITableViewCell* cell, id model, NSIndexPath *indexPath) {
-    //默认cell配置
-    if (![cell isMemberOfClass:[UITableViewCell class]]) {
-    return;
-    }
-    cell.detailTextLabel.text = model;
-    cell.textLabel.text = model;
-    } cellDidselectConfig:^(id cell, id model, NSIndexPath *indexPath) {
-    //默认点击cell配置
-    NSLog(@"点击到了：%@",model);
+initWithFrame:self.view.bounds
+style:0
+defaultHeight:60
+vcDelegate:self
+configureBlock:^(UITableViewCell* cell, id model, NSIndexPath *indexPath) {
+//默认cell配置
+if (![cell isMemberOfClass:[UITableViewCell class]]) {
+return;
+}
+cell.detailTextLabel.text = model;
+cell.textLabel.text = model;
+} cellDidselectConfig:^(id cell, id model, NSIndexPath *indexPath) {
+//默认点击cell配置
+NSLog(@"点击到了：%@",model);
 }];
 
 [sd addModel:@"消息中心"];
@@ -91,19 +94,19 @@ d、编辑事件，与tableView等同名事件操作一致
 #自定义的上拉加载更多
 ```
 -(UIView *)tableView:(SmartTableView *)tableView viewForFooterRefresh:(UITableViewCell *)cell{
-    UIView * v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-    UILabel *lb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
-    lb.text = @"下载中";
-    lb.textAlignment = NSTextAlignmentCenter;
-    [v addSubview:lb];
-    UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-    //设置显示位置
-    indicator.center = CGPointMake(v.center.x-50, v.center.y);
-    [indicator startAnimating];
-    indicator.color = [UIColor redColor];
-    //将这个控件加到父容器中。
-    [v addSubview:indicator];
-    return v;
+UIView * v = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+UILabel *lb = [[UILabel alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 50)];
+lb.text = @"下载中";
+lb.textAlignment = NSTextAlignmentCenter;
+[v addSubview:lb];
+UIActivityIndicatorView *indicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+//设置显示位置
+indicator.center = CGPointMake(v.center.x-50, v.center.y);
+[indicator startAnimating];
+indicator.color = [UIColor redColor];
+//将这个控件加到父容器中。
+[v addSubview:indicator];
+return v;
 }
 
 ```
