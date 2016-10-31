@@ -29,7 +29,7 @@ Pod::Spec.new do |s|
   s.source_files  = "ChuckTableViewLib/*.{h,m}"
  
 
-  # s.framework  = "SomeFramework"
+  s.framework  = "UIKit"
   # s.frameworks = "SomeFramework", "AnotherFramework"
 
  s.requires_arc = true
