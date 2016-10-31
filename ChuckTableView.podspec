@@ -92,7 +92,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/harde1/ChuckTableView.git", :commit => "d614b79d1bc42c7ac0d628736991167498a37837" }
+  s.source       = { :git => "https://github.com/harde1/ChuckTableView.git", :tag => s.version.to_s }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
