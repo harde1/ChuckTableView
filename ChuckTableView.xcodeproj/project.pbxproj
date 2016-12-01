@@ -10,6 +10,13 @@
 		CA06D8A01DC6F3D8008B244F /* ChuckModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CA06D89B1DC6F3D8008B244F /* ChuckModel.m */; };
 		CA06D8A11DC6F3D8008B244F /* ChuckTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA06D89D1DC6F3D8008B244F /* ChuckTableView.m */; };
 		CA06D8A21DC6F3D8008B244F /* UITableViewCell+Chuck.m in Sources */ = {isa = PBXBuildFile; fileRef = CA06D89F1DC6F3D8008B244F /* UITableViewCell+Chuck.m */; };
+		CA8A9B9B1DEFB8970075ABF3 /* NSMutableArray+Chuck.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8A9B9A1DEFB8970075ABF3 /* NSMutableArray+Chuck.m */; };
+		CAC3996C1DEEAA9F00252721 /* ChuckCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC3996B1DEEAA9F00252721 /* ChuckCollectionView.m */; };
+		CAC3996F1DEEBFED00252721 /* CollectController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC3996E1DEEBFED00252721 /* CollectController.m */; };
+		CAC399721DEECEA200252721 /* UICollectionViewCell+Chuck.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC399711DEECEA200252721 /* UICollectionViewCell+Chuck.m */; };
+		CAC399751DEEE0A000252721 /* ChuckCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC399741DEEE0A000252721 /* ChuckCCell.m */; };
+		CAC3997B1DEEE67900252721 /* HeadFootModel.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC3997A1DEEE67900252721 /* HeadFootModel.m */; };
+		CAC3997E1DEEF4DE00252721 /* UICollectionReusableView+Chuck.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC3997D1DEEF4DE00252721 /* UICollectionReusableView+Chuck.m */; };
 		F47BEB411DC5F9FA00E6F225 /* SimpleController.m in Sources */ = {isa = PBXBuildFile; fileRef = F47BEB401DC5F9FA00E6F225 /* SimpleController.m */; };
 		F48085A41DC2F55700D22552 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085A31DC2F55700D22552 /* main.m */; };
 		F48085A71DC2F55800D22552 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F48085A61DC2F55800D22552 /* AppDelegate.m */; };
@@ -50,6 +57,20 @@
 		CA06D89D1DC6F3D8008B244F /* ChuckTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckTableView.m; sourceTree = "<group>"; };
 		CA06D89E1DC6F3D8008B244F /* UITableViewCell+Chuck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableViewCell+Chuck.h"; sourceTree = "<group>"; };
 		CA06D89F1DC6F3D8008B244F /* UITableViewCell+Chuck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableViewCell+Chuck.m"; sourceTree = "<group>"; };
+		CA8A9B991DEFB8970075ABF3 /* NSMutableArray+Chuck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+Chuck.h"; sourceTree = "<group>"; };
+		CA8A9B9A1DEFB8970075ABF3 /* NSMutableArray+Chuck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+Chuck.m"; sourceTree = "<group>"; };
+		CAC3996A1DEEAA9F00252721 /* ChuckCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckCollectionView.h; sourceTree = "<group>"; };
+		CAC3996B1DEEAA9F00252721 /* ChuckCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckCollectionView.m; sourceTree = "<group>"; };
+		CAC3996D1DEEBFED00252721 /* CollectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectController.h; sourceTree = "<group>"; };
+		CAC3996E1DEEBFED00252721 /* CollectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectController.m; sourceTree = "<group>"; };
+		CAC399701DEECEA200252721 /* UICollectionViewCell+Chuck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionViewCell+Chuck.h"; sourceTree = "<group>"; };
+		CAC399711DEECEA200252721 /* UICollectionViewCell+Chuck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionViewCell+Chuck.m"; sourceTree = "<group>"; };
+		CAC399731DEEE0A000252721 /* ChuckCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckCCell.h; sourceTree = "<group>"; };
+		CAC399741DEEE0A000252721 /* ChuckCCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckCCell.m; sourceTree = "<group>"; };
+		CAC399791DEEE67900252721 /* HeadFootModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeadFootModel.h; sourceTree = "<group>"; };
+		CAC3997A1DEEE67900252721 /* HeadFootModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeadFootModel.m; sourceTree = "<group>"; };
+		CAC3997C1DEEF4DE00252721 /* UICollectionReusableView+Chuck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionReusableView+Chuck.h"; sourceTree = "<group>"; };
+		CAC3997D1DEEF4DE00252721 /* UICollectionReusableView+Chuck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionReusableView+Chuck.m"; sourceTree = "<group>"; };
 		F47BEB3F1DC5F9FA00E6F225 /* SimpleController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SimpleController.h; sourceTree = "<group>"; };
 		F47BEB401DC5F9FA00E6F225 /* SimpleController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SimpleController.m; sourceTree = "<group>"; };
 		F480859F1DC2F55700D22552 /* ChuckTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChuckTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,8 +132,26 @@
 				CA06D89D1DC6F3D8008B244F /* ChuckTableView.m */,
 				CA06D89E1DC6F3D8008B244F /* UITableViewCell+Chuck.h */,
 				CA06D89F1DC6F3D8008B244F /* UITableViewCell+Chuck.m */,
+				CAC399681DEEAA4400252721 /* CollectionView */,
 			);
 			path = ChuckTableViewLib;
+			sourceTree = "<group>";
+		};
+		CAC399681DEEAA4400252721 /* CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				CAC3996A1DEEAA9F00252721 /* ChuckCollectionView.h */,
+				CAC3996B1DEEAA9F00252721 /* ChuckCollectionView.m */,
+				CAC399701DEECEA200252721 /* UICollectionViewCell+Chuck.h */,
+				CAC399711DEECEA200252721 /* UICollectionViewCell+Chuck.m */,
+				CAC3997C1DEEF4DE00252721 /* UICollectionReusableView+Chuck.h */,
+				CAC3997D1DEEF4DE00252721 /* UICollectionReusableView+Chuck.m */,
+				CA8A9B991DEFB8970075ABF3 /* NSMutableArray+Chuck.h */,
+				CA8A9B9A1DEFB8970075ABF3 /* NSMutableArray+Chuck.m */,
+				CAC399791DEEE67900252721 /* HeadFootModel.h */,
+				CAC3997A1DEEE67900252721 /* HeadFootModel.m */,
+			);
+			name = CollectionView;
 			sourceTree = "<group>";
 		};
 		F48085961DC2F55700D22552 = {
@@ -143,6 +182,8 @@
 				F48085A91DC2F55800D22552 /* ViewController.m */,
 				F47BEB3F1DC5F9FA00E6F225 /* SimpleController.h */,
 				F47BEB401DC5F9FA00E6F225 /* SimpleController.m */,
+				CAC3996D1DEEBFED00252721 /* CollectController.h */,
+				CAC3996E1DEEBFED00252721 /* CollectController.m */,
 				F4D43A0B1DC60F33007099B4 /* cell */,
 				F48085A21DC2F55700D22552 /* Supporting Files */,
 			);
@@ -186,6 +227,8 @@
 			children = (
 				F48085DD1DC300E700D22552 /* ChuckCell.h */,
 				F48085DE1DC300E700D22552 /* ChuckCell.m */,
+				CAC399731DEEE0A000252721 /* ChuckCCell.h */,
+				CAC399741DEEE0A000252721 /* ChuckCCell.m */,
 				F4B9DD771DC4CB120064A605 /* XibAutpHeightCell.h */,
 				F4B9DD781DC4CB120064A605 /* XibAutpHeightCell.m */,
 				F4B9DD791DC4CB120064A605 /* XibAutpHeightCell.xib */,
@@ -328,12 +371,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				F48085AA1DC2F55800D22552 /* ViewController.m in Sources */,
+				CAC3997B1DEEE67900252721 /* HeadFootModel.m in Sources */,
 				F48085DF1DC300E700D22552 /* ChuckCell.m in Sources */,
+				CAC3996F1DEEBFED00252721 /* CollectController.m in Sources */,
+				CA8A9B9B1DEFB8970075ABF3 /* NSMutableArray+Chuck.m in Sources */,
 				F48085A71DC2F55800D22552 /* AppDelegate.m in Sources */,
+				CAC3997E1DEEF4DE00252721 /* UICollectionReusableView+Chuck.m in Sources */,
 				F4B9DD7A1DC4CB120064A605 /* XibAutpHeightCell.m in Sources */,
 				CA06D8A11DC6F3D8008B244F /* ChuckTableView.m in Sources */,
+				CAC3996C1DEEAA9F00252721 /* ChuckCollectionView.m in Sources */,
 				F48085A41DC2F55700D22552 /* main.m in Sources */,
 				CA06D8A01DC6F3D8008B244F /* ChuckModel.m in Sources */,
+				CAC399721DEECEA200252721 /* UICollectionViewCell+Chuck.m in Sources */,
+				CAC399751DEEE0A000252721 /* ChuckCCell.m in Sources */,
 				CA06D8A21DC6F3D8008B244F /* UITableViewCell+Chuck.m in Sources */,
 				F47BEB411DC5F9FA00E6F225 /* SimpleController.m in Sources */,
 			);

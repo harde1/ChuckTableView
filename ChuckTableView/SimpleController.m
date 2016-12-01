@@ -8,7 +8,7 @@
 
 #import "SimpleController.h"
 #import "ChuckTableView.h"
-@interface SimpleController ()
+@interface SimpleController ()<ChuckDelegate>
 
 @end
 
@@ -23,10 +23,7 @@
           defaultHeight:60
           vcDelegate:self
           configureBlock:^(UITableViewCell* cell, id model, NSIndexPath *indexPath) {
-              //默认cell配置
-              if (![cell isMemberOfClass:[UITableViewCell class]]) {
-                  return;
-              }
+
               cell.detailTextLabel.text = model;
               cell.textLabel.text = model;
               

@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "HeadFootModel.h"
+typedef void (^CellConfigureBefore)(id cell, id model, NSIndexPath * indexPath);
+typedef void (^CellDidselectConfigureBefore)(id cell, id model, NSIndexPath * indexPath);
+typedef void (^HeadFootConfigureBefore)(UICollectionReusableView * view, id model,NSString * kind, NSUInteger section);
 @interface ChuckModel : NSObject
 @property(nonatomic,strong)id model;
 @property(nonatomic,copy)NSString *identifier;
