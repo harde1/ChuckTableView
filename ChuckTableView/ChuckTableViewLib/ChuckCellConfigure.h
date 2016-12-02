@@ -23,4 +23,7 @@
 
 -(CGSize)collectionView:(ChuckCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout  model:(id)model referenceSizeForHeaderInSection:(NSInteger)section;
 - (CGSize)collectionView:(ChuckCollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout model:(id)model referenceSizeForFooterInSection:(NSInteger)section;
+
+
+- (void)collectionView:(UICollectionView *)collectionView vcDelegate:(id)vcDelegate model:(id)model viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath;
 @end

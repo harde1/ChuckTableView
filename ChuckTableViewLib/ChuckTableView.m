@@ -102,7 +102,7 @@
 }
 //添加元素
 - (void)addModel:(id)model {
-    [self addModel:model cellClass:UITableViewCell.class];
+     [self addModel:model cellClass:UITableViewCell.class];
 }
 - (void)addModel:(id)model section:(NSInteger)section{
     [self addModel:model cellClass:UITableViewCell.class section:section];
@@ -319,7 +319,7 @@
     //[wSelf reloadData];
 }
 
-#pragma mark UITableViewDelegate
+#pragma mark -- UITableViewDelegate --
 -(UITableViewCell *)tableView:(UITableView *)tableView cellforChuckModel:(ChuckModel *)chuckModel forIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:chuckModel.identifier
                                                             forIndexPath:indexPath];
@@ -329,7 +329,7 @@
     return cell;
 }
 
-#pragma mark UITableViewDataSource
+#pragma mark -- UITableViewDataSource --
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return [self numberOfSection];
 }

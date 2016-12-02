@@ -11,8 +11,8 @@
 #import "ChuckDelegate.h"
 #import <objc/objc.h>
 #import "ChuckModel.h"
-typedef void (^CellConfigureBefore)(id cell, id model, NSIndexPath * indexPath);
-typedef void (^CellDidselectConfigureBefore)(id cell, id model, NSIndexPath * indexPath);
+
+
 IB_DESIGNABLE
 @interface ChuckTableView : UITableView<UITableViewDataSource,UITableViewDelegate>
 //存放注册的cell类型，字符串格式
@@ -37,7 +37,7 @@ IB_DESIGNABLE
 - (id)initWithFrame:(CGRect)frame
               style:(UITableViewStyle)style
       defaultHeight:(CGFloat)height
-         vcDelegate:(id)delegate
+         vcDelegate:(id<ChuckDelegate>)delegate
      configureBlock:(CellConfigureBefore)before
 cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 

@@ -16,14 +16,12 @@
         self.edit = edit;
         self.editStyle = editStyle;
         self.indexPath = indexPath;
-        
-        
     }
     return self;
 }
 
 -(NSString *)description{
-    return [NSString stringWithFormat:@"[\nidentifier:%@\nmodel:%@\nedit:%@\neditStyle:%ld\nsection:%ld\nrow:%ld\n]",self.identifier,self.model,self.edit?@"YES":@"NO",self.editStyle,self.indexPath.section,self.indexPath.row];
+    return [NSString stringWithFormat:@"[\nidentifier:%@\nmodel:%@\nedit:%@\neditStyle:%@\nsection:%@\nrow:%@\n]",self.identifier,self.model,self.edit?@"YES":@"NO",@(self.editStyle),@(self.indexPath.section),@(self.indexPath.row)];
 }
 
 - (id)initEmptyIndexPath:(NSIndexPath *)indexPath{
@@ -33,8 +31,6 @@
         self.edit = NO;
         self.editStyle = UITableViewCellEditingStyleNone;
         self.indexPath = indexPath;
-        
-        
     }
     return self;
 }
