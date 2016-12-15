@@ -41,11 +41,13 @@
 //需求，是一个flow布局
 //可以单独确定每个section的cell不同的size
 - (void)prepareLayout{
+    ChuckCollectionView * collect = (ChuckCollectionView *)self.collectionView;
     CGFloat mainScreenWidth = [UIScreen mainScreen].bounds.size.width;
     //在这里面就把东西都计算好了
     NSMutableArray *layoutInfoArr = [NSMutableArray array];
     NSInteger maxNumberOfItems = 0;
     CGFloat maxHeight = 0;
+    //整个section内嵌距离
 
     //numberOfSections
     NSInteger numberOfSections = [self.collectionView numberOfSections];
@@ -58,7 +60,13 @@
             //行距
             UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:indexPath];
 
-            maxHeight = CGRectGetMaxY(attributes.frame);
+            maxHeight = CGRectGetMaxY(self.framePre);
+            if (indexPath.item + 1 == [self.collectionView numberOfItemsInSection:indexPath.section]) {
+                 ChuckModel * model = [collect getModelAtIndexPath:indexPath];;
+                //整个section内嵌距离
+                UIEdgeInsets contentSectionInset = self.contentInset?self.contentInset(model.model,indexPath.section):UIEdgeInsetsZero;
+                maxHeight += contentSectionInset.bottom;
+            }
 
             [subArr addObject:attributes];
         }
@@ -72,6 +80,7 @@
     self.layoutInfoArr = [layoutInfoArr copy];
     //保存内容尺寸
     self.contentSize = (CGSize){mainScreenWidth,maxHeight};
+
 }
 - (CGSize)collectionViewContentSize{
     return self.contentSize;
@@ -91,7 +100,11 @@
 
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath{
     if (self.layoutInfoArr) {
-        return self.layoutInfoArr[indexPath.section][indexPath.item];
+        if (self.layoutInfoArr.count>indexPath.section) {
+            if ([self.layoutInfoArr[indexPath.section] count]>indexPath.item) {
+                return self.layoutInfoArr[indexPath.section][indexPath.item];
+            }
+        }
     }
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
     ChuckCollectionView * collect = (ChuckCollectionView *)self.collectionView;
@@ -132,11 +145,11 @@
     }else if(isRowLast){
         y = CGRectGetMinY(framePre);
     }
+     attributes.frame = (CGRect){x,y,itemSectionSize.width,itemSectionSize.height};
 
 
-    attributes.frame = (CGRect){x,y,itemSectionSize.width,itemSectionSize.height};
+
     self.framePre = attributes.frame;
-    NSLog(@"%@\n%@\n%d,%d",indexPath,NSStringFromCGRect(self.framePre),isRowFirst,isRowLast);
 
     return attributes;
 }
