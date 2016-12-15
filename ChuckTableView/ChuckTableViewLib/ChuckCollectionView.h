@@ -46,6 +46,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 //model base
 - (void)addModel:(id)model cellClass:(Class)cellClass section:(NSInteger)section;
 
+- (ChuckModel *)getModelAtIndexPath:(NSIndexPath *)indexPath;
 
 //所有关于头和脚的都用cell来完成，下面的代码废弃
 

@@ -60,7 +60,6 @@
     for (int i=0; i<2; i++) {
         [sd addModel:@"hello world"];
     }
-    //[sd addFootModel:@"hello world"];
     [sd addModel:@"hello world" cellClass:ChuckCCell.class];
     for (int i=0; i<3; i++) {
         [sd addModel:@"hello world" section:1];

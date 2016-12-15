@@ -7,6 +7,7 @@
 //
 
 #import "ChuckLayout.h"
+#import "ChuckCollectionView.h"
 @interface ChuckLayout()
 @property(nonatomic,copy)CGSize(^itemSize)(id model,NSInteger section);
 @property(nonatomic,copy)CGFloat(^interitemSpacing)(id model,NSInteger section);
@@ -55,12 +56,9 @@
         for (NSInteger item = 0; item < numberOfItems; item++){
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
             //行距
-            CGFloat lineSectionSpacing= self.lineSpacing?self.lineSpacing(nil,indexPath.section):0.f;
             UICollectionViewLayoutAttributes *attributes = [self layoutAttributesForItemAtIndexPath:indexPath];
 
-            UICollectionViewLayoutAttributes *headFootAttributes = [self layoutAttributesForSupplementaryViewOfKind:@"" atIndexPath:indexPath];
-
-            maxHeight = indexPath.item==0?(CGRectGetMaxY(headFootAttributes.frame)>0?(CGRectGetMaxY(headFootAttributes.frame) + lineSectionSpacing):0):0 + CGRectGetMaxY(attributes.frame);
+            maxHeight = CGRectGetMaxY(attributes.frame);
 
             [subArr addObject:attributes];
         }
@@ -96,16 +94,17 @@
         return self.layoutInfoArr[indexPath.section][indexPath.item];
     }
     UICollectionViewLayoutAttributes *attributes = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:indexPath];
-
+    ChuckCollectionView * collect = (ChuckCollectionView *)self.collectionView;
+    ChuckModel * model = [collect getModelAtIndexPath:indexPath];
     CGFloat mainScreenWidth = [UIScreen mainScreen].bounds.size.width;
     //section里面的cell size
-    CGSize itemSectionSize = self.itemSize?self.itemSize(nil,indexPath.section):CGSizeZero;
+    CGSize itemSectionSize = self.itemSize?self.itemSize(model.model,indexPath.section):CGSizeZero;
     //cell与cell之间的距离
-    CGFloat interitemSectionSpacing = self.interitemSpacing?self.interitemSpacing(nil,indexPath.section):0.f;
+    CGFloat interitemSectionSpacing = self.interitemSpacing?self.interitemSpacing(model.model,indexPath.section):0.f;
     //行距
-    CGFloat lineSectionSpacing= self.lineSpacing?self.lineSpacing(nil,indexPath.section):0.f;
+    CGFloat lineSectionSpacing= self.lineSpacing?self.lineSpacing(model.model,indexPath.section):0.f;
     //整个section内嵌距离
-    UIEdgeInsets contentSectionInset = self.contentInset?self.contentInset(nil,indexPath.section):UIEdgeInsetsZero;
+    UIEdgeInsets contentSectionInset = self.contentInset?self.contentInset(model.model,indexPath.section):UIEdgeInsetsZero;
 
     //每行可以有多少个item
     CGFloat maxItemWidth = mainScreenWidth - contentSectionInset.left - contentSectionInset.right;
