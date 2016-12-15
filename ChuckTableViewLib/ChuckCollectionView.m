@@ -15,22 +15,19 @@
 //基础配置
 - (id)initWithFrame:(CGRect)frame
 collectionViewLayout:(UICollectionViewLayout *)layout
-    defaultHeadSize:(CGSize)headSize
-    defaultFootSize:(CGSize)footSize
          vcDelegate:(id<ChuckDelegate>)delegate
      configureBlock:(CellConfigureBefore)before
 cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
-headFootConfigureBefore:(HeadFootConfigureBefore) headFootConfigureBefore{
+//headFootConfigureBefore:(HeadFootConfigureBefore) headFootConfigureBefore
+{
     if(self = [super initWithFrame:frame collectionViewLayout:layout]) {
         self.cellConfigureBefore = [before copy];
         self.cellDidselectConfigBefore = [cellDidselectConfigBefore copy];
-        self.headFootConfigureBefore = [headFootConfigureBefore copy];
+//        self.headFootConfigureBefore = [headFootConfigureBefore copy];
         self.delegate = self;
         self.dataSource = self;
-        self.headSize= headSize;
-        self.footSize = footSize;
         self.vcDelegate = delegate;
-
+        
         //添加对Account的监听
         [self addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
     }
@@ -112,25 +109,25 @@ headFootConfigureBefore:(HeadFootConfigureBefore) headFootConfigureBefore{
 //添加元素 -- final
 -(void)addModel:(id)model cellClass:(Class)cellClass section:(NSInteger)section allowEdit:(BOOL)edit editStyle:(UITableViewCellEditingStyle)editStyle{
     if(!model||![cellClass isSubclassOfClass:[UICollectionViewCell class]]) return;
-
+    
     NSIndexPath * indexPath = [NSIndexPath indexPathForItem:[self numberOfRowsAtSection:section] inSection:section];
-
+    
     [self storeModel:model cellClass:cellClass allowEdit:edit editStyle:editStyle indexPath:indexPath];
 }
 //保存model
 - (void)storeModel:(id)model cellClass:(Class)cellClass allowEdit:(BOOL)edit editStyle:(UITableViewCellEditingStyle)editStyle indexPath:(NSIndexPath *)indexPath{
     if(!model||![cellClass isSubclassOfClass:[UICollectionViewCell class]]) return;
-
+    
     //保存model
     ChuckModel * chuckModel = [self configModel:model cellClass:cellClass allowEdit:edit editStyle:editStyle indexPath:indexPath];
     [self upSertModel:chuckModel indexPath:indexPath];
-
+    
     //注册cell
     if (![self.config containsObject:NSStringFromClass(cellClass)]) {
         [self.config addObject:NSStringFromClass(cellClass)];
         [self registerCell:cellClass];
     }
-
+    
 }
 #pragma -- model操作 --
 //model - 插入或者更新model
@@ -161,14 +158,24 @@ headFootConfigureBefore:(HeadFootConfigureBefore) headFootConfigureBefore{
     NSMutableArray * arr = self.modelSource[section];
     if (!arr.headModel) {
         arr.headModel = [[HeadFootModel alloc] initEmptySection:section];
+        //注册cell
+        if (![self.config containsObject:@"UICollectionReusableView"]) {
+            [self.config addObject:@"UICollectionReusableView"];
+            [self registerHeadFootCell:UICollectionReusableView.class isFoot:NO];
+        }
     }
     return [self.modelSource[section] headModel];
 }
 - (HeadFootModel *)getFootModelAtSection:(NSUInteger)section{
     NSMutableArray * arr = self.modelSource[section];
-
+    
     if (!arr.footModel) {
         arr.footModel = [[HeadFootModel alloc] initEmptySection:section];
+        //注册cell
+        if (![self.config containsObject:@"UICollectionReusableView"]) {
+            [self.config addObject:@"UICollectionReusableView"];
+            [self registerHeadFootCell:UICollectionReusableView.class isFoot:YES];
+        }
     }
     return [self.modelSource[section] footModel];
 }
@@ -282,12 +289,12 @@ headFootConfigureBefore:(HeadFootConfigureBefore) headFootConfigureBefore{
 //保存model
 - (void)storeHeadModel:(id)model cellClass:(Class)cellClass isFoot:(BOOL)isFoot editStyle:(UITableViewCellEditingStyle)editStyle section:(NSUInteger)section{
     if(!model||![cellClass isSubclassOfClass:[UICollectionReusableView class]]) return;
-
+    
     //保存model
     NSMutableArray * chuckMutableArray = self.modelSource[section];
     if (isFoot) {
         if (chuckMutableArray.footModel&&section==0) {
-
+            
             [self addHeadFootModel:model cellClass:cellClass section:self.modelSource.count isFoot:isFoot editStyle:editStyle];
             return;
         }
@@ -307,14 +314,14 @@ headFootConfigureBefore:(HeadFootConfigureBefore) headFootConfigureBefore{
                                                                         editStyle:editStyle
                                                                           section:section];
     }
-
-
+    
+    
     //注册cell
     if (![self.config containsObject:NSStringFromClass(cellClass)]) {
         [self.config addObject:NSStringFromClass(cellClass)];
         [self registerHeadFootCell:cellClass isFoot:isFoot];
     }
-
+    
 }
 #pragma mark UICollectionViewDataSource
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellforChuckModel:(ChuckModel *)chuckModel forIndexPath:(NSIndexPath *)indexPath{
@@ -336,12 +343,12 @@ headFootConfigureBefore:(HeadFootConfigureBefore) headFootConfigureBefore{
     return [self numberOfRowsAtSection:section];
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     //normal cell
     ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
     UICollectionViewCell *cell = [self collectionView:collectionView cellforChuckModel:chuckModel forIndexPath:indexPath];
     id model = chuckModel.model;
-
+    
     if(self.cellConfigureBefore) {
         self.cellConfigureBefore(cell, model,indexPath);
     }
@@ -356,57 +363,42 @@ headFootConfigureBefore:(HeadFootConfigureBefore) headFootConfigureBefore{
     HeadFootModel * headFootModel = [self getHeadFootModelAtSection:indexPath.section kind:kind];
     UICollectionReusableView *view = [self collectionView:collectionView reusableViewforHeadFootModel:headFootModel section:indexPath.section];
     id model = headFootModel.model;
-    if(self.headFootConfigureBefore) {
-        self.headFootConfigureBefore(view, model,kind,indexPath.section);
-    }
-    if ([view respondsToSelector:@selector(collectionView:vcDelegate:model:viewForSupplementaryElementOfKind:atIndexPath:)]) {
-        [view collectionView:self vcDelegate:self.vcDelegate model:headFootModel viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
+//    if(self.headFootConfigureBefore&&model) {
+//        self.headFootConfigureBefore(view, model,kind,indexPath.section);
+//    }
+    if ([view respondsToSelector:@selector(collectionView:vcDelegate:model:viewForSupplementaryElementOfKind:atIndexPath:)]&&headFootModel.model) {
+        [view collectionView:self vcDelegate:self.vcDelegate model:model viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
     }
     return view;
 }
-//返回头headerView的大小
+////返回头headerView的大小
 //-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
-//    CGSize size=self.headSize;
-//    HeadFootModel * headFootModel = [self getHeadFootModelAtSection:section];
-//    UICollectionReusableView *view = [self collectionView:collectionView reusableViewforHeadFootModel:headFootModel section:section];
-//    if ([view respondsToSelector:@selector(collectionView:layout:model:referenceSizeForHeaderInSection:)]) {
-//        return  [view collectionView:self layout:collectionViewLayout model:headFootModel.model referenceSizeForHeaderInSection:section];
-//    }
-//
-//    if (![view isMemberOfClass:[UICollectionReusableView class]]) {
-//        [view layoutIfNeeded];
-//        [view updateConstraintsIfNeeded];
-//        size = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-//        if (CGSizeEqualToSize(size, CGSizeZero)) {
-//            return self.headSize;
-//        }
+//    CGSize size=CGSizeZero;
+//    HeadFootModel * headFootModel = [self getHeadFootModelAtSection:section kind:UICollectionElementKindSectionHeader];
+//    if (!headFootModel.model) {
 //        return size;
+//    }
+//    if ([self.vcDelegate respondsToSelector:@selector(collectionView:layout:referenceSizeForKind:model:inSection:)]) {
+//        return  [self.vcDelegate collectionView:self layout:collectionViewLayout referenceSizeForKind:UICollectionElementKindSectionHeader model:headFootModel.model inSection:section];
 //    }
 //    return size;
 //}
-////返回头footerView的大小
+//////返回头footerView的大小
 //- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section
 //{
-//    CGSize size=self.footSize;
-//    HeadFootModel * headFootModel = [self getHeadFootModelAtSection:section];
-//    UICollectionReusableView *view = [self collectionView:collectionView reusableViewforHeadFootModel:headFootModel section:section];
-//    if ([view respondsToSelector:@selector(collectionView:layout:model:referenceSizeForFooterInSection:)]) {
-//        return  [view collectionView:self layout:collectionViewLayout model:headFootModel.model referenceSizeForFooterInSection:section];
-//    }
-//    if (![view isMemberOfClass:[UICollectionReusableView class]]) {
-//        [view layoutIfNeeded];
-//        [view updateConstraintsIfNeeded];
-//        size = [view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-//        if (CGSizeEqualToSize(size, CGSizeZero)) {
-//            return self.footSize;
-//        }
+//    CGSize size=CGSizeZero;
+//    HeadFootModel * headFootModel = [self getHeadFootModelAtSection:section kind:UICollectionElementKindSectionFooter];
+//    if (!headFootModel.model) {
 //        return size;
+//    }
+//    if ([self.vcDelegate respondsToSelector:@selector(collectionView:layout:referenceSizeForKind:model:inSection:)]) {
+//        return  [self.vcDelegate collectionView:self layout:collectionViewLayout referenceSizeForKind:UICollectionElementKindSectionFooter model:headFootModel.model inSection:section];
 //    }
 //    return size;
 //}
 #pragma mark -- UICollectionViewDelegate --
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-
+    
     ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
     UICollectionViewCell *cell = [self collectionView:collectionView cellforChuckModel:chuckModel forIndexPath:indexPath];
     if(self.cellDidselectConfigBefore) {

@@ -24,20 +24,16 @@
 //--------- For StoryBoard
 
 @property (nonatomic, strong) IBInspectable NSString *cellIdentifier;
-@property (nonatomic,assign)CGSize headSize;
-@property (nonatomic,assign)CGSize footSize;
 @property (nonatomic, copy) CellConfigureBefore cellConfigureBefore;
 @property (nonatomic, copy) CellDidselectConfigureBefore cellDidselectConfigBefore;
-@property (nonatomic, copy) HeadFootConfigureBefore headFootConfigureBefore;
+//@property (nonatomic, copy) HeadFootConfigureBefore headFootConfigureBefore;
 
 - (id)initWithFrame:(CGRect)frame
 collectionViewLayout:(UICollectionViewLayout *)layout
-    defaultHeadSize:(CGSize)headSize
-defaultFootSize:(CGSize)footSize
          vcDelegate:(id<ChuckDelegate>)delegate
      configureBlock:(CellConfigureBefore)before
-cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
-headFootConfigureBefore:(HeadFootConfigureBefore) headFootConfigureBefore;
+cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
+//headFootConfigureBefore:(HeadFootConfigureBefore) headFootConfigureBefore;
 //section 0
 - (void)addModel:(id)model;
 - (void)addModels:(NSArray *)models;
@@ -50,21 +46,24 @@ headFootConfigureBefore:(HeadFootConfigureBefore) headFootConfigureBefore;
 //model base
 - (void)addModel:(id)model cellClass:(Class)cellClass section:(NSInteger)section;
 
-#pragma mark collectionViewHead&foot
-//section 0
-- (void)addHeadModel:(id)model;
-- (void)addHeadModels:(NSArray *)models;
-- (void)addHeadModel:(id)model cellClass:(Class)cellClass;
-//section any
-- (void)addHeadModel:(id)model section:(NSInteger)section;
-- (void)addHeadModels:(NSArray *)models section:(NSInteger)section;
-- (void)addHeadModels:(NSArray *)models cellClass:(Class)cellClass section:(NSInteger)section;
-//section 0
-- (void)addFootModel:(id)model;
-- (void)addFootModels:(NSArray *)models;
-- (void)addFootModel:(id)model cellClass:(Class)cellClass;
-//section any
-- (void)addFootModel:(id)model section:(NSInteger)section;
-- (void)addFootModels:(NSArray *)models section:(NSInteger)section;
-- (void)addFootModels:(NSArray *)models cellClass:(Class)cellClass section:(NSInteger)section;
+
+//所有关于头和脚的都用cell来完成，下面的代码废弃
+
+//#pragma mark collectionViewHead&foot
+////section 0
+//- (void)addHeadModel:(id)model;
+//- (void)addHeadModels:(NSArray *)models;
+//- (void)addHeadModel:(id)model cellClass:(Class)cellClass;
+////section any
+//- (void)addHeadModel:(id)model section:(NSInteger)section;
+//- (void)addHeadModels:(NSArray *)models section:(NSInteger)section;
+//- (void)addHeadModels:(NSArray *)models cellClass:(Class)cellClass section:(NSInteger)section;
+////section 0
+//- (void)addFootModel:(id)model;
+//- (void)addFootModels:(NSArray *)models;
+//- (void)addFootModel:(id)model cellClass:(Class)cellClass;
+////section any
+//- (void)addFootModel:(id)model section:(NSInteger)section;
+//- (void)addFootModels:(NSArray *)models section:(NSInteger)section;
+//- (void)addFootModels:(NSArray *)models cellClass:(Class)cellClass section:(NSInteger)section;
 @end

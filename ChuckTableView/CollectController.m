@@ -9,49 +9,64 @@
 #import "CollectController.h"
 #import "ChuckCollectionView.h"
 #import "ChuckCCell.h"
+#import "ChuckCRView.h"
+#import "ChuckLayout.h"
 @interface CollectController ()<ChuckDelegate>
 
 @end
 
 @implementation CollectController
-
+/**
+ 布局的责任在于UICollectionViewLayout
+ ChuckCollectionView只是用于数据组装的
+ */
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    UICollectionViewFlowLayout * flow = [[UICollectionViewFlowLayout alloc]init];
-    flow.minimumLineSpacing = 10;
-    flow.itemSize = CGSizeMake((self.view.frame.size.width - 10 * 2 - 10)/2., (self.view.frame.size.width - 10 * 2 - 10)/2.);
-    flow.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10);
-    flow.headerReferenceSize = CGSizeMake(self.view.frame.size.width, 40);
-    flow.footerReferenceSize = CGSizeMake(self.view.frame.size.width, 40);
+    CGFloat mainScreenWidth = [UIScreen mainScreen].bounds.size.width;
+    NSInteger per = 3;
+    NSInteger perAdd = per+1;
+    ChuckLayout * chuckLayout = [[ChuckLayout alloc]initItemSize:^CGSize(id model, NSInteger section) {
+        if (section==0) {
+            return (CGSize){mainScreenWidth - 10 - 10,50};
+        }else if(section==1){
+            return (CGSize){((mainScreenWidth - 10 - 10)-10*(per-1))/per,((mainScreenWidth - 10 - 10)-10)/per};
+        }else{
+            return (CGSize){((mainScreenWidth - 10 - 10)-10*(perAdd-1))/perAdd,((mainScreenWidth - 10 - 10)-10)/perAdd};
+        }
+
+    } interitemSpacingIndexPath:^CGFloat(id model, NSInteger section) {
+        return 10;
+    } lineSpacingIndexPath:^CGFloat(id model, NSInteger section) {
+        return 10;
+    } contentInsetIndexPath:^UIEdgeInsets(id model, NSInteger section) {
+        return UIEdgeInsetsMake(10, 10, 10, 10);
+    }];
 
     ChuckCollectionView* sd =
     [[ChuckCollectionView alloc]
      initWithFrame:self.view.bounds
-     collectionViewLayout:flow
-     defaultHeadSize:CGSizeMake(self.view.frame.size.width, 100)
-     defaultFootSize:CGSizeMake(self.view.frame.size.width, 100)
+     collectionViewLayout:chuckLayout
      vcDelegate:self
      configureBlock:^(UICollectionViewCell *cell, id model, NSIndexPath *indexPath) {
          cell.backgroundColor = [UIColor redColor];
      } cellDidselectConfig:^(UICollectionViewCell *cell, id model, NSIndexPath *indexPath) {
          NSLog(@"点击到什么：%@",model);
-     }headFootConfigureBefore:^(UICollectionReusableView * view, id model, NSString *kind, NSUInteger section) {
-         NSLog(@"headFootConfigureBefore点击到什么：%@",model);
-         view.backgroundColor = [UIColor orangeColor];
      }];
     [self.view addSubview:sd];
 
-
-     [sd addHeadModel:@"hello world"];
     sd.backgroundColor = [UIColor whiteColor];
     [sd addModel:@"hello world" cellClass:ChuckCCell.class];
-    for (int i=0; i<20; i++) {
+    for (int i=0; i<2; i++) {
         [sd addModel:@"hello world"];
     }
-    [sd addFootModel:@"hello world"];
+    //[sd addFootModel:@"hello world"];
     [sd addModel:@"hello world" cellClass:ChuckCCell.class];
-
+    for (int i=0; i<3; i++) {
+        [sd addModel:@"hello world" section:1];
+    }
+    for (int i=0; i<10; i++) {
+        [sd addModel:@"hello world" section:2];
+    }
 }
-
 @end

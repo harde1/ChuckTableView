@@ -23,6 +23,7 @@
 #pragma mark ChuckCollectionView
 - (UIView *)collectionView:(ChuckCollectionView *)collectionView viewForHeaderInSection:(NSInteger)section;
 - (CGFloat)collectionView:(ChuckCollectionView *)collectionView heightForHeaderInSection:(NSInteger)section;
+-(CGSize)collectionView:(ChuckCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForKind:(NSString *)kind model:(id)model inSection:(NSInteger)section;
 - (UIView *)collectionView:(ChuckCollectionView *)collectionView viewForFooterRefresh:(UICollectionViewCell *)cell;
 
 #pragma mark Scroll Event
