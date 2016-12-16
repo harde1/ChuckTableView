@@ -30,6 +30,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
         
         //添加对Account的监听
         [self addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+        [self registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:@"footerRefresh"];
     }
     return self;
 }
@@ -134,22 +135,27 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
 -(void)upSertModel:(ChuckModel *)chuckModel indexPath:(NSIndexPath *)indexPath{
     if (![indexPath isKindOfClass:[NSIndexPath class]]) return;
     [self ifBeyondSection:indexPath.section];
-    if (indexPath.row>=[self.modelSource[indexPath.section] count]) {
+    if (indexPath.item>=[self.modelSource[indexPath.section] count]) {
         //填充足够的空ChuckModel,
-        for (NSInteger i=[self.modelSource[indexPath.section] count]; i<indexPath.row; i++) {
+        for (NSInteger i=[self.modelSource[indexPath.section] count]; i<indexPath.item; i++) {
             [self.modelSource[indexPath.section] addObject:[[ChuckModel alloc]initEmptyIndexPath:chuckModel.indexPath]];
         }
         [self.modelSource[indexPath.section] addObject:chuckModel];
         return;
     }
-    self.modelSource[indexPath.section][indexPath.row] = chuckModel;
+    self.modelSource[indexPath.section][indexPath.item] = chuckModel;
 }
 //model
 - (ChuckModel*)configModel:(id)model cellClass:(Class)cellClass allowEdit:(BOOL)edit editStyle:(UITableViewCellEditingStyle)editStyle indexPath:(NSIndexPath *)indexPath{
     return [[ChuckModel alloc]initWithModel:model cellClass:cellClass allowEdit:edit editStyle:editStyle indexPath:indexPath];
 }
 - (ChuckModel *)getModelAtIndexPath:(NSIndexPath *)indexPath{
-    return self.modelSource[indexPath.section][indexPath.row];
+    if ([self.modelSource count]>indexPath.section) {
+        if ([self.modelSource[indexPath.section] count]>indexPath.item) {
+             return self.modelSource[indexPath.section][indexPath.item];
+        }
+    }
+    return [[ChuckModel alloc] initEmptyIndexPath:indexPath];
 }
 -(HeadFootModel *)getHeadFootModelAtSection:(NSUInteger)section kind:(NSString *)kind{
     return  [kind isEqualToString:UICollectionElementKindSectionFooter]?[self getFootModelAtSection:section]:[self getHeadModelAtSection:section];
@@ -325,6 +331,15 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
 }
 #pragma mark UICollectionViewDataSource
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellforChuckModel:(ChuckModel *)chuckModel forIndexPath:(NSIndexPath *)indexPath{
+//    NSString * footerRefresh = @"footerRefresh";
+//    UIView * refresh =  [self ifExistFooterRefresh:indexPath];
+//    if (refresh) {
+//        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:footerRefresh forIndexPath:indexPath];
+//        cell.contentView.backgroundColor = [UIColor clearColor];
+//        [cell.contentView addSubview:refresh];
+//
+//        return cell;
+//    }
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:chuckModel.identifier forIndexPath:indexPath];
     return cell;
 }
@@ -340,6 +355,12 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     return [self numberOfSection];
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+//    if (section+1 == [self numberOfSection]) {
+//        UIView * refresh = [self getRefreshView];
+//        if (refresh) {
+//            return [self numberOfRowsAtSection:section]+1;
+//        }
+//    }
     return [self numberOfRowsAtSection:section];
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -398,7 +419,9 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
 //}
 #pragma mark -- UICollectionViewDelegate --
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-    
+//    if ([self ifExistFooterRefresh:indexPath]) {
+//        return;
+//    }
     ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
     UICollectionViewCell *cell = [self collectionView:collectionView cellforChuckModel:chuckModel forIndexPath:indexPath];
     if(self.cellDidselectConfigBefore) {
@@ -409,19 +432,91 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     }
 }
 #pragma mark -- 上拉加载更多 ---
--(UIView *)getRefreshView{
-    if (_showFootRefresh && _vcDelegate && [_vcDelegate respondsToSelector:@selector(collectionView:viewForFooterRefresh:)]) {
-        UIView * refresh = [_vcDelegate collectionView:self viewForFooterRefresh:nil];
-        return refresh;
-    }
-    return nil;
-}
+//-(UIView *)getRefreshView{
+//    if (_showFootRefresh && _vcDelegate && [_vcDelegate respondsToSelector:@selector(collectionView:viewForFooterRefresh:)]) {
+//        UIView * refresh = [_vcDelegate collectionView:self viewForFooterRefresh:nil];
+//        return refresh;
+//    }
+//    return nil;
+//}
 //如果有上拉加载更多
--(UIView *)ifExistFooterRefresh:(NSIndexPath *)indexPath{
-    if (indexPath.section+1 == [self numberOfSection] && indexPath.row == [self numberOfRowsAtSection:indexPath.section]) {
-        UIView * refresh = [self getRefreshView];
-        return refresh;
+//-(UIView *)ifExistFooterRefresh:(NSIndexPath *)indexPath{
+//    if (indexPath.section+1 == [self numberOfSection] && indexPath.item == [self numberOfRowsAtSection:indexPath.section]) {
+//        UIView * refresh = [self getRefreshView];
+//        return refresh;
+//    }
+//    return nil;
+//}
+
+- (void)dismissFooterRefresh{
+    [[self class] cancelPreviousPerformRequestsWithTarget:self selector:@selector(dismissFooter) object:nil];
+    [self performSelector:@selector(dismissFooter) withObject:nil afterDelay:0.3];
+}
+- (void)dismissFooter{
+    __weak typeof(self) wSelf = self;
+    wSelf.showFootRefresh = NO;
+    [wSelf reloadData];
+}
+
+
+#pragma mark UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+        [_vcDelegate scrollViewDidScroll:self];
     }
-    return nil;
+}
+- (void)scrollViewDidZoom:(UIScrollView *)scrollView NS_AVAILABLE_IOS(3_2){
+    if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewDidZoom:)]) {
+        [_vcDelegate scrollViewDidZoom:self];
+    }
+}
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView{
+    if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
+        [_vcDelegate scrollViewWillBeginDragging:self];
+    }
+}
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0){
+    if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewWillEndDragging:withVelocity:targetContentOffset:)]) {
+        [_vcDelegate scrollViewWillEndDragging:self withVelocity:velocity targetContentOffset:targetContentOffset];
+    }
+}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
+    if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
+        [_vcDelegate scrollViewDidEndDragging:self willDecelerate:decelerate];
+    }
+}
+- (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView{
+    if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewWillBeginDecelerating:)]) {
+        [_vcDelegate scrollViewWillBeginDecelerating:self];
+    }
+}
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
+        [_vcDelegate scrollViewDidEndDecelerating:self];
+    }
+}
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+
+    if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewDidEndScrollingAnimation:)]) {
+        [_vcDelegate scrollViewDidEndScrollingAnimation:self];
+    }
+}
+
+- (void)scrollViewWillBeginZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view NS_AVAILABLE_IOS(3_2){
+    if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewWillBeginZooming:withView:)]) {
+        [_vcDelegate scrollViewWillBeginZooming:self withView:view];
+    }
+}
+- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(nullable UIView *)view atScale:(CGFloat)scale{
+    if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewDidEndZooming:withView:atScale:)]) {
+        [_vcDelegate scrollViewDidEndZooming:self withView:view atScale:scale];
+    }
+}
+- (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
+
+    if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewDidScrollToTop:)]) {
+        [_vcDelegate scrollViewDidScrollToTop:self];
+    }
 }
 @end
