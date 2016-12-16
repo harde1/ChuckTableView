@@ -28,6 +28,7 @@
     NSInteger per = 3;
     NSInteger perAdd = per+1;
     ChuckLayout * chuckLayout = [[ChuckLayout alloc]initItemSize:^CGSize(id model, NSInteger section) {
+         //根据section返回cell大小
         if (section==0) {
             return (CGSize){mainScreenWidth - 10 - 10,50};
         }else if(section==1){
@@ -36,10 +37,13 @@
             return (CGSize){((mainScreenWidth - 10 - 10)-10*(perAdd-1))/perAdd,((mainScreenWidth - 10 - 10)-10)/perAdd};
         }
     } interitemSpacingIndexPath:^CGFloat(id model, NSInteger section) {
+        //根据section返回cell与cell间隔
         return 10;
     } lineSpacingIndexPath:^CGFloat(id model, NSInteger section) {
+        //根据section返回行距
         return 10;
     } contentInsetIndexPath:^UIEdgeInsets(id model, NSInteger section) {
+        //根据section返回内嵌
         return UIEdgeInsetsMake(10, 10, 10, 10);
     }];
 
@@ -113,7 +117,7 @@
     [_collect reloadData];
 }
 -(void)delShouCang{
-
-
+    
+    
 }
 @end

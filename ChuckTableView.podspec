@@ -3,11 +3,11 @@ Pod::Spec.new do |s|
 
 
   s.name         = "ChuckTableView"
-  s.version      = "0.0.5"
+  s.version      = "0.0.6"
   s.summary      = "高度封装tableView简化cell的操作，与UIViewController解耦"
   s.description  = "
 
-  高度封装tableView，简化操作，目的是为了cell可以自由同时存在于不同的UIViewController之中，cell自给自足，cell环境封闭起来
+  高度封装tableView\collectionView，简化操作，目的是为了cell可以自由同时存在于不同的UIViewController之中，cell自给自足，cell环境封闭起来
 
 1、容易操作的cell增删改查
 
