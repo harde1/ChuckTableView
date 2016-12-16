@@ -13,6 +13,7 @@
 #import "ChuckLayout.h"
 @interface CollectController ()<ChuckDelegate>
 @property(nonatomic,strong)ChuckCollectionView* collect;
+@property(nonatomic,strong) UIRefreshControl *refreshControl;
 @end
 
 @implementation CollectController
@@ -67,6 +68,7 @@
         [collect addModel:@"hello world" section:2];
     }
     [self setNavigationItem];
+    [self configTopRefresh];
 }
 - (void)setNavigationItem{
     UIView * vItems = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 140, 60)];
@@ -84,14 +86,34 @@
     UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:vItems];
     self.navigationItem.rightBarButtonItem = rightItem;
 }
+-(void)configTopRefresh{
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    _refreshControl = refreshControl;
+    refreshControl.tintColor = [UIColor grayColor];
+    [refreshControl addTarget:self action:@selector(topRefresh) forControlEvents:UIControlEventValueChanged];
+    [self.collect addSubview:refreshControl];
+    self.collect.alwaysBounceVertical = YES;
+}
+-(void)topRefresh{
+
+    NSLog(@"UIRefreshControl 一定要在UITableViewController里面使用，要在UIViewControll使用，只能这样写了");
+    [self performSelector:@selector(delayDismiss) withObject:nil afterDelay:2];
+}
+-(void)delayDismiss{
+    [_refreshControl  endRefreshing]; //停止刷新
+}
+-(void)scrollViewDidScroll:(ChuckTableView *)tableView{
+    if (tableView.contentOffset.y >= tableView.contentSize.height-tableView.frame.size.height - 20) {
+        [self performSelector:@selector(delayDismiss) withObject:nil afterDelay:2];
+    }
+}
 -(void)doShouCang{
-    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:11];
+
     [_collect addModel:@"hello world"];
     [_collect reloadData];
-//    [_collect scrollToBottomAnimationTime:1];
 }
 -(void)delShouCang{
-    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:11];
-//    [_collect removeIndexPath:indexPath animation:UITableViewRowAnimationRight];
+
+
 }
 @end

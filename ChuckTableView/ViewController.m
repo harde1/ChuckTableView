@@ -142,7 +142,6 @@
     self.tableViewController.refreshControl.tintColor = [UIColor redColor]; //设置刷新控件的颜色
     self.tableViewController.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"]; //设置刷新控件显示的文字
     [self.tableViewController.refreshControl addTarget:self action:@selector(topRefresh) forControlEvents:UIControlEventValueChanged];
-    
 }
 -(void)topRefresh{
     

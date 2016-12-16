@@ -48,6 +48,11 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 
 - (ChuckModel *)getModelAtIndexPath:(NSIndexPath *)indexPath;
 
+//-(UIView *)ifExistFooterRefresh:(NSIndexPath *)indexPath;
+
+//-(UIView *)getRefreshView;
+//隐藏上拉加载更多
+//- (void)dismissFooterRefresh;
 //所有关于头和脚的都用cell来完成，下面的代码废弃
 
 //#pragma mark collectionViewHead&foot

@@ -485,6 +485,7 @@
     if (self.contentSize.height<=self.frame.size.height) {
         return;
     }
+    [self reloadData];
     [self scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:[self.modelSource[ [self numberOfSection]-1] count]-1 inSection:[self numberOfSection]-1] atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 }
 - (void)dismissFooterRefresh{
