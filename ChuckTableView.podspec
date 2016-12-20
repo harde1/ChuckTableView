@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "ChuckTableView"
-  s.version      = "0.0.7"
+  s.version      = "0.0.8"
   s.summary      = "高度封装tableView简化cell的操作，与UIViewController解耦"
   s.description  = "
 
@@ -18,6 +18,8 @@ Pod::Spec.new do |s|
 4、编辑模式随意添加，随意插入各种cell
 
 5、cell与tableView解耦，与UIViewController解耦
+
+更新了UIcollectionView的操作
 
                    "
 

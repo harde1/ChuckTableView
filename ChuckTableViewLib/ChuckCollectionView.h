@@ -47,7 +47,13 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 - (void)addModel:(id)model cellClass:(Class)cellClass section:(NSInteger)section;
 
 - (ChuckModel *)getModelAtIndexPath:(NSIndexPath *)indexPath;
-
+//---------插入
+-(void)insertModel:(id)model cellClass:(Class)cellClass indexPath:(NSIndexPath *)indexPath completion:(void (^ __nullable)(BOOL finished))completion;
+//---------删除模式
+-(void)removeIndexPath:(NSIndexPath *)indexPath completion:(void (^ __nullable)(BOOL finished))completion;
+-(void)removeSection:(NSUInteger)section completion:(void (^ __nullable)(BOOL finished))completion;
+//删除什么section到什么section 1-2 ，包含1和2
+-(void)removeSectionRange:(NSRange)range completion:(void (^ __nullable)(BOOL finished))completion;
 //-(UIView *)ifExistFooterRefresh:(NSIndexPath *)indexPath;
 
 //-(UIView *)getRefreshView;
@@ -72,4 +78,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 //- (void)addFootModel:(id)model section:(NSInteger)section;
 //- (void)addFootModels:(NSArray *)models section:(NSInteger)section;
 //- (void)addFootModels:(NSArray *)models cellClass:(Class)cellClass section:(NSInteger)section;
+
+
+
 @end

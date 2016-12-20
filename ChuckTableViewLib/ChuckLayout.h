@@ -12,11 +12,12 @@
 -(instancetype)initItemSize:(CGSize (^)(id model,NSInteger section))itemSize
   interitemSpacingIndexPath:(CGFloat (^)(id model,NSInteger section))interitemSpacing
        lineSpacingIndexPath:(CGFloat (^)(id model,NSInteger section))lineSpacing
-      contentInsetIndexPath:(UIEdgeInsets (^)(id model,NSInteger section))contentInset;
+      contentInsetIndexPath:(UIEdgeInsets (^)(NSInteger section))contentInset;
 
 -(void)setItemSizeSection:(CGSize (^)(id model,NSInteger section))itemSize;
 -(void)setInteritemSpacingIndexPath:(CGFloat (^)(id model,NSInteger section))interitemSpacing;
 -(void)setLineSpacingIndexPath:(CGFloat (^)(id model,NSInteger section))lineSpacing;
 //每个section的内嵌
--(void)setContentInsetIndexPath:(UIEdgeInsets (^)(id model,NSInteger section))contentInset;
+-(void)setContentInsetIndexPath:(UIEdgeInsets (^)(NSInteger section))contentInset;
+-(void)reload;
 @end

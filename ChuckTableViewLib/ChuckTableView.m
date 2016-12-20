@@ -102,7 +102,7 @@
 }
 //添加元素
 - (void)addModel:(id)model {
-     [self addModel:model cellClass:UITableViewCell.class];
+    [self addModel:model cellClass:UITableViewCell.class];
 }
 - (void)addModel:(id)model section:(NSInteger)section{
     [self addModel:model cellClass:UITableViewCell.class section:section];
@@ -272,9 +272,17 @@
 -(void)changeIndexPath:(NSIndexPath *)indexPath{
     //修改它之后的所有cell的row+1
     for (NSInteger i=indexPath.row+1; i<[self.modelSource[indexPath.section] count]; i++) {
-        NSIndexPath * ni = [NSIndexPath indexPathForRow:i inSection:indexPath.section];
+        NSIndexPath * ni = [NSIndexPath indexPathForItem:i inSection:indexPath.section];
         ChuckModel * chuckModel = [self chuckModelAtIndexPath:ni];
         chuckModel.indexPath = ni;
+    }
+}
+-(void)changeSection:(NSUInteger)section{
+    //修改它之后的所有cell的row+1
+    for (NSInteger i=section+1; i<[self.modelSource count]; i++) {
+        
+        NSIndexPath * ni = [NSIndexPath indexPathForRow:0 inSection:i];
+        [self changeIndexPath:ni];
     }
 }
 
@@ -536,7 +544,7 @@
     }
 }
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-
+    
     if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewDidEndScrollingAnimation:)]) {
         [_vcDelegate scrollViewDidEndScrollingAnimation:self];
     }
@@ -553,7 +561,7 @@
     }
 }
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
-
+    
     if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewDidScrollToTop:)]) {
         [_vcDelegate scrollViewDidScrollToTop:self];
     }

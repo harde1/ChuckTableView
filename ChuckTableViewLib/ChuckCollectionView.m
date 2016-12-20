@@ -23,7 +23,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     if(self = [super initWithFrame:frame collectionViewLayout:layout]) {
         self.cellConfigureBefore = [before copy];
         self.cellDidselectConfigBefore = [cellDidselectConfigBefore copy];
-//        self.headFootConfigureBefore = [headFootConfigureBefore copy];
+        //        self.headFootConfigureBefore = [headFootConfigureBefore copy];
         self.delegate = self;
         self.dataSource = self;
         self.vcDelegate = delegate;
@@ -152,7 +152,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
 - (ChuckModel *)getModelAtIndexPath:(NSIndexPath *)indexPath{
     if ([self.modelSource count]>indexPath.section) {
         if ([self.modelSource[indexPath.section] count]>indexPath.item) {
-             return self.modelSource[indexPath.section][indexPath.item];
+            return self.modelSource[indexPath.section][indexPath.item];
         }
     }
     return [[ChuckModel alloc] initEmptyIndexPath:indexPath];
@@ -331,15 +331,15 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
 }
 #pragma mark UICollectionViewDataSource
 -(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellforChuckModel:(ChuckModel *)chuckModel forIndexPath:(NSIndexPath *)indexPath{
-//    NSString * footerRefresh = @"footerRefresh";
-//    UIView * refresh =  [self ifExistFooterRefresh:indexPath];
-//    if (refresh) {
-//        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:footerRefresh forIndexPath:indexPath];
-//        cell.contentView.backgroundColor = [UIColor clearColor];
-//        [cell.contentView addSubview:refresh];
-//
-//        return cell;
-//    }
+    //    NSString * footerRefresh = @"footerRefresh";
+    //    UIView * refresh =  [self ifExistFooterRefresh:indexPath];
+    //    if (refresh) {
+    //        UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:footerRefresh forIndexPath:indexPath];
+    //        cell.contentView.backgroundColor = [UIColor clearColor];
+    //        [cell.contentView addSubview:refresh];
+    //
+    //        return cell;
+    //    }
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:chuckModel.identifier forIndexPath:indexPath];
     return cell;
 }
@@ -355,12 +355,12 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     return [self numberOfSection];
 }
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-//    if (section+1 == [self numberOfSection]) {
-//        UIView * refresh = [self getRefreshView];
-//        if (refresh) {
-//            return [self numberOfRowsAtSection:section]+1;
-//        }
-//    }
+    //    if (section+1 == [self numberOfSection]) {
+    //        UIView * refresh = [self getRefreshView];
+    //        if (refresh) {
+    //            return [self numberOfRowsAtSection:section]+1;
+    //        }
+    //    }
     return [self numberOfRowsAtSection:section];
 }
 - (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -384,9 +384,9 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     HeadFootModel * headFootModel = [self getHeadFootModelAtSection:indexPath.section kind:kind];
     UICollectionReusableView *view = [self collectionView:collectionView reusableViewforHeadFootModel:headFootModel section:indexPath.section];
     id model = headFootModel.model;
-//    if(self.headFootConfigureBefore&&model) {
-//        self.headFootConfigureBefore(view, model,kind,indexPath.section);
-//    }
+    //    if(self.headFootConfigureBefore&&model) {
+    //        self.headFootConfigureBefore(view, model,kind,indexPath.section);
+    //    }
     if ([view respondsToSelector:@selector(collectionView:vcDelegate:model:viewForSupplementaryElementOfKind:atIndexPath:)]&&headFootModel.model) {
         [view collectionView:self vcDelegate:self.vcDelegate model:model viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
     }
@@ -419,9 +419,9 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
 //}
 #pragma mark -- UICollectionViewDelegate --
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
-//    if ([self ifExistFooterRefresh:indexPath]) {
-//        return;
-//    }
+    //    if ([self ifExistFooterRefresh:indexPath]) {
+    //        return;
+    //    }
     ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
     UICollectionViewCell *cell = [self collectionView:collectionView cellforChuckModel:chuckModel forIndexPath:indexPath];
     if(self.cellDidselectConfigBefore) {
@@ -497,7 +497,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     }
 }
 - (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-
+    
     if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewDidEndScrollingAnimation:)]) {
         [_vcDelegate scrollViewDidEndScrollingAnimation:self];
     }
@@ -514,9 +514,140 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     }
 }
 - (void)scrollViewDidScrollToTop:(UIScrollView *)scrollView{
-
+    
     if (_vcDelegate && [_vcDelegate respondsToSelector:@selector(scrollViewDidScrollToTop:)]) {
         [_vcDelegate scrollViewDidScrollToTop:self];
     }
+}
+-(void)insertModel:(id)model cellClass:(Class)cellClass indexPath:(NSIndexPath *)indexPath completion:(void (^ __nullable)(BOOL finished))completion{
+    if(!model||![cellClass isSubclassOfClass:[UICollectionViewCell class]]) return;
+    [self insertModel:model cellClass:cellClass allowEdit:NO editStyle:0 indexPath:indexPath completion:completion];
+}
+-(void)insertModel:(id)model cellClass:(Class)cellClass allowEdit:(BOOL)edit editStyle:(UITableViewCellEditingStyle)editStyle indexPath:(NSIndexPath *)indexPath  completion:(void (^ __nullable)(BOOL finished))completion{
+    
+    if(!model||![cellClass isSubclassOfClass:[UICollectionViewCell class]]) return;
+    if (indexPath.section>=[self numberOfSection]) {
+        NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
+        return;
+    }
+    if (indexPath.item>=[self.modelSource[indexPath.section] count]) {
+        NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
+        return;
+    }
+    ChuckModel * chuckModel = [self configModel:model cellClass:cellClass allowEdit:edit editStyle:editStyle indexPath:indexPath];
+    //     [self ifBeyondSection:indexPath.section];
+    //    if (indexPath.row>=[self.modelSource[indexPath.section] count]) {
+    //        //填充足够的空ChuckModel,
+    //        for (NSInteger i=[self.modelSource[indexPath.section] count]; i<indexPath.row; i++) {
+    //            [self.modelSource[indexPath.section] addObject:[[ChuckModel alloc]initEmptyIndexPath:chuckModel.indexPath]];
+    //        }
+    //        //[self.modelSource[indexPath.section] addObject:chuckModel];
+    //    }
+    [self.modelSource[indexPath.section] insertObject:chuckModel atIndex:indexPath.row];
+    if ([self.modelSource[indexPath.section] count]!=1) {
+        [self performBatchUpdates:^{
+            [self insertItemsAtIndexPaths:@[indexPath]];
+        } completion:^(BOOL finished) {
+            if (completion) {
+                completion(YES);
+            }
+            [self delayAnimationReload];
+        }];
+    }
+    [self changeIndexPath:[NSIndexPath indexPathForItem:indexPath.item+1 inSection:indexPath.section]];
+    [self reloadData];
+}
+//---------删除模式
+-(void)removeIndexPath:(NSIndexPath *)indexPath completion:(void (^ __nullable)(BOOL finished))completion{
+    //    __weak typeof(self) wSelf = self;
+    if (indexPath.section>=[self numberOfSection]) {
+        NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
+        return;
+    }
+    if (indexPath.item>=[self.modelSource[indexPath.section] count]) {
+        NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
+        return;
+    }
+    
+    [self ifBeyondSection:indexPath.section];
+    if (indexPath.item>=[self.modelSource[indexPath.section] count]) {
+        //填充足够的空ChuckModel,
+        for (NSInteger i=[self.modelSource[indexPath.section] count]; i<indexPath.item+1; i++) {
+            [self.modelSource[indexPath.section] addObject:[[ChuckModel alloc]initEmptyIndexPath:indexPath]];
+        }
+    }
+    [self.modelSource[indexPath.section] removeObjectAtIndex:indexPath.item];
+    [self changeIndexPath:[NSIndexPath indexPathForRow:indexPath.item-1 inSection:indexPath.section]];
+    [self performBatchUpdates:^{
+        [self deleteItemsAtIndexPaths:@[indexPath]];
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion(YES);
+        }
+        [self delayAnimationReload];
+    }];
+    
+}
+-(void)removeSection:(NSUInteger)section completion:(void (^ __nullable)(BOOL finished))completion{
+    if (section>=[self numberOfSection]) {
+        NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
+        return;
+    }
+    //    __weak typeof(self) wSelf = self;
+    [self ifBeyondSection:section];
+    [self.modelSource removeObjectAtIndex:section];
+    [self changeSection:section];
+    
+    [self performBatchUpdates:^{
+        [self deleteSections:[NSIndexSet indexSetWithIndex:section]];
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion(YES);
+        }
+    }];
+}
+-(void)removeSectionRange:(NSRange)range completion:(void (^ __nullable)(BOOL finished))completion{
+    if (range.length>=[self numberOfSection]) {
+        NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
+        return;
+    }
+    //    __weak typeof(self) wSelf = self;
+    [self ifBeyondSection:range.length];
+    [self.modelSource removeObjectsInRange:range];
+    //删除的救在原地处理
+    [self changeSection:range.location];
+    [self performBatchUpdates:^{
+        [self deleteSections:[NSIndexSet indexSetWithIndexesInRange:range]];
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion(YES);
+        }
+    }];
+}
+-(void)changeIndexPath:(NSIndexPath *)indexPath{
+    //修改它之后的所有cell的row+1
+    for (NSInteger i=indexPath.row; i<[self.modelSource[indexPath.section] count]; i++) {
+        NSIndexPath * ni = [NSIndexPath indexPathForItem:i inSection:indexPath.section];
+        ChuckModel * chuckModel = [self chuckModelAtIndexPath:ni];
+        chuckModel.indexPath = ni;
+    }
+}
+-(void)changeSection:(NSUInteger)section{
+    //修改它之后的所有cell的row+1
+    for (NSInteger i=section; i<[self.modelSource count]; i++) {
+        
+        NSIndexPath * ni = [NSIndexPath indexPathForRow:0 inSection:i];
+        [self changeIndexPath:ni];
+    }
+}
+- (ChuckModel *)chuckModelAtIndexPath:(NSIndexPath *)indexPath {
+    return [self getModelAtIndexPath:indexPath];
+}
+-(void)delayAnimationReload{
+    //    __weak typeof(self) wSelf = self;
+    //    dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0/*延迟执行时间*/ * NSEC_PER_SEC));
+    //    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+    //        [wSelf reloadData];
+    //    });
 }
 @end
