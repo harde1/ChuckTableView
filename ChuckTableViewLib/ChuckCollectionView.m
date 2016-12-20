@@ -101,7 +101,6 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     }
 }
 
-
 //添加元素 -- start
 - (void)addModel:(id)model cellClass:(Class)cellClass section:(NSInteger)section{
     if(!model||![cellClass isSubclassOfClass:[UICollectionViewCell class]]) return;
@@ -558,7 +557,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     [self reloadData];
 }
 //---------删除模式
--(void)removeIndexPath:(NSIndexPath *)indexPath completion:(void (^ __nullable)(BOOL finished))completion{
+-(void)removeIndexPath:(NSIndexPath * _Nonnull)indexPath completion:(void (^__nullable)(BOOL finished))completion{
     //    __weak typeof(self) wSelf = self;
     if (indexPath.section>=[self numberOfSection]) {
         NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
@@ -600,6 +599,40 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     
     [self performBatchUpdates:^{
         [self deleteSections:[NSIndexSet indexSetWithIndex:section]];
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion(YES);
+        }
+    }];
+}
+-(void)replaceSection:(NSUInteger)section models:(NSArray *_Nonnull)models cellClass:(Class)cellClass completion:(void (^ __nullable)(BOOL finished))completion{
+    if (section>=[self numberOfSection]) {
+        NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
+        return;
+    }
+    if (![models isKindOfClass:[NSArray class]]) {
+        
+        return;
+    }
+    if (models.count==0) {
+        return;
+    }
+    //    __weak typeof(self) wSelf = self;
+    [self ifBeyondSection:section];
+    NSMutableArray * arr = [[NSMutableArray alloc]initWithCapacity:models.count];
+    int i=0;
+    for (id model in models) {
+        ChuckModel * chuckModel = [self configModel:model cellClass:cellClass allowEdit:NO editStyle:0 indexPath:[NSIndexPath indexPathForItem:i++ inSection:section]];
+        [arr addObject:chuckModel];
+    }
+    
+    [self.modelSource insertObject:arr atIndex:section];
+    [self.modelSource removeObjectAtIndex:section+1];
+    [self changeSection:section];
+    
+    [self performBatchUpdates:^{
+        //        [self reloadSections:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(section, section+1)]];
+        [self reloadSections:[NSIndexSet indexSetWithIndex:section]];
     } completion:^(BOOL finished) {
         if (completion) {
             completion(YES);

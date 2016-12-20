@@ -50,17 +50,18 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 //---------插入
 -(void)insertModel:(id)model cellClass:(Class)cellClass indexPath:(NSIndexPath *)indexPath completion:(void (^ __nullable)(BOOL finished))completion;
 //---------删除模式
--(void)removeIndexPath:(NSIndexPath *)indexPath completion:(void (^ __nullable)(BOOL finished))completion;
+-(void)removeIndexPath:(NSIndexPath * _Nonnull)indexPath completion:(void (^__nullable)(BOOL finished))completion;
 -(void)removeSection:(NSUInteger)section completion:(void (^ __nullable)(BOOL finished))completion;
 //删除什么section到什么section 1-2 ，包含1和2
 -(void)removeSectionRange:(NSRange)range completion:(void (^ __nullable)(BOOL finished))completion;
-//-(UIView *)ifExistFooterRefresh:(NSIndexPath *)indexPath;
+//---------替换模式
+-(void)replaceSection:(NSUInteger)section models:(NSArray * _Nonnull)models cellClass:(_Nonnull Class)cellClass completion:(void (^ __nullable)(BOOL finished))completion;
 
+//-(UIView *)ifExistFooterRefresh:(NSIndexPath *)indexPath;
 //-(UIView *)getRefreshView;
 //隐藏上拉加载更多
 //- (void)dismissFooterRefresh;
 //所有关于头和脚的都用cell来完成，下面的代码废弃
-
 //#pragma mark collectionViewHead&foot
 ////section 0
 //- (void)addHeadModel:(id)model;
@@ -78,6 +79,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 //- (void)addFootModel:(id)model section:(NSInteger)section;
 //- (void)addFootModels:(NSArray *)models section:(NSInteger)section;
 //- (void)addFootModels:(NSArray *)models cellClass:(Class)cellClass section:(NSInteger)section;
+
 
 
 
