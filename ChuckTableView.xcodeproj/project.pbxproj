@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		CA05FABA1DFE829100011EB9 /* ChuckCRView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA05FAB91DFE829100011EB9 /* ChuckCRView.m */; };
+		CA45F5DC1E0A5FE0009A0E84 /* CCellHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5D71E0A5FE0009A0E84 /* CCellHomeCell.m */; };
+		CA45F5DD1E0A5FE0009A0E84 /* CCellHomeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5D91E0A5FE0009A0E84 /* CCellHomeHeader.m */; };
+		CA45F5DE1E0A5FE0009A0E84 /* CCellTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5DB1E0A5FE0009A0E84 /* CCellTopBar.m */; };
+		CA45F5E11E0A6068009A0E84 /* UtilScreenSize.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5E01E0A6068009A0E84 /* UtilScreenSize.m */; };
+		CA45F5E41E0A6192009A0E84 /* UIView+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5E31E0A6192009A0E84 /* UIView+Metrics.m */; };
+		CA45F5E71E0A6313009A0E84 /* NSString+SizeFont.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5E61E0A6313009A0E84 /* NSString+SizeFont.m */; };
 		CAC3996F1DEEBFED00252721 /* CollectController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC3996E1DEEBFED00252721 /* CollectController.m */; };
 		CAC399751DEEE0A000252721 /* ChuckCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC399741DEEE0A000252721 /* ChuckCCell.m */; };
 		CAC9D44D1E039E6700AC2842 /* ChuckCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC9D43B1E039E6700AC2842 /* ChuckCollectionView.m */; };
@@ -53,6 +59,18 @@
 /* Begin PBXFileReference section */
 		CA05FAB81DFE829100011EB9 /* ChuckCRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckCRView.h; sourceTree = "<group>"; };
 		CA05FAB91DFE829100011EB9 /* ChuckCRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckCRView.m; sourceTree = "<group>"; };
+		CA45F5D61E0A5FE0009A0E84 /* CCellHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellHomeCell.h; sourceTree = "<group>"; };
+		CA45F5D71E0A5FE0009A0E84 /* CCellHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellHomeCell.m; sourceTree = "<group>"; };
+		CA45F5D81E0A5FE0009A0E84 /* CCellHomeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellHomeHeader.h; sourceTree = "<group>"; };
+		CA45F5D91E0A5FE0009A0E84 /* CCellHomeHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellHomeHeader.m; sourceTree = "<group>"; };
+		CA45F5DA1E0A5FE0009A0E84 /* CCellTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellTopBar.h; sourceTree = "<group>"; };
+		CA45F5DB1E0A5FE0009A0E84 /* CCellTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellTopBar.m; sourceTree = "<group>"; };
+		CA45F5DF1E0A6068009A0E84 /* UtilScreenSize.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilScreenSize.h; sourceTree = "<group>"; };
+		CA45F5E01E0A6068009A0E84 /* UtilScreenSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilScreenSize.m; sourceTree = "<group>"; };
+		CA45F5E21E0A6192009A0E84 /* UIView+Metrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Metrics.h"; sourceTree = "<group>"; };
+		CA45F5E31E0A6192009A0E84 /* UIView+Metrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Metrics.m"; sourceTree = "<group>"; };
+		CA45F5E51E0A6313009A0E84 /* NSString+SizeFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SizeFont.h"; sourceTree = "<group>"; };
+		CA45F5E61E0A6313009A0E84 /* NSString+SizeFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SizeFont.m"; sourceTree = "<group>"; };
 		CAC3996D1DEEBFED00252721 /* CollectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectController.h; sourceTree = "<group>"; };
 		CAC3996E1DEEBFED00252721 /* CollectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectController.m; sourceTree = "<group>"; };
 		CAC399731DEEE0A000252721 /* ChuckCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckCCell.h; sourceTree = "<group>"; };
@@ -127,6 +145,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA45F5D51E0A5FE0009A0E84 /* CCell */ = {
+			isa = PBXGroup;
+			children = (
+				CA45F5D61E0A5FE0009A0E84 /* CCellHomeCell.h */,
+				CA45F5D71E0A5FE0009A0E84 /* CCellHomeCell.m */,
+				CA45F5D81E0A5FE0009A0E84 /* CCellHomeHeader.h */,
+				CA45F5D91E0A5FE0009A0E84 /* CCellHomeHeader.m */,
+				CA45F5DA1E0A5FE0009A0E84 /* CCellTopBar.h */,
+				CA45F5DB1E0A5FE0009A0E84 /* CCellTopBar.m */,
+			);
+			path = CCell;
+			sourceTree = "<group>";
+		};
 		CAC9D4381E039E6700AC2842 /* ChuckTableViewLib */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,6 +224,12 @@
 		F48085A21DC2F55700D22552 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				CA45F5E21E0A6192009A0E84 /* UIView+Metrics.h */,
+				CA45F5E31E0A6192009A0E84 /* UIView+Metrics.m */,
+				CA45F5E51E0A6313009A0E84 /* NSString+SizeFont.h */,
+				CA45F5E61E0A6313009A0E84 /* NSString+SizeFont.m */,
+				CA45F5DF1E0A6068009A0E84 /* UtilScreenSize.h */,
+				CA45F5E01E0A6068009A0E84 /* UtilScreenSize.m */,
 				F48085AB1DC2F55800D22552 /* Main.storyboard */,
 				F48085AE1DC2F55800D22552 /* Assets.xcassets */,
 				F48085B01DC2F55800D22552 /* LaunchScreen.storyboard */,
@@ -225,6 +262,7 @@
 		F4D43A0B1DC60F33007099B4 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				CA45F5D51E0A5FE0009A0E84 /* CCell */,
 				F48085DD1DC300E700D22552 /* ChuckCell.h */,
 				F48085DE1DC300E700D22552 /* ChuckCell.m */,
 				CAC399731DEEE0A000252721 /* ChuckCCell.h */,
@@ -372,11 +410,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA45F5E11E0A6068009A0E84 /* UtilScreenSize.m in Sources */,
 				CAC9D44E1E039E6700AC2842 /* ChuckLayout.m in Sources */,
+				CA45F5DC1E0A5FE0009A0E84 /* CCellHomeCell.m in Sources */,
+				CA45F5E71E0A6313009A0E84 /* NSString+SizeFont.m in Sources */,
 				F48085AA1DC2F55800D22552 /* ViewController.m in Sources */,
 				CAC9D44F1E039E6700AC2842 /* ChuckModel.m in Sources */,
 				F48085DF1DC300E700D22552 /* ChuckCell.m in Sources */,
+				CA45F5DD1E0A5FE0009A0E84 /* CCellHomeHeader.m in Sources */,
 				CAC3996F1DEEBFED00252721 /* CollectController.m in Sources */,
+				CA45F5E41E0A6192009A0E84 /* UIView+Metrics.m in Sources */,
 				CAC9D4521E039E6700AC2842 /* NSMutableArray+Chuck.m in Sources */,
 				F48085A71DC2F55800D22552 /* AppDelegate.m in Sources */,
 				CAC9D4501E039E6700AC2842 /* ChuckTableView.m in Sources */,
@@ -390,6 +433,7 @@
 				F47BEB411DC5F9FA00E6F225 /* SimpleController.m in Sources */,
 				CAC9D4551E039E6700AC2842 /* UITableViewCell+Chuck.m in Sources */,
 				CAC9D4511E039E6700AC2842 /* HeadFootModel.m in Sources */,
+				CA45F5DE1E0A5FE0009A0E84 /* CCellTopBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

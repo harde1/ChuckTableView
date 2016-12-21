@@ -8,12 +8,16 @@
 
 #import "CollectController.h"
 #import "ChuckCollectionView.h"
-#import "ChuckCCell.h"
-#import "ChuckCRView.h"
 #import "ChuckLayout.h"
+
+#import "CCellTopBar.h"
+#import "CCellHomeHeader.h"
+#import "CCellHomeCell.h"
+
 @interface CollectController ()<ChuckDelegate>
 @property(nonatomic,strong)ChuckCollectionView* collect;
 @property(nonatomic,strong) UIRefreshControl *refreshControl;
+@property (nonatomic,strong)ChuckLayout * layout;
 @end
 
 @implementation CollectController
@@ -24,56 +28,104 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    CGFloat mainScreenWidth = [UIScreen mainScreen].bounds.size.width;
-    NSInteger per = 3;
-    NSInteger perAdd = per+1;
-    ChuckLayout * chuckLayout = [[ChuckLayout alloc]initItemSize:^CGSize(id model, NSInteger section) {
-         //根据section返回cell大小
-        if (section==0) {
-            return (CGSize){mainScreenWidth - 10 - 10,50};
-        }else if(section==1){
-            return (CGSize){((mainScreenWidth - 10 - 10)-10*(per-1))/per,((mainScreenWidth - 10 - 10)-10)/per};
-        }else{
-            return (CGSize){((mainScreenWidth - 10 - 10)-10*(perAdd-1))/perAdd,((mainScreenWidth - 10 - 10)-10)/perAdd};
-        }
-    } interitemSpacingIndexPath:^CGFloat(id model, NSInteger section) {
-        //根据section返回cell与cell间隔
-        return 10;
-    } lineSpacingIndexPath:^CGFloat(id model, NSInteger section) {
-        //根据section返回行距
-        return 10;
-    } contentInsetIndexPath:^UIEdgeInsets(id model, NSInteger section) {
-        //根据section返回内嵌
-        return UIEdgeInsetsMake(10, 10, 10, 10);
-    }];
-
     ChuckCollectionView* collect =
     [[ChuckCollectionView alloc]
      initWithFrame:self.view.bounds
-     collectionViewLayout:chuckLayout
+     collectionViewLayout:self.layout
      vcDelegate:self
      configureBlock:^(UICollectionViewCell *cell, id model, NSIndexPath *indexPath) {
-         cell.backgroundColor = [UIColor redColor];
+
      } cellDidselectConfig:^(UICollectionViewCell *cell, id model, NSIndexPath *indexPath) {
-         NSLog(@"点击到什么：%@",model);
+         NSLog(@"点击到什么：%@,%ld,%ld",model,indexPath.section,indexPath.item);
      }];
     [self.view addSubview:collect];
+    
     _collect = collect;
     collect.backgroundColor = [UIColor whiteColor];
-    [collect addModel:@"hello world" cellClass:ChuckCCell.class];
-    for (int i=0; i<2; i++) {
-        [collect addModel:@"hello world"];
-    }
-    [collect addModel:@"hello world" cellClass:ChuckCCell.class];
-    for (int i=0; i<3; i++) {
-        [collect addModel:@"hello world" section:1];
-    }
-    for (int i=0; i<10; i++) {
-        [collect addModel:@"hello world" section:2];
-    }
+    [collect addModel:@"" cellClass:CCellTopBar.class];
+
+    [collect addModel:@"" cellClass:CCellHomeHeader.class section:1];
+    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
+    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
+    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
+    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
+
+    [collect addModel:@"" cellClass:CCellHomeHeader.class section:3];
+
+    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
+    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
+    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
+    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
+    
     [self setNavigationItem];
     [self configTopRefresh];
 }
+
+//插入一个
+-(void)doShouCang{
+
+    [_collect insertModel:@"" cellClass:CCellHomeCell.class indexPath:[NSIndexPath indexPathForItem:0 inSection:3+1] completion:^(BOOL finished) {
+
+    }];
+
+}
+//删除一个
+-(void)delShouCang{
+    
+    [_collect removeIndexPath:[NSIndexPath indexPathForItem:0 inSection:3+1] completion:^(BOOL finished) {
+
+    }];
+}
+-(ChuckLayout *)layout{
+    if (!_layout) {
+        CCellType (^whichType)(NSInteger section) = ^(NSInteger section){
+            if (section==0) return TopBar;
+            if (section%2!=0) return HomeHeader;
+            return HomeCell;
+        };
+
+        NSInteger perRow = 2;
+        CGFloat width = self.view.frame.size.width;
+        CGFloat leftRight = PxToPt(26);
+
+        UIEdgeInsets sectionInset = UIEdgeInsetsMake(leftRight, leftRight, leftRight, leftRight);
+
+        CGFloat interitemSpacing = PxToPt(20);
+        CGFloat lineSpacing = PxToPt(20);
+        CGFloat w = (width-interitemSpacing * (perRow -1) - sectionInset.left -sectionInset.right)/perRow * 1.0;
+        CGFloat h = w;
+
+        _layout = [[ChuckLayout alloc]initItemSize:^CGSize(id model, NSInteger section) {
+            switch (whichType(section)) {
+                case TopBar:
+                    return CGSizeMake(width,PxToPt(100));
+                    break;
+                case HomeHeader:
+                    return CGSizeMake(width - leftRight * 2, PxToPt(90));
+                    break;
+                case HomeCell:
+                    return (CGSize){w,h};
+                    break;
+            }
+            return (CGSize){w,h};
+        } interitemSpacingIndexPath:^CGFloat(id model, NSInteger section) {
+
+            return interitemSpacing;
+        } lineSpacingIndexPath:^CGFloat(id model, NSInteger section) {
+
+            return lineSpacing;
+        } contentInsetIndexPath:^UIEdgeInsets(NSInteger section) {
+            if (whichType(section)==TopBar) return UIEdgeInsetsZero;
+            if (whichType(section)==HomeHeader) return UIEdgeInsetsMake(0, leftRight, 0, leftRight);
+            return sectionInset;
+        }];
+    }
+    return _layout;
+}
+
+
+
+
 - (void)setNavigationItem{
     UIView * vItems = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 140, 60)];
     UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -105,19 +157,5 @@
 }
 -(void)delayDismiss{
     [_refreshControl  endRefreshing]; //停止刷新
-}
--(void)scrollViewDidScroll:(ChuckTableView *)tableView{
-    if (tableView.contentOffset.y >= tableView.contentSize.height-tableView.frame.size.height - 20) {
-        [self performSelector:@selector(delayDismiss) withObject:nil afterDelay:2];
-    }
-}
--(void)doShouCang{
-
-    [_collect addModel:@"hello world"];
-    [_collect reloadData];
-}
--(void)delShouCang{
-    
-    
 }
 @end
