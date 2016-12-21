@@ -14,8 +14,11 @@
        lineSpacingIndexPath:(CGFloat (^)(id model,NSInteger section))lineSpacing
       contentInsetIndexPath:(UIEdgeInsets (^)(NSInteger section))contentInset;
 
+//不同setion的itemSize大小
 -(void)setItemSizeSection:(CGSize (^)(id model,NSInteger section))itemSize;
+//不同setion的cell与cell之间的距离
 -(void)setInteritemSpacingIndexPath:(CGFloat (^)(id model,NSInteger section))interitemSpacing;
+//不同setion的行与行之间的距离
 -(void)setLineSpacingIndexPath:(CGFloat (^)(id model,NSInteger section))lineSpacing;
 //每个section的内嵌
 -(void)setContentInsetIndexPath:(UIEdgeInsets (^)(NSInteger section))contentInset;
