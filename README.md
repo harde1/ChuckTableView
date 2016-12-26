@@ -1,33 +1,6 @@
 # ChuckTableView
 
-```
-[tableView addModel:@"消息中心"];
-[tableView addModel:@"会员中心"];
-[tableView addModels:@[@"定时关闭",@"关于我们",@"退出登录"]];
-```
-
-![simple](https://github.com/harde1/ChuckTableView/tree/master/img/simple.png)
-
-```
-//1、不声明section，默认为0
-[self.tableView addModel:@"不声明section，默认为0" cellClass:ChuckCell.class];
-//2、自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度
-[self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:XibAutpHeightCell.class];
-//3、支持编辑模式简化操作
-[self.tableView addModels:@[@"左滑进入删除模式",
-@"左滑进入删除模式"]
-cellClass:ChuckCell.class editStyle:UITableViewCellEditingStyleDelete];
-//4、支持多个model同时导入
-[self.tableView addModels:@[
-@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界",
-@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界"]
-cellClass:XibAutpHeightCell.class section:3 editStyle:UITableViewCellEditingStyleDelete];
-//5、指定相应的section，不会数组越界，会自动填充cell满足条件
-[self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:ChuckCell.class section:5];
-//6、不指定类型，默认为UItableViewCell
-[self.tableView addModels:@[@"不指定类型，默认为UItableViewCell",@"不指定类型，默认为UItableViewCell"] section:2];
-```
-![tableview](https://github.com/harde1/ChuckTableView/tree/master/img/tableview.png)
+![tableview](https://raw.githubusercontent.com/harde1/ChuckTableView/master/img/tableview.png)
 
 ```
 [collect addModel:@"" cellClass:CCellTopBar.class];
@@ -46,7 +19,7 @@ cellClass:XibAutpHeightCell.class section:3 editStyle:UITableViewCellEditingStyl
 [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
 ```
 
-![collect](https://github.com/harde1/ChuckTableView/tree/master/img/collect.png)
+![collect](https://raw.githubusercontent.com/harde1/ChuckTableView/master/img/collect.png)
 
 高度封装tableView，简化操作，目的是为了cell可以自由同时存在于不同的UIViewController之中，cell自给自足，cell环境封闭起来
 

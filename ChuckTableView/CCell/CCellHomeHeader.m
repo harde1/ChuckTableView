@@ -14,6 +14,7 @@
 @property(nonatomic,strong) UIView * vLine;
 @property(nonatomic,strong) UIButton * btnRight;
 @property(nonatomic,strong) UILabel * lbPrograma;
+
 @end
 @implementation CCellHomeHeader
 -(instancetype)initWithFrame:(CGRect)frame{
@@ -30,7 +31,10 @@
 
 
 }
-
+-(void)layoutSubviews{
+    [super layoutSubviews];
+    [self setBorder];
+}
 
 -(UIView *)vLine{
     if (!_vLine) {
@@ -40,6 +44,21 @@
     }
     _vLine.centerY = self.contentView.centerY;
     return _vLine;
+}
+-(void)setBorder{
+    
+        UIView *vBorder = [[UIView alloc] init];
+        vBorder.backgroundColor = [UIColor grayColor];
+    vBorder.width = self.width;
+    vBorder.height = 0.5;
+    [self.contentView addSubview:vBorder];
+    
+    vBorder = [[UIView alloc] init];
+    vBorder.backgroundColor = [UIColor grayColor];
+    vBorder.width = self.width;
+    vBorder.height = 0.5;
+    vBorder.top = self.height-0.5;
+    [self.contentView addSubview:vBorder];
 }
 -(UIButton *)btnRight{
     if (!_btnRight) {
@@ -57,6 +76,7 @@
 
         _btnRight.titleLabel.font = [UIFont systemFontOfSize:12.f];
         _btnRight.titleLabel.textAlignment = NSTextAlignmentCenter;
+        [_btnRight setTitleColor:[UIColor lightGrayColor] forState:0];
         [_btnRight setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
 
         [_btnRight setTitle:titile forState:UIControlStateNormal];

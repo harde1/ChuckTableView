@@ -46,21 +46,22 @@
 
 -(void)collectionView:(ChuckCollectionView *)collectionView vcDelegate:(CollectController *)vcDelegate cellForRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath{
 
-
+    self.lbTitle.text = model[@"title"];
 }
 
 -(void)collectionView:(ChuckCollectionView *)collectionView vcDelegate:(CollectController*)vcDelegate didSelectRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath{
-    NSLog(@"--%@",collectionView.modelSource);
-
+    //1、删除
     //    [collectionView removeSectionRange:NSMakeRange(1, 2) completion:^(BOOL finished) {
     //
     //    }];
-
+    
+    //2、插入
     //    [collectionView insertModel:@"cell内容的位置" cellClass:NSClassFromString(@"CCellHomeCell") indexPath:[NSIndexPath indexPathForItem:10 inSection:2] completion:^(BOOL finished) {
     //
     //    }];
+    //3、替换
     [collectionView replaceSection:2 models:@[@"dsahdkjas",@"dasdjhkasd",@"dsdas"] cellClass:NSClassFromString(@"CCellHomeCell") completion:^(BOOL finished) {
-
+        NSLog(@"section 2 给整个替换");
     }];
 }
 
@@ -112,9 +113,10 @@
         _lbTitle = [UILabel new];
         _lbTitle.font = [UIFont systemFontOfSize:[UtilScreenSize getFontbyPx:28]];
         _lbTitle.text = @"---";
-        _lbTitle.size = CGSizeMake(PxToPt(293), PxToPt(28));
-        _lbTitle.width = self.btnLeft.left - self.lbTime.left;
+        _lbTitle.size = CGSizeMake(PxToPt(393), PxToPt(28));
+       
     }
+//     _lbTitle.width = self.btnLeft.left - self.lbTime.left;
     _lbTitle.left = self.lbTime.left;
     _lbTitle.centerY = self.contentView.centerY+[UtilScreenSize getFontbyPx:28];
     return _lbTitle;

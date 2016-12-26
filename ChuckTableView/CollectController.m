@@ -28,41 +28,46 @@ const CGFloat ZYTopViewH = 350;
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ChuckCollectionView* collect =
-    [[ChuckCollectionView alloc]
-     initWithFrame:self.view.bounds
-     collectionViewLayout:self.layout
-     vcDelegate:self
-     configureBlock:^(UICollectionViewCell *cell, id model, NSIndexPath *indexPath) {
-         
-     } cellDidselectConfig:^(UICollectionViewCell *cell, id model, NSIndexPath *indexPath) {
-         NSLog(@"点击到什么：%@,%ld,%ld",model,indexPath.section,indexPath.item);
-     }];
-    [self.view addSubview:collect];
+    [self.view addSubview:self.collect];
     
-    _collect = collect;
-    collect.backgroundColor = [UIColor whiteColor];
-    [collect addModel:@"" cellClass:CCellTopBar.class];
+    self.collect.backgroundColor = [UIColor whiteColor];
+    [self.collect addModel:@{@"title":@"点击这里替换整个section 2"} cellClass:CCellTopBar.class];
     
-    [collect addModel:@"" cellClass:CCellHomeHeader.class section:1];
-    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
-    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
-    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
-    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
+    [self.collect addModel:@"" cellClass:CCellHomeHeader.class section:1];
+    [self.collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
+    [self.collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
+    [self.collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
+    [self.collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
     
-    [collect addModel:@"" cellClass:CCellHomeHeader.class section:3];
+    [self.collect addModel:@"" cellClass:CCellHomeHeader.class section:3];
     
-    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
-    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
-    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
-    [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
+    [self.collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
+    [self.collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
+    [self.collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
+    [self.collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
     
-    [self setNavigationItem];
-    [self configTopRefresh];
+    
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
     _collect.frame = self.view.bounds;
+}
+-(ChuckCollectionView *)collect{
+    if (!_collect) {
+        _collect =
+        [[ChuckCollectionView alloc]
+         initWithFrame:self.view.bounds
+         collectionViewLayout:self.layout
+         vcDelegate:self
+         configureBlock:^(UICollectionViewCell *cell, id model, NSIndexPath *indexPath) {
+             
+         } cellDidselectConfig:^(UICollectionViewCell *cell, id model, NSIndexPath *indexPath) {
+             NSLog(@"点击到什么：%@,%ld,%ld",model,indexPath.section,indexPath.item);
+         }];
+        [self setNavigationItem];
+        [self configTopRefresh];
+    }
+    return _collect;
 }
 //插入一个
 -(void)doShouCang{
@@ -119,7 +124,7 @@ const CGFloat ZYTopViewH = 350;
             return lineSpacing;
         } contentInsetIndexPath:^UIEdgeInsets(NSInteger section) {
             if (whichType(section)==TopBar) return UIEdgeInsetsZero;
-            if (whichType(section)==HomeHeader) return UIEdgeInsetsMake(0, leftRight, 0, leftRight);
+            if (whichType(section)==HomeHeader) return UIEdgeInsetsMake(5, leftRight, 0, leftRight);
             return sectionInset;
         }];
     }
@@ -150,8 +155,8 @@ const CGFloat ZYTopViewH = 350;
     _refreshControl = refreshControl;
     refreshControl.tintColor = [UIColor grayColor];
     [refreshControl addTarget:self action:@selector(topRefresh) forControlEvents:UIControlEventValueChanged];
-    [self.collect addSubview:refreshControl];
-    self.collect.alwaysBounceVertical = YES;
+    [_collect addSubview:refreshControl];
+    _collect.alwaysBounceVertical = YES;
 }
 -(void)topRefresh{
     
