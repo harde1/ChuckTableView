@@ -529,7 +529,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
         NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
         return;
     }
-    if (indexPath.item>=[self.modelSource[indexPath.section] count]) {
+    if (indexPath.item>[self.modelSource[indexPath.section] count]) {
         NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
         return;
     }
