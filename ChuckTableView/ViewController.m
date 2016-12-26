@@ -11,7 +11,7 @@
 #import "ChuckCell.h"
 #import "XibAutpHeightCell.h"
 @interface ViewController ()<ChuckDelegate>
-@property(nonatomic,strong)ChuckTableView * sd;
+@property(nonatomic,strong)ChuckTableView * tableView;
 
 @property(nonatomic, strong) UITableViewController *tableViewController;
 @end
@@ -31,60 +31,107 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.edgesForExtendedLayout = UIRectEdgeNone;
-    self.automaticallyAdjustsScrollViewInsets = YES;
-    [self setNavigationItem];
-    
-    _sd = [[ChuckTableView alloc]initWithFrame:self.view.bounds
-                                         style:0
-                                 defaultHeight:100
-                                    vcDelegate:self
-                                configureBlock:^(UITableViewCell* cell, id model, NSIndexPath *indexPath) {
-                                    //默认cell配置
-                                    if (![cell isMemberOfClass:[UITableViewCell class]]) {
-                                        return;
-                                    }
-                                    cell.detailTextLabel.text = model;
-                                    cell.textLabel.text = model;
-                                    cell.backgroundColor = [UIColor grayColor];
-                                } cellDidselectConfig:nil];
-    [self.view addSubview:_sd];
-    [self configTopRefresh];
-    //自动高度
-    [_sd addModel:@"我是XibAutpHeightCell，在s0,r0" cellClass:XibAutpHeightCell.class];
-    [_sd addModel:@"我是XibAutpHeightCell，在s0,r1" cellClass:XibAutpHeightCell.class];
-    [_sd addModels:@[@"我是删除模式,s0,r2",@"我是删除模式,s0,r3"] cellClass:XibAutpHeightCell.class editStyle:UITableViewCellEditingStyleDelete];
-    [_sd addModel:@"haha2,s0,r4" cellClass:XibAutpHeightCell.class];
-    [_sd addModels:@[@"我是删除模式,s3,r0",@"我是删除模式,s3,r1"] cellClass:XibAutpHeightCell.class section:3 editStyle:UITableViewCellEditingStyleDelete];
-    [_sd addModel:@"我是XibAutpHeightCell，在s3,r2" cellClass:XibAutpHeightCell.class section:3];
-    [_sd addModel:@"我是XibAutpHeightCell，在s0,r5" cellClass:XibAutpHeightCell.class];
-    [_sd addModels:@[@"我在预设置里面,s2,r0",@"因为我是UItableViewCell,s2,r1"] section:2];
-    [_sd addModels:@[@"我是XibAutpHeightCell，在s5,r0",@"我是XibAutpHeightCell，在s5,r1"] cellClass:XibAutpHeightCell.class section:5];
-    [_sd addModels:@[@"我是XibAutpHeightCell，在s1,r0",@"我是XibAutpHeightCell，在s1,r1"] cellClass:XibAutpHeightCell.class section:1];
-    [_sd addModels:@[@"我是删除模式,s1,r2",@"我是删除模式,s1,r3"] cellClass:XibAutpHeightCell.class section:1 editStyle:UITableViewCellEditingStyleDelete];
-    [_sd addModel:@"我是XibAutpHeightCell，在s0,r6" cellClass:XibAutpHeightCell.class];
-    [_sd addModel:@"我是XibAutpHeightCell，在s10,r0" cellClass:XibAutpHeightCell.class section:10];
-    [_sd addModels:@[@"我是XibAutpHeightCell，在s9,r0",@"我是XibAutpHeightCell，在s9,r1",@"我是XibAutpHeightCell，在s9,r2",@"我是XibAutpHeightCell，在s9,r3",@"我是XibAutpHeightCell，在s9,r4"] cellClass:XibAutpHeightCell.class section:9];
-    [_sd addModel:@"我是ChuckCell，在s0,r0" cellClass:ChuckCell.class];
-    [_sd addModel:@"我是ChuckCell，在s0,r1" cellClass:ChuckCell.class];
-    [_sd addModels:@[@"我是删除模式,s0,r2",@"我是删除模式,s0,r3"] cellClass:ChuckCell.class editStyle:UITableViewCellEditingStyleDelete];
-    [_sd addModel:@"haha2,s0,r4" cellClass:ChuckCell.class];
-    [_sd addModels:@[@"我是删除模式,s3,r0",@"我是删除模式,s3,r1"] cellClass:ChuckCell.class section:3 editStyle:UITableViewCellEditingStyleDelete];
-    [_sd addModel:@"我是ChuckCell，在s3,r2" cellClass:ChuckCell.class section:3];
-    [_sd addModel:@"我是ChuckCell，在s0,r5" cellClass:ChuckCell.class];
-    [_sd addModels:@[@"我在预设置里面,s2,r0",@"因为我是UItableViewCell,s2,r1"] section:2];
-    [_sd addModels:@[@"我是ChuckCell，在s5,r0",@"我是ChuckCell，在s5,r1"] cellClass:ChuckCell.class section:5];
-    [_sd addModels:@[@"我是ChuckCell，在s1,r0",@"我是ChuckCell，在s1,r1"] cellClass:ChuckCell.class section:1];
-    [_sd addModels:@[@"我是删除模式,s1,r2",@"我是删除模式,s1,r3"] cellClass:ChuckCell.class section:1 editStyle:UITableViewCellEditingStyleDelete];
-    [_sd addModel:@"我是ChuckCell，在s0,r6" cellClass:ChuckCell.class];
-    [_sd addModel:@"我是ChuckCell，在s10,r0" cellClass:ChuckCell.class section:10];
-    [_sd addModels:@[@"我是ChuckCell，在s9,r0",@"我是ChuckCell，在s9,r1",@"我是ChuckCell，在s9,r2",@"我是ChuckCell，在s9,r3",@"我是ChuckCell，在s9,r4"] cellClass:ChuckCell.class section:9];
+    [self.view addSubview:self.tableView];
+    //1、不声明section，默认为0
+    [self.tableView addModel:@"不声明section，默认为0" cellClass:ChuckCell.class];
+    //2、自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度
+    [self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:XibAutpHeightCell.class];
+    //3、支持编辑模式简化操作
+    [self.tableView addModels:@[@"左滑进入删除模式",
+                                @"左滑进入删除模式"]
+                    cellClass:ChuckCell.class editStyle:UITableViewCellEditingStyleDelete];
+    //4、支持多个model同时导入
+    [self.tableView addModels:@[
+                                @"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界",
+                                @"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界"]
+                    cellClass:XibAutpHeightCell.class section:3 editStyle:UITableViewCellEditingStyleDelete];
+    //5、指定相应的section，不会数组越界，会自动填充cell满足条件
+    [self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:ChuckCell.class section:5];
+    //6、不指定类型，默认为UItableViewCell
+    [self.tableView addModels:@[@"不指定类型，默认为UItableViewCell",@"不指定类型，默认为UItableViewCell"] section:2];
+    [self.tableView addModels:@[@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界",@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界"] cellClass:XibAutpHeightCell.class section:1 editStyle:UITableViewCellEditingStyleDelete];
+    [self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:ChuckCell.class section:10];
+    [self.tableView addModels:@[
+                                @"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度",
+                                @"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度",
+                                @"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度",
+                                @"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度"] cellClass:XibAutpHeightCell.class section:9];
+    [self.tableView addModel:@"ChuckCell" cellClass:ChuckCell.class];
+    [self.tableView addModels:@[@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界",@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界"] cellClass:ChuckCell.class editStyle:UITableViewCellEditingStyleDelete];
+    [self.tableView addModel:@"ChuckCell" cellClass:ChuckCell.class];
+    [self.tableView addModels:@[@"不指定类型，默认为UItableViewCell,任意指定section插入不回数组越界",
+                                @"不指定类型，默认为UItableViewCell,任意指定section插入不回数组越界"]
+                      section:2];
+    [self.tableView addModels:@[@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度",@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度"] cellClass:XibAutpHeightCell.class section:5];
+    [self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:XibAutpHeightCell.class];
+    [self.tableView addModel:@"ChuckCell" cellClass:ChuckCell.class section:10];
+    [self.tableView addModels:@[@"任意指定section插入不回数组越界",
+                                @"任意指定section插入不回数组越界",
+                                @"任意指定section插入不回数组越界",
+                                @"任意指定section插入不回数组越界",
+                                @"任意指定section插入不回数组越界"]
+                    cellClass:ChuckCell.class section:9];
     
 }
 -(void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    _sd.frame = self.view.bounds;
+    self.tableView.frame = self.view.bounds;
 }
+-(ChuckTableView *)tableView{
+    if (!_tableView) {
+        _tableView = [[ChuckTableView alloc]initWithFrame:self.view.bounds
+                                                    style:0
+                                            defaultHeight:100
+                                               vcDelegate:self
+                                           configureBlock:^(UITableViewCell* cell, id model, NSIndexPath *indexPath) {
+                                               //默认cell配置
+                                               if (![cell isMemberOfClass:[UITableViewCell class]]) {
+                                                   return;
+                                               }
+                                               cell.detailTextLabel.text = model;
+                                               cell.textLabel.text = model;
+                                               cell.backgroundColor = [UIColor redColor];
+                                           } cellDidselectConfig:nil];
+        [self setNavigationItem];
+        [self configTopRefresh];
+    }
+    return _tableView;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 -(UIView *)tableView:(ChuckTableView *)tableView viewForHeaderInSection:(NSInteger)section{
@@ -122,24 +169,26 @@
     }
 }
 -(void)delayDismiss{
-    [_sd dismissFooterRefresh];
+    [self.tableView dismissFooterRefresh];
     [self.tableViewController.refreshControl  endRefreshing]; //停止刷新
 }
 
+
+
 -(void)doShouCang{
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:11];
-    [_sd insertModel:@"我插, 自动滚到最后" cellClass:XibAutpHeightCell.class indexPath:indexPath animation:UITableViewRowAnimationLeft];
-    [_sd scrollToBottomAnimationTime:1];
+    [self.tableView insertModel:@"我插, 自动滚到最后" cellClass:XibAutpHeightCell.class indexPath:indexPath animation:UITableViewRowAnimationLeft];
+    [self.tableView scrollToBottomAnimationTime:1];
 }
 -(void)delShouCang{
     NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:11];
-    [_sd removeIndexPath:indexPath animation:UITableViewRowAnimationRight];
+    [self.tableView removeIndexPath:indexPath animation:UITableViewRowAnimationRight];
 }
 
 
 -(void)configTopRefresh{
     self.tableViewController = [[UITableViewController alloc] init];
-    self.tableViewController.tableView = _sd;
+    self.tableViewController.tableView = _tableView;
     self.tableViewController.refreshControl = [[UIRefreshControl alloc] init];
     self.tableViewController.refreshControl.tintColor = [UIColor redColor]; //设置刷新控件的颜色
     self.tableViewController.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"]; //设置刷新控件显示的文字
@@ -165,7 +214,8 @@
     [leftButton setTitle:@"删除" forState:UIControlStateNormal];
     [leftButton addTarget:self action:@selector(delShouCang) forControlEvents:UIControlEventTouchUpInside];
     [vItems addSubview:leftButton];
-    UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithCustomView:vItems];
-    self.navigationItem.rightBarButtonItem = rightItem;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:vItems];
 }
+
+
 @end

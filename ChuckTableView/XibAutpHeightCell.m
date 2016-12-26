@@ -22,7 +22,7 @@
 }
 -(void)tableView:(ChuckTableView *)tableView vcDelegate:(id)vcDelegate cellForRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath{
     ChuckModel * chuckModel = [tableView chuckModelAtIndexPath:indexPath];
-    self.lbText.text = [NSString stringWithFormat:@"s:%ld,r:%ld,%@",chuckModel.indexPath.section,chuckModel.indexPath.row,model];
+    self.lbText.text = [NSString stringWithFormat:@"  s:%ld,r:%ld,%@",chuckModel.indexPath.section,chuckModel.indexPath.row,model];
 }
 -(void)tableView:(ChuckTableView *)tableView vcDelegate:(id)vcDelegate didSelectRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath{
     NSLog(@"点击到：%@",model);
