@@ -13,7 +13,7 @@
 #import "CCellTopBar.h"
 #import "CCellHomeHeader.h"
 #import "CCellHomeCell.h"
-
+const CGFloat ZYTopViewH = 350;
 @interface CollectController ()<ChuckDelegate>
 @property(nonatomic,strong)ChuckCollectionView* collect;
 @property(nonatomic,strong) UIRefreshControl *refreshControl;
@@ -27,14 +27,14 @@
  */
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     ChuckCollectionView* collect =
     [[ChuckCollectionView alloc]
      initWithFrame:self.view.bounds
      collectionViewLayout:self.layout
      vcDelegate:self
      configureBlock:^(UICollectionViewCell *cell, id model, NSIndexPath *indexPath) {
-
+         
      } cellDidselectConfig:^(UICollectionViewCell *cell, id model, NSIndexPath *indexPath) {
          NSLog(@"点击到什么：%@,%ld,%ld",model,indexPath.section,indexPath.item);
      }];
@@ -43,15 +43,15 @@
     _collect = collect;
     collect.backgroundColor = [UIColor whiteColor];
     [collect addModel:@"" cellClass:CCellTopBar.class];
-
+    
     [collect addModel:@"" cellClass:CCellHomeHeader.class section:1];
     [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
     [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
     [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
     [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:1+1];
-
+    
     [collect addModel:@"" cellClass:CCellHomeHeader.class section:3];
-
+    
     [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
     [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
     [collect addModel:@"cell内容的位置" cellClass:CCellHomeCell.class section:3+1];
@@ -60,20 +60,23 @@
     [self setNavigationItem];
     [self configTopRefresh];
 }
-
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    _collect.frame = self.view.bounds;
+}
 //插入一个
 -(void)doShouCang{
-
+    
     [_collect insertModel:@"" cellClass:CCellHomeCell.class indexPath:[NSIndexPath indexPathForItem:0 inSection:3+1] completion:^(BOOL finished) {
-
+        
     }];
-
+    
 }
 //删除一个
 -(void)delShouCang{
     
     [_collect removeIndexPath:[NSIndexPath indexPathForItem:0 inSection:3+1] completion:^(BOOL finished) {
-
+        
     }];
 }
 -(ChuckLayout *)layout{
@@ -83,18 +86,18 @@
             if (section%2!=0) return HomeHeader;
             return HomeCell;
         };
-
+        
         NSInteger perRow = 2;
         CGFloat width = self.view.frame.size.width;
         CGFloat leftRight = PxToPt(26);
-
+        
         UIEdgeInsets sectionInset = UIEdgeInsetsMake(leftRight, leftRight, leftRight, leftRight);
-
+        
         CGFloat interitemSpacing = PxToPt(20);
         CGFloat lineSpacing = PxToPt(20);
         CGFloat w = (width-interitemSpacing * (perRow -1) - sectionInset.left -sectionInset.right)/perRow * 1.0;
         CGFloat h = w;
-
+        
         _layout = [[ChuckLayout alloc]initItemSize:^CGSize(id model, NSInteger section) {
             switch (whichType(section)) {
                 case TopBar:
@@ -109,10 +112,10 @@
             }
             return (CGSize){w,h};
         } interitemSpacingIndexPath:^CGFloat(id model, NSInteger section) {
-
+            
             return interitemSpacing;
         } lineSpacingIndexPath:^CGFloat(id model, NSInteger section) {
-
+            
             return lineSpacing;
         } contentInsetIndexPath:^UIEdgeInsets(NSInteger section) {
             if (whichType(section)==TopBar) return UIEdgeInsetsZero;
@@ -132,7 +135,7 @@
     rightButton.frame = CGRectMake(0, 0, 60, 60);
     [rightButton setTitle:@"插入" forState:UIControlStateNormal];
     [rightButton addTarget:self action:@selector(doShouCang) forControlEvents:UIControlEventTouchUpInside];
-
+    
     [vItems addSubview:rightButton];
     UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeSystem];
     leftButton.frame = CGRectMake(80, 0, 60, 60);
@@ -151,7 +154,7 @@
     self.collect.alwaysBounceVertical = YES;
 }
 -(void)topRefresh{
-
+    
     NSLog(@"UIRefreshControl 一定要在UITableViewController里面使用，要在UIViewControll使用，只能这样写了");
     [self performSelector:@selector(delayDismiss) withObject:nil afterDelay:2];
 }

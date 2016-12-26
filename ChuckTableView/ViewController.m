@@ -34,9 +34,7 @@
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.automaticallyAdjustsScrollViewInsets = YES;
     [self setNavigationItem];
-}
--(void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
+    
     _sd = [[ChuckTableView alloc]initWithFrame:self.view.bounds
                                          style:0
                                  defaultHeight:100
@@ -82,6 +80,10 @@
     [_sd addModel:@"我是ChuckCell，在s10,r0" cellClass:ChuckCell.class section:10];
     [_sd addModels:@[@"我是ChuckCell，在s9,r0",@"我是ChuckCell，在s9,r1",@"我是ChuckCell，在s9,r2",@"我是ChuckCell，在s9,r3",@"我是ChuckCell，在s9,r4"] cellClass:ChuckCell.class section:9];
     
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    _sd.frame = self.view.bounds;
 }
 
 

@@ -17,8 +17,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    ChuckTableView* sd = nil;
-    sd = [[ChuckTableView alloc]
+    ChuckTableView* tableView = nil;
+    tableView = [[ChuckTableView alloc]
           initWithFrame:self.view.bounds
           style:0
           defaultHeight:60
@@ -34,11 +34,11 @@
               
           }];
     
-    [self.view addSubview:sd];
+    [self.view addSubview:tableView];
     
-    [sd addModel:@"消息中心"];
-    [sd addModel:@"会员中心"];
-    [sd addModels:@[@"定时关闭",@"关于我们",@"退出登录"]];
+    [tableView addModel:@"消息中心"];
+    [tableView addModel:@"会员中心"];
+    [tableView addModels:@[@"定时关闭",@"关于我们",@"退出登录"]];
     
     
 }

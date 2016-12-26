@@ -48,15 +48,9 @@
 - (void)prepareLayout{
     [super prepareLayout];
     [self.layoutInfoArr removeAllObjects];
-    CGFloat mainScreenWidth = [UIScreen mainScreen].bounds.size.width;
-    
-    //numberOfSections
-    NSInteger numberOfSections = [self.collectionView numberOfSections];
-    for (NSInteger section = 0; section < numberOfSections; section++){
+    for (NSInteger section = 0; section < [self.collectionView numberOfSections]; section++){
         NSInteger numberOfItems = [self.collectionView numberOfItemsInSection:section];
         NSMutableArray *subArr = [[NSMutableArray alloc] init];
-        //添加到二维数组
-        
         for (NSInteger item = 0; item < numberOfItems; item++){
             NSIndexPath *indexPath = [NSIndexPath indexPathForItem:item inSection:section];
             //行距
@@ -70,11 +64,12 @@
     }
     //存储布局信息
     UICollectionViewLayoutAttributes *attributes = [[self.layoutInfoArr lastObject] lastObject];
-    UIEdgeInsets contentSectionInset = self.contentInset?self.contentInset(numberOfSections-1):UIEdgeInsetsZero;
+    UIEdgeInsets contentSectionInset = self.contentInset?self.contentInset([self.collectionView numberOfSections]-1):UIEdgeInsetsZero;
     //保存内容尺寸
-    self.contentSize = (CGSize){mainScreenWidth,CGRectGetMaxY(attributes.frame)+contentSectionInset.bottom};
+    self.contentSize = (CGSize){[UIScreen mainScreen].bounds.size.width,CGRectGetMaxY(attributes.frame)+contentSectionInset.bottom};
 }
 - (CGSize)collectionViewContentSize{
+   
     return self.contentSize;
 }
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect{
@@ -143,7 +138,7 @@
         y = CGRectGetMinY(framePre);
     }
     attributes.frame = (CGRect){(int)x,(int)y,(int)itemSectionSize.width,(int)itemSectionSize.height};
-    NSLog(@"layout:(%ld,%ld),%d,%d,%d,%@,%@",(long)indexPath.section,(long)indexPath.item,isRowFirst,isMid,isRowLast,NSStringFromCGRect(attributes.frame),NSStringFromCGRect(framePre));
+    //    NSLog(@"layout:(%ld,%ld),%d,%d,%d,%@,%@",(long)indexPath.section,(long)indexPath.item,isRowFirst,isMid,isRowLast,NSStringFromCGRect(attributes.frame),NSStringFromCGRect(framePre));
     return attributes;
 }
 //- (nullable UICollectionViewLayoutAttributes *)layoutAttributesForSupplementaryViewOfKind:(NSString *)elementKind atIndexPath:(NSIndexPath *)indexPath{

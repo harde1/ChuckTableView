@@ -178,11 +178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ChuckTableView/CollectController.m"
-            timestampString = "503998250.824779"
+            timestampString = "504413037.927423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "113"
+            endingLineNumber = "113"
             landmarkName = "-layout"
             landmarkType = "7">
          </BreakpointContent>

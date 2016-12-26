@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA05FABA1DFE829100011EB9 /* ChuckCRView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA05FAB91DFE829100011EB9 /* ChuckCRView.m */; };
+		CA4004AD1E0B75E300E733EE /* dd.png in Resources */ = {isa = PBXBuildFile; fileRef = CA4004AC1E0B75E300E733EE /* dd.png */; };
 		CA45F5DC1E0A5FE0009A0E84 /* CCellHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5D71E0A5FE0009A0E84 /* CCellHomeCell.m */; };
 		CA45F5DD1E0A5FE0009A0E84 /* CCellHomeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5D91E0A5FE0009A0E84 /* CCellHomeHeader.m */; };
 		CA45F5DE1E0A5FE0009A0E84 /* CCellTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5DB1E0A5FE0009A0E84 /* CCellTopBar.m */; };
@@ -59,6 +60,7 @@
 /* Begin PBXFileReference section */
 		CA05FAB81DFE829100011EB9 /* ChuckCRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckCRView.h; sourceTree = "<group>"; };
 		CA05FAB91DFE829100011EB9 /* ChuckCRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckCRView.m; sourceTree = "<group>"; };
+		CA4004AC1E0B75E300E733EE /* dd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dd.png; sourceTree = "<group>"; };
 		CA45F5D61E0A5FE0009A0E84 /* CCellHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellHomeCell.h; sourceTree = "<group>"; };
 		CA45F5D71E0A5FE0009A0E84 /* CCellHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellHomeCell.m; sourceTree = "<group>"; };
 		CA45F5D81E0A5FE0009A0E84 /* CCellHomeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellHomeHeader.h; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				F48085A91DC2F55800D22552 /* ViewController.m */,
 				F47BEB3F1DC5F9FA00E6F225 /* SimpleController.h */,
 				F47BEB401DC5F9FA00E6F225 /* SimpleController.m */,
+				CA4004AC1E0B75E300E733EE /* dd.png */,
 				CAC3996D1DEEBFED00252721 /* CollectController.h */,
 				CAC3996E1DEEBFED00252721 /* CollectController.m */,
 				F4D43A0B1DC60F33007099B4 /* cell */,
@@ -382,6 +385,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA4004AD1E0B75E300E733EE /* dd.png in Resources */,
 				F4B9DD7B1DC4CB120064A605 /* XibAutpHeightCell.xib in Resources */,
 				F48085B21DC2F55800D22552 /* LaunchScreen.storyboard in Resources */,
 				F48085AF1DC2F55800D22552 /* Assets.xcassets in Resources */,
