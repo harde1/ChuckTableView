@@ -7,23 +7,24 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectCellTopBar">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="237"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="237"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starcardbg.png" translatesAutoresizingMaskIntoConstraints="NO" id="aii-x0-f5p">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="237"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="starcart.png" translatesAutoresizingMaskIntoConstraints="NO" id="wbn-o3-I9D">
-                        <rect key="frame" x="90" y="1" width="120" height="120"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="starcart.png" translatesAutoresizingMaskIntoConstraints="NO" id="wbn-o3-I9D">
+                        <rect key="frame" x="100" y="43.5" width="120" height="120"/>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="120" id="IWe-gC-Mt9"/>
@@ -31,14 +32,20 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="星卡专享" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="j5t-TF-r6y">
-                        <rect key="frame" x="123.5" y="138" width="73.5" height="21"/>
+                        <rect key="frame" x="123.5" y="174.5" width="73.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专属勋章、额外星星、专属礼物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="42" translatesAutoresizingMaskIntoConstraints="NO" id="KZW-OR-3MQ">
-                        <rect key="frame" x="89" y="160" width="143.5" height="12"/>
+                        <rect key="frame" x="89" y="196.5" width="143.5" height="12"/>
                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="旋转试一下layout效果" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eH9-Wm-Ohd">
+                        <rect key="frame" x="192" y="8" width="120" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -49,18 +56,20 @@
                 <constraint firstItem="j5t-TF-r6y" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="9cU-yg-xda"/>
                 <constraint firstAttribute="trailing" secondItem="aii-x0-f5p" secondAttribute="trailing" id="GTz-b1-JJe"/>
                 <constraint firstItem="j5t-TF-r6y" firstAttribute="top" secondItem="wbn-o3-I9D" secondAttribute="bottom" constant="11" id="JhC-oD-avL"/>
+                <constraint firstAttribute="trailingMargin" secondItem="eH9-Wm-Ohd" secondAttribute="trailing" id="KC4-73-k1t"/>
                 <constraint firstItem="KZW-OR-3MQ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="LAH-Xl-XRc"/>
+                <constraint firstItem="eH9-Wm-Ohd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="Ux3-xI-PtE"/>
                 <constraint firstAttribute="bottom" secondItem="aii-x0-f5p" secondAttribute="bottom" id="iWp-b3-ZCQ"/>
                 <constraint firstItem="aii-x0-f5p" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lCP-x6-rwo"/>
                 <constraint firstItem="wbn-o3-I9D" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-15" id="mtM-s2-CFE"/>
                 <constraint firstItem="wbn-o3-I9D" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="nSL-lC-bqs"/>
                 <constraint firstItem="KZW-OR-3MQ" firstAttribute="top" secondItem="j5t-TF-r6y" secondAttribute="bottom" constant="1" id="owc-pl-TMe"/>
             </constraints>
-            <size key="customSize" width="320" height="164"/>
+            <size key="customSize" width="320" height="237"/>
             <connections>
                 <outlet property="constHeight" destination="IWe-gC-Mt9" id="ZJQ-Jt-M5p"/>
             </connections>
-            <point key="canvasLocation" x="34" y="86"/>
+            <point key="canvasLocation" x="34" y="122.5"/>
         </collectionViewCell>
     </objects>
     <resources>

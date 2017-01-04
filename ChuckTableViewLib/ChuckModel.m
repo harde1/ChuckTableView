@@ -34,5 +34,14 @@
     }
     return self;
 }
-
+- (id)initCollectViewEmptyIndexPath:(NSIndexPath *)indexPath{
+    if (self = [super init]) {
+        self.model = nil;
+        self.identifier = @"UICollectionViewCell";
+        self.edit = NO;
+        self.editStyle = UITableViewCellEditingStyleNone;
+        self.indexPath = indexPath;
+    }
+    return self;
+}
 @end

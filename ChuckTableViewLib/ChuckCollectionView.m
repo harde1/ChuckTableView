@@ -135,10 +135,14 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
 -(void)upSertModel:(ChuckModel *)chuckModel indexPath:(NSIndexPath *)indexPath{
     if (![indexPath isKindOfClass:[NSIndexPath class]]) return;
     [self ifBeyondSection:indexPath.section];
+    if (![self.config containsObject:@"UICollectionViewCell"]) {
+        [self.config addObject:@"UICollectionViewCell"];
+        [self registerCell:UICollectionViewCell.class];
+    }
     if (indexPath.item>=[self.modelSource[indexPath.section] count]) {
         //填充足够的空ChuckModel,
         for (NSInteger i=[self.modelSource[indexPath.section] count]; i<indexPath.item; i++) {
-            [self.modelSource[indexPath.section] addObject:[[ChuckModel alloc]initEmptyIndexPath:chuckModel.indexPath]];
+            [self.modelSource[indexPath.section] addObject:[[ChuckModel alloc]initCollectViewEmptyIndexPath:chuckModel.indexPath]];
         }
         [self.modelSource[indexPath.section] addObject:chuckModel];
         return;
@@ -155,7 +159,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
             return self.modelSource[indexPath.section][indexPath.item];
         }
     }
-    return [[ChuckModel alloc] initEmptyIndexPath:indexPath];
+    return [[ChuckModel alloc] initCollectViewEmptyIndexPath:indexPath];
 }
 -(HeadFootModel *)getHeadFootModelAtSection:(NSUInteger)section kind:(NSString *)kind{
     return  [kind isEqualToString:UICollectionElementKindSectionFooter]?[self getFootModelAtSection:section]:[self getHeadModelAtSection:section];
@@ -534,6 +538,10 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
         NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
         return;
     }
+    if (![self.config containsObject:NSStringFromClass(cellClass)]) {
+        [self.config addObject:NSStringFromClass(cellClass)];
+        [self registerCell:cellClass];
+    }
     ChuckModel * chuckModel = [self configModel:model cellClass:cellClass allowEdit:edit editStyle:editStyle indexPath:indexPath];
     //     [self ifBeyondSection:indexPath.section];
     //    if (indexPath.row>=[self.modelSource[indexPath.section] count]) {
@@ -544,10 +552,6 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     //        //[self.modelSource[indexPath.section] addObject:chuckModel];
     //    }
     //注册cell
-    if (![self.config containsObject:NSStringFromClass(cellClass)]) {
-        [self.config addObject:NSStringFromClass(cellClass)];
-        [self registerCell:cellClass];
-    }
     [self.modelSource[indexPath.section] insertObject:chuckModel atIndex:indexPath.row];
     if ([self.modelSource[indexPath.section] count]!=1) {
         [self performBatchUpdates:^{
@@ -578,7 +582,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     if (indexPath.item>=[self.modelSource[indexPath.section] count]) {
         //填充足够的空ChuckModel,
         for (NSInteger i=[self.modelSource[indexPath.section] count]; i<indexPath.item+1; i++) {
-            [self.modelSource[indexPath.section] addObject:[[ChuckModel alloc]initEmptyIndexPath:indexPath]];
+            [self.modelSource[indexPath.section] addObject:[[ChuckModel alloc]initCollectViewEmptyIndexPath:indexPath]];
         }
     }
     [self.modelSource[indexPath.section] removeObjectAtIndex:indexPath.item];
@@ -593,14 +597,37 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     }];
     
 }
+-(void)remove:(NSIndexPath *)indexPath completion:(void (^ __nullable)(BOOL finished))completion{
+    NSUInteger section = indexPath.section;
+    if (section>=[self numberOfSection]) {
+        NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
+        return;
+    }
+    if (indexPath.item>=[self.modelSource[indexPath.section] count]) {
+        NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
+        return;
+    }
+    //        __weak typeof(self) wSelf = self;
+    [self ifBeyondSection:section];
+    [self.modelSource[section] removeObject:self.modelSource[section][indexPath.item]];
+    [self changeSection:section];
+    
+    [self performBatchUpdates:^{
+        [self deleteItemsAtIndexPaths:@[indexPath]];
+    } completion:^(BOOL finished) {
+        if (completion) {
+            completion(YES);
+        }
+    }];
+}
 -(void)removeSection:(NSUInteger)section completion:(void (^ __nullable)(BOOL finished))completion{
     if (section>=[self numberOfSection]) {
         NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
         return;
     }
-    //    __weak typeof(self) wSelf = self;
+//        __weak typeof(self) wSelf = self;
     [self ifBeyondSection:section];
-    [self.modelSource removeObjectAtIndex:section];
+    [self.modelSource removeObject:self.modelSource[section]];
     [self changeSection:section];
     
     [self performBatchUpdates:^{

@@ -36,19 +36,26 @@
 }
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     __weak typeof(self) wSelf = self;
-    if ([keyPath isEqualToString:@"contentSize"]) {
-        if (!CGSizeEqualToSize(self.collect.contentSize, CGSizeZero)) {
-             CGFloat height = self.view.frame.size.height;
-            [UIView animateWithDuration:0.5 animations:^{
-                wSelf.collect.frame = CGRectMake(0, height - wSelf.collect.contentSize.height, wSelf.collect.frame.size.width, wSelf.collect.contentSize.height);
-            }];
-        }
+    if ([keyPath isEqualToString:@"contentSize"] && !CGSizeEqualToSize(self.collect.contentSize, self.collect.frame.size)) {
+        [wSelf resetFrame];
     }
 }
 -(void)dealloc{
     [_collect removeObserver:self forKeyPath:@"contentSize"];
 }
-
+-(void)resetFrame{
+    __weak typeof(self) wSelf = self;
+    if (!CGSizeEqualToSize(self.collect.contentSize, CGSizeZero) ) {
+        CGFloat height = self.view.frame.size.height;
+        [UIView animateWithDuration:0.5 animations:^{
+            wSelf.collect.frame = CGRectMake(0, height - wSelf.collect.contentSize.height,wSelf.view.frame.size.width, wSelf.collect.contentSize.height);
+        }];
+    }
+}
+-(void)viewDidLayoutSubviews{
+    [super viewDidLayoutSubviews];
+    [self resetFrame];
+}
 -(ChuckCollectionView *)collect{
     __weak typeof(self) wSelf = self;
     if (!_collect) {
@@ -100,18 +107,21 @@
             switch ([wSelf whichType:section]) {
                 case CellTopBar:
                     if ([model isEqualToString:@"星卡详情"]) {
-                       return CGSizeMake(width,324.0/1324 * height);
+                        return CGSizeMake(wSelf.view.frame.size.width,324.0/1324 * height);
                     }
-                    return CGSizeMake(width,130.0/1324 * height);
+                    return CGSizeMake(wSelf.view.frame.size.width,130.0/1324 * height);
                     break;
                 case CellContent:
                     if ([model isEqualToString:@"CellContent"]) {
-                        return CGSizeMake(width,130.0/1324 * height);
+                        return CGSizeMake(wSelf.view.frame.size.width,130.0/1324 * height);
                     }
-                      return (CGSize){w,h};
+                    else if([model isEqualToString:@"CCellAcount"]){
+                        return CGSizeMake(wSelf.view.frame.size.width,130.0/1324 * height);
+                    }
+                    return (CGSize){w,h};
                     break;
                 case CellBottomBar:
-                    return (CGSize){width,90.0/1324 * height};
+                    return (CGSize){wSelf.view.frame.size.width,90.0/1324 * height};
                     break;
             }
         } interitemSpacingIndexPath:^CGFloat(id model, NSInteger section) {

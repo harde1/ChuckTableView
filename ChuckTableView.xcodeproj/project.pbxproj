@@ -22,6 +22,8 @@
 		CA283EBD1E1CF05B00202F14 /* CCellUserNum.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283EBB1E1CF05B00202F14 /* CCellUserNum.xib */; };
 		CA283EC11E1CF7E800202F14 /* CCellMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = CA283EBF1E1CF7E800202F14 /* CCellMonth.m */; };
 		CA283EC21E1CF7E800202F14 /* CCellMonth.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283EC01E1CF7E800202F14 /* CCellMonth.xib */; };
+		CA283EC61E1D059800202F14 /* CCellAcount.m in Sources */ = {isa = PBXBuildFile; fileRef = CA283EC41E1D059800202F14 /* CCellAcount.m */; };
+		CA283EC71E1D059800202F14 /* CCellAcount.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283EC51E1D059800202F14 /* CCellAcount.xib */; };
 		CA45F5DC1E0A5FE0009A0E84 /* CCellHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5D71E0A5FE0009A0E84 /* CCellHomeCell.m */; };
 		CA45F5DD1E0A5FE0009A0E84 /* CCellHomeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5D91E0A5FE0009A0E84 /* CCellHomeHeader.m */; };
 		CA45F5DE1E0A5FE0009A0E84 /* CCellTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5DB1E0A5FE0009A0E84 /* CCellTopBar.m */; };
@@ -94,6 +96,9 @@
 		CA283EBE1E1CF7E800202F14 /* CCellMonth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellMonth.h; sourceTree = "<group>"; };
 		CA283EBF1E1CF7E800202F14 /* CCellMonth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellMonth.m; sourceTree = "<group>"; };
 		CA283EC01E1CF7E800202F14 /* CCellMonth.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCellMonth.xib; sourceTree = "<group>"; };
+		CA283EC31E1D059800202F14 /* CCellAcount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellAcount.h; sourceTree = "<group>"; };
+		CA283EC41E1D059800202F14 /* CCellAcount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellAcount.m; sourceTree = "<group>"; };
+		CA283EC51E1D059800202F14 /* CCellAcount.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCellAcount.xib; sourceTree = "<group>"; };
 		CA45F5D61E0A5FE0009A0E84 /* CCellHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellHomeCell.h; sourceTree = "<group>"; };
 		CA45F5D71E0A5FE0009A0E84 /* CCellHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellHomeCell.m; sourceTree = "<group>"; };
 		CA45F5D81E0A5FE0009A0E84 /* CCellHomeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellHomeHeader.h; sourceTree = "<group>"; };
@@ -198,6 +203,9 @@
 				CA283EBE1E1CF7E800202F14 /* CCellMonth.h */,
 				CA283EBF1E1CF7E800202F14 /* CCellMonth.m */,
 				CA283EC01E1CF7E800202F14 /* CCellMonth.xib */,
+				CA283EC31E1D059800202F14 /* CCellAcount.h */,
+				CA283EC41E1D059800202F14 /* CCellAcount.m */,
+				CA283EC51E1D059800202F14 /* CCellAcount.xib */,
 			);
 			name = StarCard;
 			sourceTree = "<group>";
@@ -455,6 +463,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA283EB31E1CEAF800202F14 /* CollectCellContent.xib in Resources */,
+				CA283EC71E1D059800202F14 /* CCellAcount.xib in Resources */,
 				CA283EBD1E1CF05B00202F14 /* CCellUserNum.xib in Resources */,
 				F4B9DD7B1DC4CB120064A605 /* XibAutpHeightCell.xib in Resources */,
 				CA283EAC1E1CE8C200202F14 /* starcart.png in Resources */,
@@ -510,6 +519,7 @@
 				CA05FABA1DFE829100011EB9 /* ChuckCRView.m in Sources */,
 				CAC9D44D1E039E6700AC2842 /* ChuckCollectionView.m in Sources */,
 				F4B9DD7A1DC4CB120064A605 /* XibAutpHeightCell.m in Sources */,
+				CA283EC61E1D059800202F14 /* CCellAcount.m in Sources */,
 				CAC9D4541E039E6700AC2842 /* UICollectionViewCell+Chuck.m in Sources */,
 				CA283EC11E1CF7E800202F14 /* CCellMonth.m in Sources */,
 				F48085A41DC2F55700D22552 /* main.m in Sources */,

@@ -55,6 +55,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 //---------插入
 -(void)insertModel:(id)model cellClass:(Class)cellClass indexPath:(NSIndexPath *)indexPath completion:(void (^ __nullable)(BOOL finished))completion;
 //---------删除模式
+-(void)remove:(NSIndexPath *)indexPath completion:(void (^ __nullable)(BOOL finished))completion;
 -(void)removeIndexPath:(NSIndexPath * _Nonnull)indexPath completion:(void (^__nullable)(BOOL finished))completion;
 -(void)removeSection:(NSUInteger)section completion:(void (^ __nullable)(BOOL finished))completion;
 //删除什么section到什么section 1-2 ，包含1和2

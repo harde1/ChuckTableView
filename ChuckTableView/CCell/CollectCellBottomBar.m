@@ -15,6 +15,7 @@
 #import "CollectCellTopBar.h"
 #import "CCellMonth.h"
 #import "CollectCellContent.h"
+#import "CCellAcount.h"
 @interface CollectCellBottomBar()
 @property (weak, nonatomic) IBOutlet UIButton *btnFriend;
 @property (weak, nonatomic) IBOutlet UIButton *btnRightNow;
@@ -29,28 +30,29 @@
     
 }
 -(void)collectionView:(ChuckCollectionView *)collectionView vcDelegate:(id)vcDelegate cellForRowWithModel:(id)model atIndexPath:(NSIndexPath *)indexPath{
-    
     self.collect = collectionView;
 }
 - (IBAction)clickRightNow:(UIButton *)sender {
-    
+      __weak typeof(self) wSelf = self;
     if (self.collect) {
         id model = [self.collect modelsAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
         if ([model isEqualToString:@"星卡详情"]) {
             [self.collect replaceSection:CellTopBar models:@[@"开通账号"] cellClass:CCellUserNum.class completion:^(BOOL finished) {
-                
+                [wSelf.collect replaceSection:CellContent models:@[@"一月份",@"二月份",@"三月份",@"四月份",@"五月份",@"六月份",@"八月份"] cellClass:CCellMonth.class completion:^(BOOL finished) {
+                    [wSelf.collect insertModel:@"CCellAcount" cellClass:CCellAcount.class indexPath:[NSIndexPath indexPathForItem:0 inSection:CellBottomBar] completion:^(BOOL finished) {
+                        
+                    }];
+                }];
             }];
-            [self.collect replaceSection:CellContent models:@[@"一月份",@"二月份",@"三月份",@"四月份",@"五月份",@"六月份",@"八月份"] cellClass:CCellMonth.class completion:^(BOOL finished) {
-                
-            }];
-            
         }else{
-            [self.collect replaceSection:CellTopBar models:@[@"星卡详情"] cellClass:CollectCellTopBar.class completion:^(BOOL finished) {
-                
+            [wSelf.collect remove:[NSIndexPath indexPathForItem:0 inSection:CellBottomBar] completion:^(BOOL finished) {
+                [wSelf.collect replaceSection:CellTopBar models:@[@"星卡详情"] cellClass:CollectCellTopBar.class completion:^(BOOL finished) {
+                    [wSelf.collect replaceSection:CellContent models:@[@"CellContent",@"CellContent"] cellClass:CollectCellContent.class completion:^(BOOL finished) {
+                    }];
+                }];
             }];
-            [self.collect replaceSection:CellContent models:@[@"CellContent",@"CellContent"] cellClass:CollectCellContent.class completion:^(BOOL finished) {
-                
-            }];
+          
+           
             
         }
     }
@@ -61,4 +63,5 @@
     btn.layer.borderColor = UIColorFromRGB(0x4186ce).CGColor;
     btn.layer.cornerRadius = 5;
 }
+
 @end

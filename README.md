@@ -1,5 +1,9 @@
 # ChuckTableView
 
+进行简单的增删改查
+![示例](https://raw.githubusercontent.com/harde1/ChuckTableView/master/img/startcard.gif)
+
+
 ![tableview](https://raw.githubusercontent.com/harde1/ChuckTableView/master/img/tableview.png)
 
 ```

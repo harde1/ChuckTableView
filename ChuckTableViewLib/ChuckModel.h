@@ -19,5 +19,6 @@ typedef void (^HeadFootConfigureBefore)(UICollectionReusableView * view, id mode
 @property(nonatomic,assign)UITableViewCellEditingStyle editStyle;
 @property(nonatomic,assign)CGFloat cellHeight;
 - (id)initEmptyIndexPath:(NSIndexPath *)indexPath;
+- (id)initCollectViewEmptyIndexPath:(NSIndexPath *)indexPath;
 - (id)initWithModel:(id)model cellClass:(Class)cellClass allowEdit:(BOOL)edit editStyle:(UITableViewCellEditingStyle)editStyle indexPath:(NSIndexPath *)indexPath;
 @end
