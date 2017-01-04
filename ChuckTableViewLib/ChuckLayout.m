@@ -128,6 +128,9 @@
     if (indexPath.section==0 && indexPath.item==0) {
         y = contentSectionInset.top;
     }
+    else if(indexPath.section>0 && indexPath.item==0 && isRowLast){
+        y = CGRectGetMaxY(framePre)+(self.contentInset?self.contentInset(indexPath.section-1):UIEdgeInsetsZero).bottom + contentSectionInset.top;
+    }
     else if (isRowFirst){
         y = CGRectGetMaxY(framePre)+lineSectionSpacing;
     }

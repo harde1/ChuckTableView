@@ -9,7 +9,6 @@
 #import "UtilScreenSize.h"
 @implementation UtilScreenSize
 +(CGFloat)getPtbyWidth:(CGFloat)px {
-    
     CGFloat screen_min_length = MIN([[UIScreen mainScreen] bounds].size.height, [[UIScreen mainScreen] bounds].size.width);
     return (px * screen_min_length) / 750;
 }

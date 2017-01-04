@@ -8,7 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		CA05FABA1DFE829100011EB9 /* ChuckCRView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA05FAB91DFE829100011EB9 /* ChuckCRView.m */; };
-		CA4004AD1E0B75E300E733EE /* dd.png in Resources */ = {isa = PBXBuildFile; fileRef = CA4004AC1E0B75E300E733EE /* dd.png */; };
+		CA283EA01E1CD93C00202F14 /* EnterController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA283E9F1E1CD93C00202F14 /* EnterController.m */; };
+		CA283EA31E1CD9D100202F14 /* StarCardController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA283EA21E1CD9D100202F14 /* StarCardController.m */; };
+		CA283EA81E1CE46500202F14 /* CollectCellTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CA283EA61E1CE46500202F14 /* CollectCellTopBar.m */; };
+		CA283EA91E1CE46500202F14 /* CollectCellTopBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283EA71E1CE46500202F14 /* CollectCellTopBar.xib */; };
+		CA283EAC1E1CE8C200202F14 /* starcart.png in Resources */ = {isa = PBXBuildFile; fileRef = CA283EAB1E1CE8C200202F14 /* starcart.png */; };
+		CA283EAE1E1CE90500202F14 /* starcardbg.png in Resources */ = {isa = PBXBuildFile; fileRef = CA283EAD1E1CE90500202F14 /* starcardbg.png */; };
+		CA283EB21E1CEAF800202F14 /* CollectCellContent.m in Sources */ = {isa = PBXBuildFile; fileRef = CA283EB01E1CEAF800202F14 /* CollectCellContent.m */; };
+		CA283EB31E1CEAF800202F14 /* CollectCellContent.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283EB11E1CEAF800202F14 /* CollectCellContent.xib */; };
+		CA283EB71E1CEB0C00202F14 /* CollectCellBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CA283EB51E1CEB0C00202F14 /* CollectCellBottomBar.m */; };
+		CA283EB81E1CEB0C00202F14 /* CollectCellBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283EB61E1CEB0C00202F14 /* CollectCellBottomBar.xib */; };
+		CA283EBC1E1CF05B00202F14 /* CCellUserNum.m in Sources */ = {isa = PBXBuildFile; fileRef = CA283EBA1E1CF05B00202F14 /* CCellUserNum.m */; };
+		CA283EBD1E1CF05B00202F14 /* CCellUserNum.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283EBB1E1CF05B00202F14 /* CCellUserNum.xib */; };
+		CA283EC11E1CF7E800202F14 /* CCellMonth.m in Sources */ = {isa = PBXBuildFile; fileRef = CA283EBF1E1CF7E800202F14 /* CCellMonth.m */; };
+		CA283EC21E1CF7E800202F14 /* CCellMonth.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA283EC01E1CF7E800202F14 /* CCellMonth.xib */; };
 		CA45F5DC1E0A5FE0009A0E84 /* CCellHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5D71E0A5FE0009A0E84 /* CCellHomeCell.m */; };
 		CA45F5DD1E0A5FE0009A0E84 /* CCellHomeHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5D91E0A5FE0009A0E84 /* CCellHomeHeader.m */; };
 		CA45F5DE1E0A5FE0009A0E84 /* CCellTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5DB1E0A5FE0009A0E84 /* CCellTopBar.m */; };
@@ -60,7 +73,27 @@
 /* Begin PBXFileReference section */
 		CA05FAB81DFE829100011EB9 /* ChuckCRView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckCRView.h; sourceTree = "<group>"; };
 		CA05FAB91DFE829100011EB9 /* ChuckCRView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChuckCRView.m; sourceTree = "<group>"; };
-		CA4004AC1E0B75E300E733EE /* dd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dd.png; sourceTree = "<group>"; };
+		CA283E9E1E1CD93C00202F14 /* EnterController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterController.h; sourceTree = "<group>"; };
+		CA283E9F1E1CD93C00202F14 /* EnterController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterController.m; sourceTree = "<group>"; };
+		CA283EA11E1CD9D100202F14 /* StarCardController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StarCardController.h; sourceTree = "<group>"; };
+		CA283EA21E1CD9D100202F14 /* StarCardController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StarCardController.m; sourceTree = "<group>"; };
+		CA283EA51E1CE46500202F14 /* CollectCellTopBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectCellTopBar.h; sourceTree = "<group>"; };
+		CA283EA61E1CE46500202F14 /* CollectCellTopBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectCellTopBar.m; sourceTree = "<group>"; };
+		CA283EA71E1CE46500202F14 /* CollectCellTopBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectCellTopBar.xib; sourceTree = "<group>"; };
+		CA283EAB1E1CE8C200202F14 /* starcart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starcart.png; sourceTree = "<group>"; };
+		CA283EAD1E1CE90500202F14 /* starcardbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = starcardbg.png; sourceTree = "<group>"; };
+		CA283EAF1E1CEAF800202F14 /* CollectCellContent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectCellContent.h; sourceTree = "<group>"; };
+		CA283EB01E1CEAF800202F14 /* CollectCellContent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectCellContent.m; sourceTree = "<group>"; };
+		CA283EB11E1CEAF800202F14 /* CollectCellContent.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectCellContent.xib; sourceTree = "<group>"; };
+		CA283EB41E1CEB0C00202F14 /* CollectCellBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectCellBottomBar.h; sourceTree = "<group>"; };
+		CA283EB51E1CEB0C00202F14 /* CollectCellBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectCellBottomBar.m; sourceTree = "<group>"; };
+		CA283EB61E1CEB0C00202F14 /* CollectCellBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CollectCellBottomBar.xib; sourceTree = "<group>"; };
+		CA283EB91E1CF05B00202F14 /* CCellUserNum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellUserNum.h; sourceTree = "<group>"; };
+		CA283EBA1E1CF05B00202F14 /* CCellUserNum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellUserNum.m; sourceTree = "<group>"; };
+		CA283EBB1E1CF05B00202F14 /* CCellUserNum.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCellUserNum.xib; sourceTree = "<group>"; };
+		CA283EBE1E1CF7E800202F14 /* CCellMonth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellMonth.h; sourceTree = "<group>"; };
+		CA283EBF1E1CF7E800202F14 /* CCellMonth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellMonth.m; sourceTree = "<group>"; };
+		CA283EC01E1CF7E800202F14 /* CCellMonth.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CCellMonth.xib; sourceTree = "<group>"; };
 		CA45F5D61E0A5FE0009A0E84 /* CCellHomeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellHomeCell.h; sourceTree = "<group>"; };
 		CA45F5D71E0A5FE0009A0E84 /* CCellHomeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellHomeCell.m; sourceTree = "<group>"; };
 		CA45F5D81E0A5FE0009A0E84 /* CCellHomeHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellHomeHeader.h; sourceTree = "<group>"; };
@@ -147,9 +180,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CA283EA41E1CE42C00202F14 /* StarCard */ = {
+			isa = PBXGroup;
+			children = (
+				CA283EA51E1CE46500202F14 /* CollectCellTopBar.h */,
+				CA283EA61E1CE46500202F14 /* CollectCellTopBar.m */,
+				CA283EA71E1CE46500202F14 /* CollectCellTopBar.xib */,
+				CA283EAF1E1CEAF800202F14 /* CollectCellContent.h */,
+				CA283EB01E1CEAF800202F14 /* CollectCellContent.m */,
+				CA283EB11E1CEAF800202F14 /* CollectCellContent.xib */,
+				CA283EB41E1CEB0C00202F14 /* CollectCellBottomBar.h */,
+				CA283EB51E1CEB0C00202F14 /* CollectCellBottomBar.m */,
+				CA283EB61E1CEB0C00202F14 /* CollectCellBottomBar.xib */,
+				CA283EB91E1CF05B00202F14 /* CCellUserNum.h */,
+				CA283EBA1E1CF05B00202F14 /* CCellUserNum.m */,
+				CA283EBB1E1CF05B00202F14 /* CCellUserNum.xib */,
+				CA283EBE1E1CF7E800202F14 /* CCellMonth.h */,
+				CA283EBF1E1CF7E800202F14 /* CCellMonth.m */,
+				CA283EC01E1CF7E800202F14 /* CCellMonth.xib */,
+			);
+			name = StarCard;
+			sourceTree = "<group>";
+		};
+		CA283EAA1E1CE8B900202F14 /* img */ = {
+			isa = PBXGroup;
+			children = (
+				CA283EAB1E1CE8C200202F14 /* starcart.png */,
+				CA283EAD1E1CE90500202F14 /* starcardbg.png */,
+			);
+			name = img;
+			sourceTree = "<group>";
+		};
 		CA45F5D51E0A5FE0009A0E84 /* CCell */ = {
 			isa = PBXGroup;
 			children = (
+				CA283EA41E1CE42C00202F14 /* StarCard */,
 				CA45F5D61E0A5FE0009A0E84 /* CCellHomeCell.h */,
 				CA45F5D71E0A5FE0009A0E84 /* CCellHomeCell.m */,
 				CA45F5D81E0A5FE0009A0E84 /* CCellHomeHeader.h */,
@@ -213,11 +278,15 @@
 				CAC9D4381E039E6700AC2842 /* ChuckTableViewLib */,
 				F48085A81DC2F55800D22552 /* ViewController.h */,
 				F48085A91DC2F55800D22552 /* ViewController.m */,
+				CA283E9E1E1CD93C00202F14 /* EnterController.h */,
+				CA283E9F1E1CD93C00202F14 /* EnterController.m */,
 				F47BEB3F1DC5F9FA00E6F225 /* SimpleController.h */,
 				F47BEB401DC5F9FA00E6F225 /* SimpleController.m */,
-				CA4004AC1E0B75E300E733EE /* dd.png */,
 				CAC3996D1DEEBFED00252721 /* CollectController.h */,
 				CAC3996E1DEEBFED00252721 /* CollectController.m */,
+				CA283EA11E1CD9D100202F14 /* StarCardController.h */,
+				CA283EA21E1CD9D100202F14 /* StarCardController.m */,
+				CA283EAA1E1CE8B900202F14 /* img */,
 				F4D43A0B1DC60F33007099B4 /* cell */,
 				F48085A21DC2F55700D22552 /* Supporting Files */,
 			);
@@ -385,10 +454,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA4004AD1E0B75E300E733EE /* dd.png in Resources */,
+				CA283EB31E1CEAF800202F14 /* CollectCellContent.xib in Resources */,
+				CA283EBD1E1CF05B00202F14 /* CCellUserNum.xib in Resources */,
 				F4B9DD7B1DC4CB120064A605 /* XibAutpHeightCell.xib in Resources */,
+				CA283EAC1E1CE8C200202F14 /* starcart.png in Resources */,
+				CA283EB81E1CEB0C00202F14 /* CollectCellBottomBar.xib in Resources */,
 				F48085B21DC2F55800D22552 /* LaunchScreen.storyboard in Resources */,
+				CA283EA91E1CE46500202F14 /* CollectCellTopBar.xib in Resources */,
+				CA283EAE1E1CE90500202F14 /* starcardbg.png in Resources */,
 				F48085AF1DC2F55800D22552 /* Assets.xcassets in Resources */,
+				CA283EC21E1CF7E800202F14 /* CCellMonth.xib in Resources */,
 				F48085AD1DC2F55800D22552 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,16 +489,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA283EB21E1CEAF800202F14 /* CollectCellContent.m in Sources */,
 				CA45F5E11E0A6068009A0E84 /* UtilScreenSize.m in Sources */,
 				CAC9D44E1E039E6700AC2842 /* ChuckLayout.m in Sources */,
+				CA283EBC1E1CF05B00202F14 /* CCellUserNum.m in Sources */,
 				CA45F5DC1E0A5FE0009A0E84 /* CCellHomeCell.m in Sources */,
 				CA45F5E71E0A6313009A0E84 /* NSString+SizeFont.m in Sources */,
 				F48085AA1DC2F55800D22552 /* ViewController.m in Sources */,
 				CAC9D44F1E039E6700AC2842 /* ChuckModel.m in Sources */,
 				F48085DF1DC300E700D22552 /* ChuckCell.m in Sources */,
+				CA283EB71E1CEB0C00202F14 /* CollectCellBottomBar.m in Sources */,
 				CA45F5DD1E0A5FE0009A0E84 /* CCellHomeHeader.m in Sources */,
 				CAC3996F1DEEBFED00252721 /* CollectController.m in Sources */,
 				CA45F5E41E0A6192009A0E84 /* UIView+Metrics.m in Sources */,
+				CA283EA01E1CD93C00202F14 /* EnterController.m in Sources */,
 				CAC9D4521E039E6700AC2842 /* NSMutableArray+Chuck.m in Sources */,
 				F48085A71DC2F55800D22552 /* AppDelegate.m in Sources */,
 				CAC9D4501E039E6700AC2842 /* ChuckTableView.m in Sources */,
@@ -432,12 +511,15 @@
 				CAC9D44D1E039E6700AC2842 /* ChuckCollectionView.m in Sources */,
 				F4B9DD7A1DC4CB120064A605 /* XibAutpHeightCell.m in Sources */,
 				CAC9D4541E039E6700AC2842 /* UICollectionViewCell+Chuck.m in Sources */,
+				CA283EC11E1CF7E800202F14 /* CCellMonth.m in Sources */,
 				F48085A41DC2F55700D22552 /* main.m in Sources */,
 				CAC399751DEEE0A000252721 /* ChuckCCell.m in Sources */,
 				F47BEB411DC5F9FA00E6F225 /* SimpleController.m in Sources */,
 				CAC9D4551E039E6700AC2842 /* UITableViewCell+Chuck.m in Sources */,
 				CAC9D4511E039E6700AC2842 /* HeadFootModel.m in Sources */,
+				CA283EA81E1CE46500202F14 /* CollectCellTopBar.m in Sources */,
 				CA45F5DE1E0A5FE0009A0E84 /* CCellTopBar.m in Sources */,
+				CA283EA31E1CD9D100202F14 /* StarCardController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

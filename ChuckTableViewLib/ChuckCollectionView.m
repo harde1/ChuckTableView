@@ -57,6 +57,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     }
     return _modelSource;
 }
+
 //自增量的sectionRow数组，添加元素，更改元素
 //如果越界了就填充数据
 -(void)ifBeyondSection:(NSInteger)section{
@@ -542,6 +543,11 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     //        }
     //        //[self.modelSource[indexPath.section] addObject:chuckModel];
     //    }
+    //注册cell
+    if (![self.config containsObject:NSStringFromClass(cellClass)]) {
+        [self.config addObject:NSStringFromClass(cellClass)];
+        [self registerCell:cellClass];
+    }
     [self.modelSource[indexPath.section] insertObject:chuckModel atIndex:indexPath.row];
     if ([self.modelSource[indexPath.section] count]!=1) {
         [self performBatchUpdates:^{
@@ -625,7 +631,11 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
         ChuckModel * chuckModel = [self configModel:model cellClass:cellClass allowEdit:NO editStyle:0 indexPath:[NSIndexPath indexPathForItem:i++ inSection:section]];
         [arr addObject:chuckModel];
     }
-    
+    //注册cell
+    if (![self.config containsObject:NSStringFromClass(cellClass)]) {
+        [self.config addObject:NSStringFromClass(cellClass)];
+        [self registerCell:cellClass];
+    }
     [self.modelSource insertObject:arr atIndex:section];
     [self.modelSource removeObjectAtIndex:section+1];
     [self changeSection:section];
@@ -672,6 +682,14 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
         NSIndexPath * ni = [NSIndexPath indexPathForRow:0 inSection:i];
         [self changeIndexPath:ni];
     }
+}
+#pragma mark 常用APi
+//获取元素
+- (id)modelsAtIndexPath:(NSIndexPath *)indexPath {
+    return [self getModelAtIndexPath:indexPath].model;
+}
+-(void)clearTableViewCell{
+    [self.modelSource removeAllObjects];
 }
 - (ChuckModel *)chuckModelAtIndexPath:(NSIndexPath *)indexPath {
     return [self getModelAtIndexPath:indexPath];

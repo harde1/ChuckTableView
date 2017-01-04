@@ -34,6 +34,11 @@ collectionViewLayout:(UICollectionViewLayout *)layout
      configureBlock:(CellConfigureBefore)before
 cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
 //headFootConfigureBefore:(HeadFootConfigureBefore) headFootConfigureBefore;
+//获取元素
+- (id)modelsAtIndexPath:(NSIndexPath *)indexPath;
+- (ChuckModel *)chuckModelAtIndexPath:(NSIndexPath *)indexPath;
+//清空所有数据
+-(void)clearTableViewCell;
 //section 0
 - (void)addModel:(id)model;
 - (void)addModels:(NSArray *)models;

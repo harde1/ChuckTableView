@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CollectCellContent">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="66"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="AxH-wI-CCK">
+                        <rect key="frame" x="8" y="8" width="50" height="50"/>
+                        <color key="backgroundColor" red="0.60000002384185791" green="0.40000000596046448" blue="0.20000000298023224" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="AxH-wI-CCK" secondAttribute="height" multiplier="1:1" id="yXk-HZ-eq2"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专属礼物" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mbx-PL-O4e">
+                        <rect key="frame" x="68" y="12.5" width="252" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="意外之喜" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHv-6H-y04">
+                        <rect key="frame" x="68" y="36" width="252" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="sHv-6H-y04" firstAttribute="leading" secondItem="mbx-PL-O4e" secondAttribute="leading" id="9uc-cy-iL8"/>
+                <constraint firstAttribute="trailing" secondItem="sHv-6H-y04" secondAttribute="trailing" id="MkF-SP-P3p"/>
+                <constraint firstAttribute="trailing" secondItem="mbx-PL-O4e" secondAttribute="trailing" id="YQq-xS-jvS"/>
+                <constraint firstItem="sHv-6H-y04" firstAttribute="centerY" secondItem="AxH-wI-CCK" secondAttribute="centerY" constant="10" id="fE2-uV-T9Z"/>
+                <constraint firstItem="AxH-wI-CCK" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="topMargin" id="n5J-A5-1qN"/>
+                <constraint firstItem="mbx-PL-O4e" firstAttribute="leading" secondItem="AxH-wI-CCK" secondAttribute="trailing" constant="10" id="qqP-Jq-D8U"/>
+                <constraint firstItem="AxH-wI-CCK" firstAttribute="bottom" secondItem="gTV-IL-0wX" secondAttribute="bottomMargin" id="r8W-jB-2X2"/>
+                <constraint firstItem="AxH-wI-CCK" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leadingMargin" id="rFo-iC-Zmm"/>
+                <constraint firstItem="mbx-PL-O4e" firstAttribute="centerY" secondItem="AxH-wI-CCK" secondAttribute="centerY" constant="-10" id="uYF-J8-rCL"/>
+            </constraints>
+            <size key="customSize" width="320" height="66"/>
+            <point key="canvasLocation" x="34" y="62"/>
+        </collectionViewCell>
+    </objects>
+</document>
