@@ -39,7 +39,7 @@
 
 #Pod
 
- pod 'ChuckTableView', '~> 0.1.0'
+ pod 'ChuckTableView', '~> 0.2.0'
 
 # 例子
 
