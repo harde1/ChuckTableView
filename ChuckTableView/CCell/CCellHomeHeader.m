@@ -9,7 +9,6 @@
 #import "CCellHomeHeader.h"
 #import "UICollectionViewCell+Chuck.h"
 #import "CollectController.h"
-#import "NSString+SizeFont.h"
 @interface CCellHomeHeader()
 @property(nonatomic,strong) UIView * vLine;
 @property(nonatomic,strong) UIButton * btnRight;

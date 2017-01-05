@@ -17,7 +17,7 @@ version=`sed -n -e '/s.version      = "/p' ${podspec} | awk '{print $3}' | sed '
 #ver=$(${version}+1)
 #sed -n 's/${version}//g'
 echo '操作'${podspec}', 版本号：'$version
-
+git pull
 git add -A
 git commit -m "pod "$version
 git push origin master

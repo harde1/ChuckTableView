@@ -69,13 +69,13 @@
     return _tableViewConfig;
 }
 //基础配置
-- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style defaultHeight:(CGFloat)height vcDelegate:(id)delegate configureBlock:(CellConfigureBefore)before cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore{
+- (id)initWithFrame:(CGRect)frame style:(UITableViewStyle)style  heightForRow:(HeightForRow)heightForRow vcDelegate:(id)delegate configureBlock:(CellConfigureBefore)before cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore{
     if(self = [super initWithFrame:frame style:style]) {
         self.cellConfigureBefore = [before copy];
         self.cellDidselectConfigBefore = [cellDidselectConfigBefore copy];
         self.delegate = self;
         self.dataSource = self;
-        self.defaultHeight = height;
+        self.heightForRow = heightForRow;
         self.vcDelegate = delegate;
         
         //添加对Account的监听
@@ -403,18 +403,17 @@
     if ([cell respondsToSelector:@selector(tableView:vcDelegate:heightForRowWithModel:atIndexPath:)]) {
         return  [cell tableView:self vcDelegate:self.vcDelegate heightForRowWithModel:chuckModel.model atIndexPath:indexPath];
     }
-    
     if (![cell isMemberOfClass:[UITableViewCell class]]) {
         [cell layoutIfNeeded];
         [cell updateConstraintsIfNeeded];
         CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
         if (height==0) {
-            return self.defaultHeight;
+            return self.heightForRow?self.heightForRow(cell,chuckModel.model,indexPath):0;
         }
         return height;
     }
     
-    return self.defaultHeight;
+    return self.heightForRow?self.heightForRow(cell,chuckModel.model,indexPath):0;
 }
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{

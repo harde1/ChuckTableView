@@ -11,7 +11,12 @@
 #import "UICollectionReusableView+Chuck.h"
 #import "NSMutableArray+Chuck.h"
 @implementation ChuckCollectionView
-
+-(NSMutableArray *)collectViewConfig{
+    if (!_collectViewConfig) {
+        _collectViewConfig= [NSMutableArray array];
+    }
+    return _collectViewConfig;
+}
 //基础配置
 - (id)initWithFrame:(CGRect)frame
 collectionViewLayout:(UICollectionViewLayout *)layout
@@ -124,8 +129,8 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     [self upSertModel:chuckModel indexPath:indexPath];
     
     //注册cell
-    if (![self.config containsObject:NSStringFromClass(cellClass)]) {
-        [self.config addObject:NSStringFromClass(cellClass)];
+    if (![self.collectViewConfig containsObject:NSStringFromClass(cellClass)]) {
+        [self.collectViewConfig addObject:NSStringFromClass(cellClass)];
         [self registerCell:cellClass];
     }
     
@@ -135,8 +140,8 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
 -(void)upSertModel:(ChuckModel *)chuckModel indexPath:(NSIndexPath *)indexPath{
     if (![indexPath isKindOfClass:[NSIndexPath class]]) return;
     [self ifBeyondSection:indexPath.section];
-    if (![self.config containsObject:@"UICollectionViewCell"]) {
-        [self.config addObject:@"UICollectionViewCell"];
+    if (![self.collectViewConfig containsObject:@"UICollectionViewCell"]) {
+        [self.collectViewConfig addObject:@"UICollectionViewCell"];
         [self registerCell:UICollectionViewCell.class];
     }
     if (indexPath.item>=[self.modelSource[indexPath.section] count]) {
@@ -169,8 +174,8 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     if (!arr.headModel) {
         arr.headModel = [[HeadFootModel alloc] initEmptySection:section];
         //注册cell
-        if (![self.config containsObject:@"UICollectionReusableView"]) {
-            [self.config addObject:@"UICollectionReusableView"];
+        if (![self.collectViewConfig containsObject:@"UICollectionReusableView"]) {
+            [self.collectViewConfig addObject:@"UICollectionReusableView"];
             [self registerHeadFootCell:UICollectionReusableView.class isFoot:NO];
         }
     }
@@ -182,8 +187,8 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     if (!arr.footModel) {
         arr.footModel = [[HeadFootModel alloc] initEmptySection:section];
         //注册cell
-        if (![self.config containsObject:@"UICollectionReusableView"]) {
-            [self.config addObject:@"UICollectionReusableView"];
+        if (![self.collectViewConfig containsObject:@"UICollectionReusableView"]) {
+            [self.collectViewConfig addObject:@"UICollectionReusableView"];
             [self registerHeadFootCell:UICollectionReusableView.class isFoot:YES];
         }
     }
@@ -327,8 +332,8 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     
     
     //注册cell
-    if (![self.config containsObject:NSStringFromClass(cellClass)]) {
-        [self.config addObject:NSStringFromClass(cellClass)];
+    if (![self.collectViewConfig containsObject:NSStringFromClass(cellClass)]) {
+        [self.collectViewConfig addObject:NSStringFromClass(cellClass)];
         [self registerHeadFootCell:cellClass isFoot:isFoot];
     }
     
@@ -538,8 +543,8 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
         NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
         return;
     }
-    if (![self.config containsObject:NSStringFromClass(cellClass)]) {
-        [self.config addObject:NSStringFromClass(cellClass)];
+    if (![self.collectViewConfig containsObject:NSStringFromClass(cellClass)]) {
+        [self.collectViewConfig addObject:NSStringFromClass(cellClass)];
         [self registerCell:cellClass];
     }
     ChuckModel * chuckModel = [self configModel:model cellClass:cellClass allowEdit:edit editStyle:editStyle indexPath:indexPath];
@@ -659,8 +664,8 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
         [arr addObject:chuckModel];
     }
     //注册cell
-    if (![self.config containsObject:NSStringFromClass(cellClass)]) {
-        [self.config addObject:NSStringFromClass(cellClass)];
+    if (![self.collectViewConfig containsObject:NSStringFromClass(cellClass)]) {
+        [self.collectViewConfig addObject:NSStringFromClass(cellClass)];
         [self registerCell:cellClass];
     }
     [self.modelSource insertObject:arr atIndex:section];

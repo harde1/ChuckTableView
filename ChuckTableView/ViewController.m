@@ -31,6 +31,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     [self.view addSubview:self.tableView];
     //1、不声明section，默认为0
     [self.tableView addModel:@"不声明section，默认为0" cellClass:ChuckCell.class];
@@ -81,7 +84,9 @@
     if (!_tableView) {
         _tableView = [[ChuckTableView alloc]initWithFrame:self.view.bounds
                                                     style:0
-                                            defaultHeight:100
+                                             heightForRow:^CGFloat(id cell, id model, NSIndexPath *indexPath) {
+                                                 return 100;
+                                             }
                                                vcDelegate:self
                                            configureBlock:^(UITableViewCell* cell, id model, NSIndexPath *indexPath) {
                                                //默认cell配置

@@ -23,7 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
     self.collect.backgroundColor = [UIColor whiteColor];
     self.view.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.collect];

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "HeadFootModel.h"
+typedef CGFloat (^HeightForRow)(id cell,id model, NSIndexPath * indexPath);
 typedef void (^CellConfigureBefore)(id cell, id model, NSIndexPath * indexPath);
 typedef void (^CellDidselectConfigureBefore)(id cell, id model, NSIndexPath * indexPath);
 typedef void (^HeadFootConfigureBefore)(UICollectionReusableView * view, id model,NSString * kind, NSUInteger section);

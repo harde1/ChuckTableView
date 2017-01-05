@@ -29,7 +29,6 @@
 		CA45F5DE1E0A5FE0009A0E84 /* CCellTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5DB1E0A5FE0009A0E84 /* CCellTopBar.m */; };
 		CA45F5E11E0A6068009A0E84 /* UtilScreenSize.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5E01E0A6068009A0E84 /* UtilScreenSize.m */; };
 		CA45F5E41E0A6192009A0E84 /* UIView+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5E31E0A6192009A0E84 /* UIView+Metrics.m */; };
-		CA45F5E71E0A6313009A0E84 /* NSString+SizeFont.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5E61E0A6313009A0E84 /* NSString+SizeFont.m */; };
 		CAC3996F1DEEBFED00252721 /* CollectController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC3996E1DEEBFED00252721 /* CollectController.m */; };
 		CAC399751DEEE0A000252721 /* ChuckCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC399741DEEE0A000252721 /* ChuckCCell.m */; };
 		CAC9D44D1E039E6700AC2842 /* ChuckCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC9D43B1E039E6700AC2842 /* ChuckCollectionView.m */; };
@@ -109,8 +108,6 @@
 		CA45F5E01E0A6068009A0E84 /* UtilScreenSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilScreenSize.m; sourceTree = "<group>"; };
 		CA45F5E21E0A6192009A0E84 /* UIView+Metrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Metrics.h"; sourceTree = "<group>"; };
 		CA45F5E31E0A6192009A0E84 /* UIView+Metrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Metrics.m"; sourceTree = "<group>"; };
-		CA45F5E51E0A6313009A0E84 /* NSString+SizeFont.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+SizeFont.h"; sourceTree = "<group>"; };
-		CA45F5E61E0A6313009A0E84 /* NSString+SizeFont.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+SizeFont.m"; sourceTree = "<group>"; };
 		CAC3996D1DEEBFED00252721 /* CollectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectController.h; sourceTree = "<group>"; };
 		CAC3996E1DEEBFED00252721 /* CollectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectController.m; sourceTree = "<group>"; };
 		CAC399731DEEE0A000252721 /* ChuckCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckCCell.h; sourceTree = "<group>"; };
@@ -233,6 +230,21 @@
 			path = CCell;
 			sourceTree = "<group>";
 		};
+		CA9AF5CE1E1DE50A00B02567 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F48085A81DC2F55800D22552 /* ViewController.h */,
+				F48085A91DC2F55800D22552 /* ViewController.m */,
+				F47BEB3F1DC5F9FA00E6F225 /* SimpleController.h */,
+				F47BEB401DC5F9FA00E6F225 /* SimpleController.m */,
+				CAC3996D1DEEBFED00252721 /* CollectController.h */,
+				CAC3996E1DEEBFED00252721 /* CollectController.m */,
+				CA283EA11E1CD9D100202F14 /* StarCardController.h */,
+				CA283EA21E1CD9D100202F14 /* StarCardController.m */,
+			);
+			name = controller;
+			sourceTree = "<group>";
+		};
 		CAC9D4381E039E6700AC2842 /* ChuckTableViewLib */ = {
 			isa = PBXGroup;
 			children = (
@@ -284,16 +296,9 @@
 			isa = PBXGroup;
 			children = (
 				CAC9D4381E039E6700AC2842 /* ChuckTableViewLib */,
-				F48085A81DC2F55800D22552 /* ViewController.h */,
-				F48085A91DC2F55800D22552 /* ViewController.m */,
 				CA283E9E1E1CD93C00202F14 /* EnterController.h */,
 				CA283E9F1E1CD93C00202F14 /* EnterController.m */,
-				F47BEB3F1DC5F9FA00E6F225 /* SimpleController.h */,
-				F47BEB401DC5F9FA00E6F225 /* SimpleController.m */,
-				CAC3996D1DEEBFED00252721 /* CollectController.h */,
-				CAC3996E1DEEBFED00252721 /* CollectController.m */,
-				CA283EA11E1CD9D100202F14 /* StarCardController.h */,
-				CA283EA21E1CD9D100202F14 /* StarCardController.m */,
+				CA9AF5CE1E1DE50A00B02567 /* controller */,
 				CA283EAA1E1CE8B900202F14 /* img */,
 				F4D43A0B1DC60F33007099B4 /* cell */,
 				F48085A21DC2F55700D22552 /* Supporting Files */,
@@ -306,8 +311,6 @@
 			children = (
 				CA45F5E21E0A6192009A0E84 /* UIView+Metrics.h */,
 				CA45F5E31E0A6192009A0E84 /* UIView+Metrics.m */,
-				CA45F5E51E0A6313009A0E84 /* NSString+SizeFont.h */,
-				CA45F5E61E0A6313009A0E84 /* NSString+SizeFont.m */,
 				CA45F5DF1E0A6068009A0E84 /* UtilScreenSize.h */,
 				CA45F5E01E0A6068009A0E84 /* UtilScreenSize.m */,
 				F48085AB1DC2F55800D22552 /* Main.storyboard */,
@@ -503,7 +506,6 @@
 				CAC9D44E1E039E6700AC2842 /* ChuckLayout.m in Sources */,
 				CA283EBC1E1CF05B00202F14 /* CCellUserNum.m in Sources */,
 				CA45F5DC1E0A5FE0009A0E84 /* CCellHomeCell.m in Sources */,
-				CA45F5E71E0A6313009A0E84 /* NSString+SizeFont.m in Sources */,
 				F48085AA1DC2F55800D22552 /* ViewController.m in Sources */,
 				CAC9D44F1E039E6700AC2842 /* ChuckModel.m in Sources */,
 				F48085DF1DC300E700D22552 /* ChuckCell.m in Sources */,

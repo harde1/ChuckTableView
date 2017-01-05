@@ -20,7 +20,7 @@ IB_DESIGNABLE
 //存放model,chuckModel，chuckModel.model就是传进来的model
 @property(nonatomic,strong) NSMutableArray *modelSource;
 //不给高度时候的默认cell高度
-@property (nonatomic, assign) CGFloat defaultHeight;
+@property (nonatomic, copy) HeightForRow heightForRow;
 //header是什么用的
 @property (nonatomic, weak) id<ChuckDelegate> vcDelegate;
 //上拉加载更多是否在显示
@@ -36,7 +36,7 @@ IB_DESIGNABLE
 
 - (id)initWithFrame:(CGRect)frame
               style:(UITableViewStyle)style
-      defaultHeight:(CGFloat)height
+       heightForRow:(HeightForRow)heightForRow
          vcDelegate:(id<ChuckDelegate>)delegate
      configureBlock:(CellConfigureBefore)before
 cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore;
