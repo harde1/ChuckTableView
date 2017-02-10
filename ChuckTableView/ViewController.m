@@ -40,40 +40,40 @@
     //2、自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度
     [self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:XibAutpHeightCell.class];
     //3、支持编辑模式简化操作
-    [self.tableView addModels:@[@"左滑进入删除模式",
-                                @"左滑进入删除模式"]
-                    cellClass:ChuckCell.class editStyle:UITableViewCellEditingStyleDelete];
-    //4、支持多个model同时导入
-    [self.tableView addModels:@[
-                                @"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界",
-                                @"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界"]
-                    cellClass:XibAutpHeightCell.class section:3 editStyle:UITableViewCellEditingStyleDelete];
-    //5、指定相应的section，不会数组越界，会自动填充cell满足条件
-    [self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:ChuckCell.class section:5];
-    //6、不指定类型，默认为UItableViewCell
-    [self.tableView addModels:@[@"不指定类型，默认为UItableViewCell",@"不指定类型，默认为UItableViewCell"] section:2];
-    [self.tableView addModels:@[@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界",@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界"] cellClass:XibAutpHeightCell.class section:1 editStyle:UITableViewCellEditingStyleDelete];
-    [self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:ChuckCell.class section:10];
-    [self.tableView addModels:@[
-                                @"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度",
-                                @"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度",
-                                @"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度",
-                                @"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度"] cellClass:XibAutpHeightCell.class section:9];
-    [self.tableView addModel:@"ChuckCell" cellClass:ChuckCell.class];
-    [self.tableView addModels:@[@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界",@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界"] cellClass:ChuckCell.class editStyle:UITableViewCellEditingStyleDelete];
-    [self.tableView addModel:@"ChuckCell" cellClass:ChuckCell.class];
-    [self.tableView addModels:@[@"不指定类型，默认为UItableViewCell,任意指定section插入不回数组越界",
-                                @"不指定类型，默认为UItableViewCell,任意指定section插入不回数组越界"]
-                      section:2];
-    [self.tableView addModels:@[@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度",@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度"] cellClass:XibAutpHeightCell.class section:5];
-    [self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:XibAutpHeightCell.class];
-    [self.tableView addModel:@"ChuckCell" cellClass:ChuckCell.class section:10];
-    [self.tableView addModels:@[@"任意指定section插入不回数组越界",
-                                @"任意指定section插入不回数组越界",
-                                @"任意指定section插入不回数组越界",
-                                @"任意指定section插入不回数组越界",
-                                @"任意指定section插入不回数组越界"]
-                    cellClass:ChuckCell.class section:9];
+//    [self.tableView addModels:@[@"左滑进入删除模式",
+//                                @"左滑进入删除模式"]
+//                    cellClass:ChuckCell.class editStyle:UITableViewCellEditingStyleDelete];
+//    //4、支持多个model同时导入
+//    [self.tableView addModels:@[
+//                                @"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界",
+//                                @"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界"]
+//                    cellClass:XibAutpHeightCell.class section:3 editStyle:UITableViewCellEditingStyleDelete];
+//    //5、指定相应的section，不会数组越界，会自动填充cell满足条件
+//    [self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:ChuckCell.class section:5];
+//    //6、不指定类型，默认为UItableViewCell
+//    [self.tableView addModels:@[@"不指定类型，默认为UItableViewCell",@"不指定类型，默认为UItableViewCell"] section:2];
+//    [self.tableView addModels:@[@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界",@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界"] cellClass:XibAutpHeightCell.class section:1 editStyle:UITableViewCellEditingStyleDelete];
+//    [self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:ChuckCell.class section:10];
+//    [self.tableView addModels:@[
+//                                @"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度",
+//                                @"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度",
+//                                @"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度",
+//                                @"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度"] cellClass:XibAutpHeightCell.class section:9];
+//    [self.tableView addModel:@"ChuckCell" cellClass:ChuckCell.class];
+//    [self.tableView addModels:@[@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界",@"左滑进入删除模式，支持多个model同时导入，任意指定section插入不回数组越界"] cellClass:ChuckCell.class editStyle:UITableViewCellEditingStyleDelete];
+//    [self.tableView addModel:@"ChuckCell" cellClass:ChuckCell.class];
+//    [self.tableView addModels:@[@"不指定类型，默认为UItableViewCell,任意指定section插入不回数组越界",
+//                                @"不指定类型，默认为UItableViewCell,任意指定section插入不回数组越界"]
+//                      section:2];
+//    [self.tableView addModels:@[@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度",@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度"] cellClass:XibAutpHeightCell.class section:5];
+//    [self.tableView addModel:@"自动检测是xib还是class文件，cell里面实现heightFoRow方法的以该方法对高度的优先级最高，xib默认自动计算高度" cellClass:XibAutpHeightCell.class];
+//    [self.tableView addModel:@"ChuckCell" cellClass:ChuckCell.class section:10];
+//    [self.tableView addModels:@[@"任意指定section插入不回数组越界",
+//                                @"任意指定section插入不回数组越界",
+//                                @"任意指定section插入不回数组越界",
+//                                @"任意指定section插入不回数组越界",
+//                                @"任意指定section插入不回数组越界"]
+//                    cellClass:ChuckCell.class section:9];
     
 }
 -(void)viewDidAppear:(BOOL)animated{
@@ -181,12 +181,12 @@
 
 
 -(void)doShouCang{
-    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:11];
+    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
     [self.tableView insertModel:@"我插, 自动滚到最后" cellClass:XibAutpHeightCell.class indexPath:indexPath animation:UITableViewRowAnimationLeft];
     [self.tableView scrollToBottomAnimationTime:1];
 }
 -(void)delShouCang{
-    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:11];
+    NSIndexPath * indexPath = [NSIndexPath indexPathForRow:0 inSection:1];
     [self.tableView removeIndexPath:indexPath animation:UITableViewRowAnimationRight];
 }
 
