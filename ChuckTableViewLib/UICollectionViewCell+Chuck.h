@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ChuckCellConfigure.h"
 @interface UICollectionViewCell (Chuck)<ChuckCellConfigure>
-
+@property(nonatomic,weak)ChuckModel * chuckModel;
+@property(nonatomic,weak)ChuckCollectionView * chuckCollectionView;
+@property(nonatomic,weak)id<ChuckDelegate> chuckDelegate;
 @end

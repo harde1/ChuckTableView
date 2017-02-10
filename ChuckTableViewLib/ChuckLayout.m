@@ -9,9 +9,9 @@
 #import "ChuckLayout.h"
 #import "ChuckCollectionView.h"
 @interface ChuckLayout()
-@property(nonatomic,copy)CGSize(^itemSize)(id model,NSInteger section);
-@property(nonatomic,copy)CGFloat(^interitemSpacing)(id model,NSInteger section);
-@property(nonatomic,copy)CGFloat(^lineSpacing)(id model,NSInteger section);
+@property(nonatomic,copy)CGSize(^itemSize)(id model,ChuckModel * chuckModel,NSInteger section);
+@property(nonatomic,copy)CGFloat(^interitemSpacing)(id model,ChuckModel * chuckModel,NSInteger section);
+@property(nonatomic,copy)CGFloat(^lineSpacing)(id model,ChuckModel * chuckModel,NSInteger section);
 @property(nonatomic,copy)UIEdgeInsets(^contentInset)(NSInteger section);
 /**
  *  布局信息
@@ -30,9 +30,9 @@
     }
     return _layoutInfoArr;
 }
--(instancetype)initItemSize:(CGSize (^)(id model,NSInteger section))itemSize
-  interitemSpacingIndexPath:(CGFloat (^)(id model,NSInteger section))interitemSpacing
-       lineSpacingIndexPath:(CGFloat (^)(id model,NSInteger section))lineSpacing
+-(instancetype)initItemSize:(CGSize (^)(id model,ChuckModel * chuckModel,NSInteger section))itemSize
+  interitemSpacingIndexPath:(CGFloat (^)(id model,ChuckModel * chuckModel,NSInteger section))interitemSpacing
+       lineSpacingIndexPath:(CGFloat (^)(id model,ChuckModel * chuckModel,NSInteger section))lineSpacing
       contentInsetIndexPath:(UIEdgeInsets (^)(NSInteger section))contentInset{
     if (self = [super init]) {
         self.itemSize = itemSize;
@@ -99,11 +99,11 @@
     ChuckModel * model = [collect getModelAtIndexPath:indexPath];
     CGFloat mainScreenWidth = [UIScreen mainScreen].bounds.size.width;
     //section里面的cell size
-    CGSize itemSectionSize = self.itemSize?self.itemSize(model.model,indexPath.section):CGSizeZero;
+    CGSize itemSectionSize = self.itemSize?self.itemSize(model.model,model,indexPath.section):CGSizeZero;
     //cell与cell之间的距离
-    CGFloat interitemSectionSpacing = self.interitemSpacing?self.interitemSpacing(model.model,indexPath.section):0.f;
+    CGFloat interitemSectionSpacing = self.interitemSpacing?self.interitemSpacing(model.model,model,indexPath.section):0.f;
     //行距
-    CGFloat lineSectionSpacing= self.lineSpacing?self.lineSpacing(model.model,indexPath.section):0.f;
+    CGFloat lineSectionSpacing= self.lineSpacing?self.lineSpacing(model.model,model,indexPath.section):0.f;
     //整个section内嵌距离
     UIEdgeInsets contentSectionInset = self.contentInset?self.contentInset(indexPath.section):UIEdgeInsetsZero;
     
@@ -150,13 +150,13 @@
 //    return attributes;
 //}
 
--(void)setItemSizeSection:(CGSize (^)(id model,NSInteger section))itemSize{
+-(void)setItemSizeSection:(CGSize (^)(id model,ChuckModel * chuckModel,NSInteger section))itemSize{
     _itemSize = itemSize;
 }
--(void)setInteritemSpacingIndexPath:(CGFloat (^)(id model,NSInteger section))interitemSpacing{
+-(void)setInteritemSpacingIndexPath:(CGFloat (^)(id model,ChuckModel * chuckModel,NSInteger section))interitemSpacing{
     _interitemSpacing = interitemSpacing;
 }
--(void)setLineSpacingIndexPath:(CGFloat (^)(id model,NSInteger section))lineSpacing{
+-(void)setLineSpacingIndexPath:(CGFloat (^)(id model,ChuckModel * chuckModel,NSInteger section))lineSpacing{
     _lineSpacing = lineSpacing;
 }
 -(void)setContentInsetIndexPath:(UIEdgeInsets (^)(NSInteger section))contentInset{

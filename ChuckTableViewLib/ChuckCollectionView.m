@@ -35,6 +35,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
         
         //添加对Account的监听
         [self addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld context:nil];
+          [self addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
         [self registerClass:UICollectionViewCell.class forCellWithReuseIdentifier:@"footerRefresh"];
     }
     return self;
@@ -52,9 +53,13 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
             }
         }
     }
+    else if ([keyPath isEqualToString:@"contentSize"] && !CGSizeEqualToSize(self.contentSize, self.frame.size)) {
+        [self chuckContentSizeChange:[change[@"new"] CGSizeValue]];
+    }
 }
 -(void)dealloc{
     [self removeObserver:self forKeyPath:@"contentOffset"];
+    [self removeObserver:self forKeyPath:@"contentSize"];
 }
 -(NSMutableArray *)modelSource{
     if (!_modelSource) {
@@ -378,7 +383,18 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
     UICollectionViewCell *cell = [self collectionView:collectionView cellforChuckModel:chuckModel forIndexPath:indexPath];
     id model = chuckModel.model;
-    
+    chuckModel.indexPath = indexPath;
+    if ([cell respondsToSelector:@selector(setChuckCollectionView:)]) {
+        [cell performSelector:@selector(setChuckCollectionView:) withObject:self];
+    }
+    if ([cell respondsToSelector:@selector(setChuckModel:)]) {
+        [cell performSelector:@selector(setChuckModel:) withObject:chuckModel];
+    }
+    if (self.vcDelegate && [cell respondsToSelector:@selector(setChuckDelegate:)]) {
+        cell.chuckDelegate = self.vcDelegate;
+    }
+  
+    chuckModel.indexPath = indexPath;
     if(self.cellConfigureBefore) {
         self.cellConfigureBefore(cell, model,indexPath);
     }
@@ -400,6 +416,18 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
         [view collectionView:self vcDelegate:self.vcDelegate model:model viewForSupplementaryElementOfKind:kind atIndexPath:indexPath];
     }
     return view;
+}
+- (void)collectionView:(UICollectionView *)collectionView didEndDisplayingCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath{
+     ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
+    if ([cell respondsToSelector:@selector(collectionView:vcDelegate:didEndDisplayingCellWithModel:atIndexPath:)]) {
+        [cell collectionView:self vcDelegate:self.vcDelegate didEndDisplayingCellWithModel:chuckModel.model atIndexPath:indexPath];
+    }
+}
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(8_0){
+    ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
+    if ([cell respondsToSelector:@selector(collectionView:vcDelegate:willDisplayCellWithModel:atIndexPath:)]) {
+        [cell collectionView:self vcDelegate:self.vcDelegate willDisplayCellWithModel:chuckModel.model atIndexPath:indexPath];
+    }
 }
 ////返回头headerView的大小
 //-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
@@ -557,6 +585,7 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     //        //[self.modelSource[indexPath.section] addObject:chuckModel];
     //    }
     //注册cell
+    [self registerCell:cellClass];
     [self.modelSource[indexPath.section] insertObject:chuckModel atIndex:indexPath.row];
     if ([self.modelSource[indexPath.section] count]!=1) {
         [self performBatchUpdates:^{
@@ -732,5 +761,12 @@ cellDidselectConfig:(CellDidselectConfigureBefore)cellDidselectConfigBefore
     //    dispatch_after(delayTime, dispatch_get_main_queue(), ^{
     //        [wSelf reloadData];
     //    });
+}
+
+#pragma mark ChuckDelgate
+- (void)chuckContentSizeChange:(CGSize)contentSize{
+    if ([self.vcDelegate respondsToSelector:@selector(chuckContentSizeChange:)]) {
+        [self.vcDelegate chuckContentSizeChange:contentSize];
+    }
 }
 @end

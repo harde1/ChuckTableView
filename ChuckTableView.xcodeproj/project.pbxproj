@@ -29,6 +29,14 @@
 		CA45F5DE1E0A5FE0009A0E84 /* CCellTopBar.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5DB1E0A5FE0009A0E84 /* CCellTopBar.m */; };
 		CA45F5E11E0A6068009A0E84 /* UtilScreenSize.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5E01E0A6068009A0E84 /* UtilScreenSize.m */; };
 		CA45F5E41E0A6192009A0E84 /* UIView+Metrics.m in Sources */ = {isa = PBXBuildFile; fileRef = CA45F5E31E0A6192009A0E84 /* UIView+Metrics.m */; };
+		CA9AF5D11E1E1EC600B02567 /* ReviewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9AF5D01E1E1EC600B02567 /* ReviewController.m */; };
+		CA9AF5D61E1E2C1700B02567 /* CCellPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9AF5D41E1E2C1700B02567 /* CCellPlayer.m */; };
+		CA9AF5DB1E1E6F2600B02567 /* CCellTitleShare.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9AF5D91E1E6F2600B02567 /* CCellTitleShare.m */; };
+		CA9AF5E01E1E784200B02567 /* CCellDetail.m in Sources */ = {isa = PBXBuildFile; fileRef = CA9AF5DE1E1E784200B02567 /* CCellDetail.m */; };
+		CAABAE2A1E1F7277008386D9 /* CsFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = CAABAE251E1F7277008386D9 /* CsFrame.m */; };
+		CAABAE2B1E1F7277008386D9 /* CsFrameLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CAABAE271E1F7277008386D9 /* CsFrameLayout.m */; };
+		CAABAE2C1E1F7277008386D9 /* UIView+CsFrameLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = CAABAE291E1F7277008386D9 /* UIView+CsFrameLayout.m */; };
+		CAABAE2F1E1F8CA4008386D9 /* CCellVideoSet.m in Sources */ = {isa = PBXBuildFile; fileRef = CAABAE2E1E1F8CA4008386D9 /* CCellVideoSet.m */; };
 		CAC3996F1DEEBFED00252721 /* CollectController.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC3996E1DEEBFED00252721 /* CollectController.m */; };
 		CAC399751DEEE0A000252721 /* ChuckCCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC399741DEEE0A000252721 /* ChuckCCell.m */; };
 		CAC9D44D1E039E6700AC2842 /* ChuckCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = CAC9D43B1E039E6700AC2842 /* ChuckCollectionView.m */; };
@@ -108,6 +116,22 @@
 		CA45F5E01E0A6068009A0E84 /* UtilScreenSize.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilScreenSize.m; sourceTree = "<group>"; };
 		CA45F5E21E0A6192009A0E84 /* UIView+Metrics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Metrics.h"; sourceTree = "<group>"; };
 		CA45F5E31E0A6192009A0E84 /* UIView+Metrics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Metrics.m"; sourceTree = "<group>"; };
+		CA9AF5CF1E1E1EC600B02567 /* ReviewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewController.h; sourceTree = "<group>"; };
+		CA9AF5D01E1E1EC600B02567 /* ReviewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewController.m; sourceTree = "<group>"; };
+		CA9AF5D31E1E2C1700B02567 /* CCellPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellPlayer.h; sourceTree = "<group>"; };
+		CA9AF5D41E1E2C1700B02567 /* CCellPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellPlayer.m; sourceTree = "<group>"; };
+		CA9AF5D81E1E6F2600B02567 /* CCellTitleShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellTitleShare.h; sourceTree = "<group>"; };
+		CA9AF5D91E1E6F2600B02567 /* CCellTitleShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellTitleShare.m; sourceTree = "<group>"; };
+		CA9AF5DD1E1E784200B02567 /* CCellDetail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellDetail.h; sourceTree = "<group>"; };
+		CA9AF5DE1E1E784200B02567 /* CCellDetail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellDetail.m; sourceTree = "<group>"; };
+		CAABAE241E1F7277008386D9 /* CsFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsFrame.h; sourceTree = "<group>"; };
+		CAABAE251E1F7277008386D9 /* CsFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsFrame.m; sourceTree = "<group>"; };
+		CAABAE261E1F7277008386D9 /* CsFrameLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CsFrameLayout.h; sourceTree = "<group>"; };
+		CAABAE271E1F7277008386D9 /* CsFrameLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CsFrameLayout.m; sourceTree = "<group>"; };
+		CAABAE281E1F7277008386D9 /* UIView+CsFrameLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+CsFrameLayout.h"; sourceTree = "<group>"; };
+		CAABAE291E1F7277008386D9 /* UIView+CsFrameLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+CsFrameLayout.m"; sourceTree = "<group>"; };
+		CAABAE2D1E1F8CA4008386D9 /* CCellVideoSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCellVideoSet.h; sourceTree = "<group>"; };
+		CAABAE2E1E1F8CA4008386D9 /* CCellVideoSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCellVideoSet.m; sourceTree = "<group>"; };
 		CAC3996D1DEEBFED00252721 /* CollectController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectController.h; sourceTree = "<group>"; };
 		CAC3996E1DEEBFED00252721 /* CollectController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectController.m; sourceTree = "<group>"; };
 		CAC399731DEEE0A000252721 /* ChuckCCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChuckCCell.h; sourceTree = "<group>"; };
@@ -219,6 +243,7 @@
 		CA45F5D51E0A5FE0009A0E84 /* CCell */ = {
 			isa = PBXGroup;
 			children = (
+				CA9AF5D21E1E2BF400B02567 /* Review */,
 				CA283EA41E1CE42C00202F14 /* StarCard */,
 				CA45F5D61E0A5FE0009A0E84 /* CCellHomeCell.h */,
 				CA45F5D71E0A5FE0009A0E84 /* CCellHomeCell.m */,
@@ -241,8 +266,38 @@
 				CAC3996E1DEEBFED00252721 /* CollectController.m */,
 				CA283EA11E1CD9D100202F14 /* StarCardController.h */,
 				CA283EA21E1CD9D100202F14 /* StarCardController.m */,
+				CA9AF5CF1E1E1EC600B02567 /* ReviewController.h */,
+				CA9AF5D01E1E1EC600B02567 /* ReviewController.m */,
 			);
 			name = controller;
+			sourceTree = "<group>";
+		};
+		CA9AF5D21E1E2BF400B02567 /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				CA9AF5D31E1E2C1700B02567 /* CCellPlayer.h */,
+				CA9AF5D41E1E2C1700B02567 /* CCellPlayer.m */,
+				CA9AF5D81E1E6F2600B02567 /* CCellTitleShare.h */,
+				CA9AF5D91E1E6F2600B02567 /* CCellTitleShare.m */,
+				CA9AF5DD1E1E784200B02567 /* CCellDetail.h */,
+				CA9AF5DE1E1E784200B02567 /* CCellDetail.m */,
+				CAABAE2D1E1F8CA4008386D9 /* CCellVideoSet.h */,
+				CAABAE2E1E1F8CA4008386D9 /* CCellVideoSet.m */,
+			);
+			name = Review;
+			sourceTree = "<group>";
+		};
+		CAABAE231E1F7266008386D9 /* cs_framelayout */ = {
+			isa = PBXGroup;
+			children = (
+				CAABAE241E1F7277008386D9 /* CsFrame.h */,
+				CAABAE251E1F7277008386D9 /* CsFrame.m */,
+				CAABAE261E1F7277008386D9 /* CsFrameLayout.h */,
+				CAABAE271E1F7277008386D9 /* CsFrameLayout.m */,
+				CAABAE281E1F7277008386D9 /* UIView+CsFrameLayout.h */,
+				CAABAE291E1F7277008386D9 /* UIView+CsFrameLayout.m */,
+			);
+			name = cs_framelayout;
 			sourceTree = "<group>";
 		};
 		CAC9D4381E039E6700AC2842 /* ChuckTableViewLib */ = {
@@ -295,6 +350,7 @@
 		F48085A11DC2F55700D22552 /* ChuckTableView */ = {
 			isa = PBXGroup;
 			children = (
+				CAABAE231E1F7266008386D9 /* cs_framelayout */,
 				CAC9D4381E039E6700AC2842 /* ChuckTableViewLib */,
 				CA283E9E1E1CD93C00202F14 /* EnterController.h */,
 				CA283E9F1E1CD93C00202F14 /* EnterController.m */,
@@ -504,6 +560,7 @@
 				CA283EB21E1CEAF800202F14 /* CollectCellContent.m in Sources */,
 				CA45F5E11E0A6068009A0E84 /* UtilScreenSize.m in Sources */,
 				CAC9D44E1E039E6700AC2842 /* ChuckLayout.m in Sources */,
+				CA9AF5D11E1E1EC600B02567 /* ReviewController.m in Sources */,
 				CA283EBC1E1CF05B00202F14 /* CCellUserNum.m in Sources */,
 				CA45F5DC1E0A5FE0009A0E84 /* CCellHomeCell.m in Sources */,
 				F48085AA1DC2F55800D22552 /* ViewController.m in Sources */,
@@ -512,6 +569,7 @@
 				CA283EB71E1CEB0C00202F14 /* CollectCellBottomBar.m in Sources */,
 				CA45F5DD1E0A5FE0009A0E84 /* CCellHomeHeader.m in Sources */,
 				CAC3996F1DEEBFED00252721 /* CollectController.m in Sources */,
+				CAABAE2C1E1F7277008386D9 /* UIView+CsFrameLayout.m in Sources */,
 				CA45F5E41E0A6192009A0E84 /* UIView+Metrics.m in Sources */,
 				CA283EA01E1CD93C00202F14 /* EnterController.m in Sources */,
 				CAC9D4521E039E6700AC2842 /* NSMutableArray+Chuck.m in Sources */,
@@ -523,12 +581,18 @@
 				F4B9DD7A1DC4CB120064A605 /* XibAutpHeightCell.m in Sources */,
 				CA283EC61E1D059800202F14 /* CCellAcount.m in Sources */,
 				CAC9D4541E039E6700AC2842 /* UICollectionViewCell+Chuck.m in Sources */,
+				CAABAE2B1E1F7277008386D9 /* CsFrameLayout.m in Sources */,
 				CA283EC11E1CF7E800202F14 /* CCellMonth.m in Sources */,
 				F48085A41DC2F55700D22552 /* main.m in Sources */,
+				CAABAE2A1E1F7277008386D9 /* CsFrame.m in Sources */,
 				CAC399751DEEE0A000252721 /* ChuckCCell.m in Sources */,
 				F47BEB411DC5F9FA00E6F225 /* SimpleController.m in Sources */,
 				CAC9D4551E039E6700AC2842 /* UITableViewCell+Chuck.m in Sources */,
+				CA9AF5D61E1E2C1700B02567 /* CCellPlayer.m in Sources */,
+				CAABAE2F1E1F8CA4008386D9 /* CCellVideoSet.m in Sources */,
 				CAC9D4511E039E6700AC2842 /* HeadFootModel.m in Sources */,
+				CA9AF5DB1E1E6F2600B02567 /* CCellTitleShare.m in Sources */,
+				CA9AF5E01E1E784200B02567 /* CCellDetail.m in Sources */,
 				CA283EA81E1CE46500202F14 /* CollectCellTopBar.m in Sources */,
 				CA45F5DE1E0A5FE0009A0E84 /* CCellTopBar.m in Sources */,
 				CA283EA31E1CD9D100202F14 /* StarCardController.m in Sources */,

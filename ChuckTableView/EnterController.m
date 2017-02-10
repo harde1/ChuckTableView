@@ -54,8 +54,14 @@
     [self.view addSubview:tableView];
     
     [tableView addModel:@"做这个库的目的就是为了快速搭建tableView,减少一些重复的操作，把操作简单化"];
-    [tableView addModel:@"ViewController"];
-    [tableView addModels:@[@"SimpleController",@"CollectController",@"StarCardController"]];
+    
+    [tableView addModels:@[
+                           @"ViewController",
+                           @"SimpleController",
+                           @"CollectController",
+                           @"StarCardController",
+                           @"ReviewController"
+                           ]];
 }
 
 @end

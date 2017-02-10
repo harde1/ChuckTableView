@@ -16,8 +16,8 @@
 const CGFloat ZYTopViewH = 350;
 @interface CollectController ()<ChuckDelegate>
 @property(nonatomic,strong)ChuckCollectionView* collect;
-@property(nonatomic,strong) UIRefreshControl *refreshControl;
-@property (nonatomic,strong)ChuckLayout * layout;
+@property(nonatomic,strong)UIRefreshControl *refreshControl;
+@property(nonatomic,strong)ChuckLayout * layout;
 @end
 
 @implementation CollectController
@@ -103,7 +103,7 @@ const CGFloat ZYTopViewH = 350;
         CGFloat w = (width-interitemSpacing * (perRow -1) - sectionInset.left -sectionInset.right)/perRow * 1.0;
         CGFloat h = w;
         
-        _layout = [[ChuckLayout alloc]initItemSize:^CGSize(id model, NSInteger section) {
+        _layout = [[ChuckLayout alloc]initItemSize:^CGSize(id model,ChuckModel * chuckModel, NSInteger section) {
             switch (whichType(section)) {
                 case TopBar:
                     return CGSizeMake(width,PxToPt(100));
@@ -116,10 +116,10 @@ const CGFloat ZYTopViewH = 350;
                     break;
             }
             return (CGSize){w,h};
-        } interitemSpacingIndexPath:^CGFloat(id model, NSInteger section) {
+        } interitemSpacingIndexPath:^CGFloat(id model,ChuckModel * chuckModel, NSInteger section) {
             
             return interitemSpacing;
-        } lineSpacingIndexPath:^CGFloat(id model, NSInteger section) {
+        } lineSpacingIndexPath:^CGFloat(id model,ChuckModel * chuckModel, NSInteger section) {
             
             return lineSpacing;
         } contentInsetIndexPath:^UIEdgeInsets(NSInteger section) {

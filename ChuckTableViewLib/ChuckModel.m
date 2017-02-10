@@ -44,4 +44,7 @@
     }
     return self;
 }
+-(void)setIndexPath:(NSIndexPath *)indexPath{
+    _indexPath = indexPath;
+}
 @end

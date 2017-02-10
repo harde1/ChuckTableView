@@ -241,7 +241,7 @@
 }
 
 -(void)removeIndexPath:(NSIndexPath *)indexPath animation:(UITableViewRowAnimation)animation{
-    if (indexPath.section>=[self numberOfSection]) {
+    if (indexPath.section>[self numberOfSection]) {
         NSLog(@"warning:----- Exception: removeIndexPath by indexPath ------");
         return;
     }
@@ -307,6 +307,7 @@
         }
         //[self.modelSource[indexPath.section] addObject:chuckModel];
     }
+    [self registerCell:cellClass];
     [self.modelSource[indexPath.section] insertObject:chuckModel atIndex:indexPath.row];
     if ([self.modelSource[indexPath.section] count]!=1) {
         [self beginUpdates];
@@ -428,7 +429,18 @@
     }
     return 0;
 }
-
+-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
+    if ([cell respondsToSelector:@selector(tableView:vcDelegate:willDisplayCellWithModel:atIndexPath:)]) {
+        [cell tableView:self vcDelegate:self.vcDelegate willDisplayCellWithModel:chuckModel.model atIndexPath:indexPath];
+    }
+}
+-(void)tableView:(UITableView *)tableView didEndDisplayingCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    ChuckModel *chuckModel = [self getModelAtIndexPath:indexPath];
+    if ([cell respondsToSelector:@selector(tableView:vcDelegate:didEndDisplayingCellWithModel:atIndexPath:)]) {
+        [cell tableView:self vcDelegate:self.vcDelegate didEndDisplayingCellWithModel:chuckModel.model atIndexPath:indexPath];
+    }
+}
 #pragma mark UITableViewDelegate
 //互动
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

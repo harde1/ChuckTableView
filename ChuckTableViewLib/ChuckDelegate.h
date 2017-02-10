@@ -12,6 +12,8 @@
 @protocol ChuckDelegate <NSObject>
 
 @optional
+//contentSize发生变化时候调用
+- (void)chuckContentSizeChange:(CGSize)contentSize;
 #pragma mark ChuckTableView
 //head
 - (UIView *)tableView:(ChuckTableView *)tableView viewForHeaderInSection:(NSInteger)section;
@@ -20,7 +22,7 @@
 
 
 
-//#pragma mark ChuckCollectionView
+#pragma mark ChuckCollectionView
 //- (UIView *)collectionView:(ChuckCollectionView *)collectionView viewForHeaderInSection:(NSInteger)section;
 //- (CGFloat)collectionView:(ChuckCollectionView *)collectionView heightForHeaderInSection:(NSInteger)section;
 //-(CGSize)collectionView:(ChuckCollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForKind:(NSString *)kind model:(id)model inSection:(NSInteger)section;

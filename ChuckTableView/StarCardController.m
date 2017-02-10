@@ -33,16 +33,6 @@
     [self.collect addModel:@"CellContent" cellClass:CollectCellContent.class section:CellContent];
     [self.collect addModel:@"CellContent" cellClass:CollectCellContent.class section:CellContent];
     [self.collect addModel:@"CellBottomBar" cellClass:CollectCellBottomBar.class section:CellBottomBar];
-    [self.collect addObserver:self forKeyPath:@"contentSize" options:NSKeyValueObservingOptionNew context:nil];
-}
--(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    __weak typeof(self) wSelf = self;
-    if ([keyPath isEqualToString:@"contentSize"] && !CGSizeEqualToSize(self.collect.contentSize, self.collect.frame.size)) {
-        [wSelf resetFrame];
-    }
-}
--(void)dealloc{
-    [_collect removeObserver:self forKeyPath:@"contentSize"];
 }
 -(void)resetFrame{
     __weak typeof(self) wSelf = self;
@@ -53,6 +43,7 @@
         }];
     }
 }
+//转屏处理
 -(void)viewDidLayoutSubviews{
     [super viewDidLayoutSubviews];
     [self resetFrame];
@@ -104,7 +95,7 @@
         CGFloat w = (width-interitemSpacing * (perRow -1) - sectionInset.left -sectionInset.right)/perRow * 1.0;
         CGFloat h = w/3.0 * 2;
         
-        _layout = [[ChuckLayout alloc]initItemSize:^CGSize(id model, NSInteger section) {
+        _layout = [[ChuckLayout alloc]initItemSize:^CGSize(id model,ChuckModel * chuckModel, NSInteger section) {
             switch ([wSelf whichType:section]) {
                 case CellTopBar:
                     if ([model isEqualToString:@"星卡详情"]) {
@@ -125,9 +116,9 @@
                     return (CGSize){wSelf.view.frame.size.width,90.0/1324 * height};
                     break;
             }
-        } interitemSpacingIndexPath:^CGFloat(id model, NSInteger section) {
+        } interitemSpacingIndexPath:^CGFloat(id model,ChuckModel * chuckModel, NSInteger section) {
             return interitemSpacing;
-        } lineSpacingIndexPath:^CGFloat(id model, NSInteger section) {
+        } lineSpacingIndexPath:^CGFloat(id model,ChuckModel * chuckModel, NSInteger section) {
             if([wSelf whichType:section]==CellContent) return PxToPt(2);
             return lineSpacing;
         } contentInsetIndexPath:^UIEdgeInsets(NSInteger section) {
@@ -147,5 +138,9 @@
     return _layout;
 }
 
+#pragma mark ChuckDelegate
+-(void)chuckContentSizeChange:(CGSize)contentSize{
+    [self resetFrame];
+}
 
 @end
