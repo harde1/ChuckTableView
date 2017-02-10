@@ -14,9 +14,14 @@
 list=`find *.podspec`
 podspec=${list[0]}
 version=`sed -n -e '/s.version      = "/p' ${podspec} | awk '{print $3}' | sed 's/"//g'`
+ver=${version//./}
+ver=$((ver+1))
+version=${ver:0:1}'.'${ver:1:1}'.'${ver:2:1}
+
 #ver=$(${version}+1)
 #sed -n 's/${version}//g'
-echo '操作'${podspec}', 版本号：'$version
+echo '操作'${podspec}', 旧版本号：'$version'
+:'
 git pull
 git add -A
 git commit -m "pod "$version
@@ -25,4 +30,5 @@ git tag -d ''$version
 git tag ''$version
 git push --tags -f
 pod trunk push ${project} --allow-warnings
+'
 #cd ..
