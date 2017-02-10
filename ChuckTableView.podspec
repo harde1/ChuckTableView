@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
 
 
   s.name         = "ChuckTableView"
-  s.version      = "0.2.4"
+  s.version      = "0.2.5"
   s.summary      = "高度封装tableView简化cell的操作，与UIViewController解耦"
   s.description  = "
 

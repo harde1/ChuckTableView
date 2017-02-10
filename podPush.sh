@@ -35,8 +35,8 @@ git pull
 git add -A
 git commit -m "pod "$ver
 git push origin master
-git tag -d $version
-git tag $version
+git tag -d $ver
+git tag $ver
 git push --tags -f
 pod trunk push ${project} --allow-warnings
 
